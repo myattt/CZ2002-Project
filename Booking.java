@@ -3,15 +3,20 @@ public class Booking {
 	private int date;
 	private int time;
 	private int pax;
-	private int name;
+	private string name;
 	private int contact;
 
-	public void createReservation() {
+	public void createReservation(int date, int time, int pax, string name, int contact) {
 		// TODO - implement Booking.createReservation
-		throw new UnsupportedOperationException();
+		this.date=date;
+		this.time=time;
+		this.pax=pax;
+		this.name=name;
+		this.contact=contact;
+		
 	}
 
-	public void checkReeservation() {
+	public void checkReservation() {
 		// TODO - implement Booking.checkReeservation
 		throw new UnsupportedOperationException();
 	}
