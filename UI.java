@@ -1,8 +1,6 @@
 public class UI {
 
 	private void MakeOrder() {
-		// TODO - implement UI.MakeOrder
-		throw new UnsupportedOperationException();
 	}
 
 	private void Booking() {
@@ -18,6 +16,10 @@ public class UI {
 	private void PrintReport() {
 		// TODO - implement UI.PrintReport
 		throw new UnsupportedOperationException();
+	}
+
+	public static void main(String[] args) {
+		System.out.println("hello world");
 	}
 
 }
