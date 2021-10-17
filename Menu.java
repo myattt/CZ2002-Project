@@ -2,9 +2,12 @@ public class Menu {
 
 	private int promo_items;
 	private int alacarte_items;
-
-	public void addMenuItem( String item) {
-		// TODO - implement Menu.addMenuItem
+	private String item;
+	private String description;
+	
+	public void addMenuItem( String item , String description) {
+		this.item=item;
+		this.description=description;
 		throw new UnsupportedOperationException();
 	}
 
