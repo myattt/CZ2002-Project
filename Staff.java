@@ -13,8 +13,14 @@ public class Staff {
 	}
 	
 	private void createOrder() {
-		// TODO - implement Staff.createOrder
-		throw new UnsupportedOperationException();
+		Order o = new Order();
+		Random rand = new Random();
+
+		// Generate random integers in range 0 to 999
+		int rdint = rand.nextInt(3);
+		System.out.println("The staff who serves you is " + name[rdint] +", " + gender[rdint]+", "+jobTitle[rdint]);
+		System.out.println("Let's create your menu");
+		System.out.println();
 	}
 
 }
