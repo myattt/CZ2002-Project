@@ -4,15 +4,8 @@ public class UI {
 
 	// ArrayList<String> customerID = new ArrayList<String>(); Need?
 	
-	
-	//Our Database -----------
-	// For each customer and an order, please add the total price into this Revenue ArrayList ==> call printReport() easier
+	// For each customer and an order, please add the total price into this Revenue ArrayList
 	ArrayList<Integer> Revenue = new ArrayList<Integer>();
-	static ArrayList<String> Menu_of_restaurants = new ArrayList<String>();
-	
-	//Our Database -----------
-	
-	
 	private static void MakeOrder() {
 		Staff s = new Staff();
 		s.createOrder();
@@ -25,12 +18,9 @@ public class UI {
 	}
 
 	private void CreateMenu() {
-		Menu m = new Menu();
-		m.displayMenu();
-		m.addMenuItem("Ala Carte", "Delicious");
-		m.displayMenu();
-		m.removeMenuItem();
-		m.displayMenu();
+		// TODO - implement UI.CreateMenu
+		ArrayList<String> Menu = new Menu<String>();
+		throw new UnsupportedOperationException();
 	}
 
 	private void PrintReport() {
@@ -39,13 +29,6 @@ public class UI {
 	}
 
 	public static void main(String[] args) {
-		// Create some menu items first for testing, you can add/remove items (I havent added ala_carte, bundles, etc.)
-		// Please select option 3 to display the menu >>> [Main Course, Drinks, Dessert]
-		Menu_of_restaurants.add("Main Course");
-		Menu_of_restaurants.add("Drinks");
-		Menu_of_restaurants.add("Dessert");
-		
-		
 		Scanner s = new Scanner(System.in);
 		do {
 			System.out.println("Please select option \n 1. Make Order \n 2. Booking \n 3. CreateMenu \n 4. PrintReport");
