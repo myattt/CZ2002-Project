@@ -1,9 +1,15 @@
+import java.util.Scanner;
+import java.util.ArrayList;
 public class UI {
 
-	private void MakeOrder() {
+	ArrayList<String> customerID = new ArrayList<String>();
+	private static void MakeOrder() {
+		Staff s = new Staff();
+		s.createOrder();
+
 	}
 
-	private void Booking() {
+	private static void Booking() {
 		// TODO - implement UI.Booking
 		throw new UnsupportedOperationException();
 	}
@@ -19,7 +25,12 @@ public class UI {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("hello world");
+		Scanner s = new Scanner(System.in);
+		System.out.println("Please select option \n 1. Make Order \n 2. Booking \n 3. CreateMenu \n 4. PrintReport");
+		int option = s.nextInt();
+		if(option == 1) {
+			MakeOrder();
+		}
 	}
 
 }
