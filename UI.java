@@ -27,7 +27,7 @@ public class UI {
 	private void CreateMenu() {
 		Menu m = new Menu();
 		m.displayMenu();
-		m.addMenuItem();
+		m.addMenuItem("Ala Carte", "Delicious");
 		m.displayMenu();
 		m.removeMenuItem();
 		m.displayMenu();
