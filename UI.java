@@ -51,7 +51,7 @@ public class UI {
 			else if (option == 2)
 				booking();
 			else if (option == 3)
-				menu.modifyMenu();
+				menu.modifyMenu(menu);
 			else if (option == 4)
 				printReport();
 			else
