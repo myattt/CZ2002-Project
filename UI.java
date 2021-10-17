@@ -6,6 +6,8 @@ public class UI {
 	
 	// For each customer and an order, please add the total price into this Revenue ArrayList
 	ArrayList<Integer> Revenue = new ArrayList<Integer>();
+	static ArrayList<String> Menu_of_restaurants = new ArrayList<String>();
+	
 	private static void MakeOrder() {
 		Staff s = new Staff();
 		s.createOrder();
@@ -29,6 +31,10 @@ public class UI {
 	}
 
 	public static void main(String[] args) {
+		Menu_of_restaurants.add("Main Course");
+		Menu_of_restaurants.add("Drinks");
+		Menu_of_restaurants.add("Dessert");
+		
 		Scanner s = new Scanner(System.in);
 		CreateMenu();
 		do {
