@@ -1,9 +1,9 @@
 public class Staff {
 
-	private String name;
-	private String gender;
-	private int employeeID;
-	private String jobTitle;
+	private static String[] name = {"Harry", "Ron", "Hermione"};
+	private static String[] gender = {"M", "M", "F"};
+	private static int[] employeeID = {0,1,2};
+	private static String[] jobTitle = {"waiter", "waiter", "waitress"};
 	
 	public Staff(String name , String gender , int employeeID , String jobTitle){
 		this.name = name;
