@@ -3,7 +3,7 @@ public class Menu {
 	private int promo_items;
 	private int alacarte_items;
 
-	public void addMenuItem() {
+	public void addMenuItem( String item) {
 		// TODO - implement Menu.addMenuItem
 		throw new UnsupportedOperationException();
 	}
