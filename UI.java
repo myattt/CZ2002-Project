@@ -8,48 +8,52 @@ public class UI {
 	ArrayList<Integer> Revenue = new ArrayList<Integer>();
 	static ArrayList<String> Menu_of_restaurants = new ArrayList<String>();
 	
-	private static void MakeOrder() {
+	private static void makeOrder(){
 		Staff s = new Staff();
 		s.createOrder();
 
 	}
 
-	private static void Booking() {
+	private static void booking() {
 		// TODO - implement UI.Booking
 		throw new UnsupportedOperationException();
 	}
 
-	private void CreateMenu() {
+	private void createMenu(ArrayList<String> menu) {
 		// TODO - implement UI.CreateMenu
-		ArrayList<String> Menu = new Menu<String>();
+		throw new UnsupportedOperationException();
+	}
+	private void modifyMenu(ArrayList<String> menu){
+		
 		throw new UnsupportedOperationException();
 	}
 
-	private void PrintReport() {
+	private void printReport() {
 		// TODO - implement UI.PrintReport
 		throw new UnsupportedOperationException();
 	}
-
 	public static void main(String[] args) {
 		Menu_of_restaurants.add("Main Course");
 		Menu_of_restaurants.add("Drinks");
 		Menu_of_restaurants.add("Dessert");
 		
+		ArrayList<String> menu = new Menu<String>();
+		createMenu(menu);
+		
 		Scanner s = new Scanner(System.in);
-		CreateMenu();
 		do {
 			
 			System.out.println("Please select option \n 1. Make Order \n 2. Booking \n 3. ModifyMenu \n 4. PrintReport");
 			int option = s.nextInt();
 			if(option == 1) {
-				MakeOrder();
+				makeOrder();
 			}
 			else if (option == 2)
-				Booking();
+				booking();
 			else if (option == 3)
-				
+				menu.modifyMenu();
 			else if (option == 4)
-				PrintReport();
+				printReport();
 			else
 				option=0;
 		}while(option==0);
