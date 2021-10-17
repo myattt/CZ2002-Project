@@ -5,7 +5,7 @@ public class UI {
 	// ArrayList<String> customerID = new ArrayList<String>(); Need?
 	
 	// For each customer and an order, please add the total price into this Revenue ArrayList
-	ArrayList<int> Revenue = new ArrayList<int>();
+	ArrayList<Integer> Revenue = new ArrayList<Integer>();
 	private static void MakeOrder() {
 		Staff s = new Staff();
 		s.createOrder();
