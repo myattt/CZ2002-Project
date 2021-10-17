@@ -30,8 +30,10 @@ public class UI {
 
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
+		CreateMenu();
 		do {
-			System.out.println("Please select option \n 1. Make Order \n 2. Booking \n 3. CreateMenu \n 4. PrintReport");
+			
+			System.out.println("Please select option \n 1. Make Order \n 2. Booking \n 3. ModifyMenu \n 4. PrintReport");
 			int option = s.nextInt();
 			if(option == 1) {
 				MakeOrder();
@@ -39,7 +41,7 @@ public class UI {
 			else if (option == 2)
 				Booking();
 			else if (option == 3)
-				CreateMenu();
+				
 			else if (option == 4)
 				PrintReport();
 			else
