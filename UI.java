@@ -5,7 +5,7 @@ public class UI{
 	static ArrayList<Integer> Revenue = new ArrayList<Integer>();
 	static Hashtable<String, Integer> Menu_of_restaurants = new Hashtable<String, Integer>();
 	static ArrayList<String> customer_menu = new ArrayList<String>();
-	static int revenue = 0;
+	
 
 	private static void MakeOrder() {
 		Staff ss = new Staff();
