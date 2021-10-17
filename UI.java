@@ -59,7 +59,7 @@ public class UI{
 	}
 
 	private static void PrintReport() {
-		System.out.println(Revenue);
+		System.out.println("In " + Revenue.size() + " orders, we have the revenue is " + Revenue);
 	}
 
 	public static void main(String[] args) {
