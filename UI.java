@@ -2,7 +2,10 @@ import java.util.Scanner;
 import java.util.ArrayList;
 public class UI {
 
-	ArrayList<String> customerID = new ArrayList<String>();
+	// ArrayList<String> customerID = new ArrayList<String>(); Need?
+	
+	// For each customer and an order, please add the total price into this Revenue ArrayList
+	ArrayList<int> Revenue = new ArrayList<int>();
 	private static void MakeOrder() {
 		Staff s = new Staff();
 		s.createOrder();
