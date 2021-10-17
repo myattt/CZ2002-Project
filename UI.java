@@ -24,6 +24,8 @@ public class UI {
 		throw new UnsupportedOperationException();
 	}
 	private void modifyMenu(ArrayList<String> menu){
+		System.out.println("Please select option \n 1. Add Ala Carte item \n 2. Remove Ala Carte item \n 3. Add Promotional Package \n 4. Remove Promotional package"
+		int choice=s.nextInt();
 		
 		throw new UnsupportedOperationException();
 	}
