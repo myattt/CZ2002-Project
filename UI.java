@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.*;
 public class UI{
-	ArrayList<Table>tables= new ArrayList<Table>();
+	static ArrayList<Table>tables= new ArrayList<Table>();
 	static ArrayList<Integer> Revenue = new ArrayList<Integer>();
 	static Hashtable<String, Integer> Menu_of_restaurants = new Hashtable<String, Integer>();
 	static ArrayList<String> customer_menu = new ArrayList<String>();
