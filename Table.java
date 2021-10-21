@@ -4,7 +4,15 @@ public class Table {
 	private int tableId;
 	private int customerId;
 	private int capacityLimit;
-
+	public static final int tableNo=10;
+	
+	public Table(int assigned, int tableId, int customerID, int capacityLimit)
+	{
+		this.assigned=assigned;
+		this.tableId=tableId;
+		this.customerId=customerID;
+		this.capacityLimit=capacityLimit;
+	}
 	/**
 	 * 
 	 * @param tableID
