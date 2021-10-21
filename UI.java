@@ -47,10 +47,7 @@ public class UI{
 		Revenue.add(revenue);
 	}
 
-	private static void Booking() {
-		// TODO - implement UI.Booking
-		throw new UnsupportedOperationException();
-	}
+
 
 	private static void CreateMenu() {
 		Menu m = new Menu();
@@ -77,12 +74,11 @@ public class UI{
 			if(option == 1) {
 				MakeOrder();
 			}
-			else if (option == 2)
-				Booking();
-			else if (option == 3) {
+
+			else if (option == 2) {
 				CreateMenu();
 			}
-			else if (option == 4){
+			else if (option == 3){
 				PrintReport();
 			}
 			else option=0;
