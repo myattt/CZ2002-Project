@@ -49,7 +49,7 @@ public class UI{
 
 
 
-	private static void CreateMenu() {
+	private static void ModifyMenu() {
 		Menu m = new Menu();
 		m.addMenuItem("Ala_Carte", "Delicious", 900);
 		m.displayMenu();
@@ -76,7 +76,7 @@ public class UI{
 			}
 
 			else if (option == 2) {
-				CreateMenu();
+				ModifyMenu();
 			}
 			else if (option == 3){
 				PrintReport();
