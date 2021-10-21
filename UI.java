@@ -1,11 +1,11 @@
 import java.util.Scanner;
 import java.util.*;
 public class UI{
-	static ArrayList<Table>tables= new ArrayList<Table>();
+
 	static ArrayList<Integer> Revenue = new ArrayList<Integer>();
-	static Hashtable<String, Integer> Menu_of_restaurants = new Hashtable<String, Integer>();
+	static HashMap <String, Integer> Menu_of_restaurants = new HashMap <String,  Integer>();
 	static ArrayList<String> customer_menu = new ArrayList<String>();
-	
+
 
 	private static void MakeOrder() {
 		Staff ss = new Staff();
@@ -47,23 +47,50 @@ public class UI{
 		Revenue.add(revenue);
 	}
 
+	private static void Booking() {
+		// TODO - implement UI.Booking
+		throw new UnsupportedOperationException();
+	}
 
-
-	private static void ModifyMenu() {
+	private static void CreateMenu() {
 		Menu m = new Menu();
-		m.addMenuItem("Ala_Carte", "Delicious", 900);
-		m.displayMenu();
+		Scanner s = new Scanner(System.in);
+		int option;
+		do {
+			System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu");
+			option = s.nextInt();
+			s.nextLine();
+			if(option == 1) {
+				System.out.println("Enter Item you want to add");
+				String item = s.nextLine();
+				System.out.println("Enter the description for the item");
+				String description = s.nextLine();
+				System.out.println("Enter the price");
+				int price = s.nextInt();
+				s.nextLine();
+				m.addMenuItem(item,description,price);
+			}
+			else if (option == 2) {
+				m.displayMenu();
+				System.out.println("Enter the item you want to delete");
+				String item_to_delete = s.nextLine();
+				m.removeMenuItem(item_to_delete);
+			}
+			else if (option == 3) {
+				Menu_of_restaurants.clear();
+			}
+			else if (option == 4){
+				m.displayMenu();
+			}
+			else option=0;
+		}while(option != 0);
 	}
 
 	private static void PrintReport() {
-		System.out.println("In " + Revenue.size() + " orders, we have the revenue is " + Revenue);
+		System.out.println(Revenue);
 	}
 
 	public static void main(String[] args) {
-		Menu_of_restaurants.put("Main Course", 100);
-		Menu_of_restaurants.put("Drinks", 50);
-		Menu_of_restaurants.put("Dessert" , 35);
-
 
 		Scanner s = new Scanner(System.in);
 		int option;
@@ -74,11 +101,12 @@ public class UI{
 			if(option == 1) {
 				MakeOrder();
 			}
-
-			else if (option == 2) {
-				ModifyMenu();
+			else if (option == 2)
+				Booking();
+			else if (option == 3) {
+				CreateMenu();
 			}
-			else if (option == 3){
+			else if (option == 4){
 				PrintReport();
 			}
 			else option=0;
