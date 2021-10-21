@@ -5,7 +5,15 @@ public class Order {
 	private int timeStamp;
 	private int taxDetails;
 	private int employeeID;
-
+	
+	public Order(int custID,int tableNumber, int timeStamp, int taxDetails, int employeeID)
+	{
+		this.custID=custID;
+		this.tableNumber=tableNumber;
+		this.timeStamp=timeStamp;
+		this.taxDetails=taxDetails;
+		this.employeeID=employeeID;
+	}
 	public void addItem() {
 		// TODO - implement Order.addItem
 		throw new UnsupportedOperationException();
