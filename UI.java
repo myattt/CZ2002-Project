@@ -49,6 +49,7 @@ public class UI{
 
 	private static void Booking() {
 		// TODO - implement UI.Booking
+		static ArrayList<Table>tables= new ArrayList<Table>();
 		throw new UnsupportedOperationException();
 	}
 
