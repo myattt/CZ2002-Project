@@ -1,8 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
 
-import lab3.Plane;
-
 public class Staff {
   public static final int tableNo=10;
   public static int tablesoccupied=0;
