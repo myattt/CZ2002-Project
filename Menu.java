@@ -12,13 +12,19 @@ public class Menu {
     }
 
     public void removeMenuItem(String item) {
-        UI.Menu_of_restaurants.remove(item);
+        if(UI.Menu_of_restaurants.containsKey(item)){
+            UI.Menu_of_restaurants.remove(item);
+            UI.categories.remove(item);
+            UI.descriptions.remove(item);
+        }
+
     }
 
     public boolean checkifexist(String item) {
         if(UI.Menu_of_restaurants.containsKey(item)){
             return true;
         }
+
         return false;
     }
 
