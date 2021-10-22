@@ -3,8 +3,16 @@ import java.util.*;
 public class UI{
 
 	static ArrayList<Integer> Revenue = new ArrayList<Integer>();
-	static HashMap <String, Integer> Menu_of_restaurants = new HashMap <String,  Integer>();
+//	static HashMap <String, Integer> Menu_of_restaurants = new HashMap <String,  Integer>();
 	static ArrayList<String> customer_menu = new ArrayList<String>();
+
+
+	public static HashMap<String, Integer> Menu_of_restaurants = new HashMap <String,  Integer>();
+	//Name of item, price
+	public static HashMap<String, String> descriptions = new HashMap <String,  String>();
+	//Name of item, description
+	public static HashMap<String, String> categories = new HashMap <String,  String>();
+	//Name of item, categories
 
 
 	private static void MakeOrder() {
@@ -23,6 +31,7 @@ public class UI{
 				System.out.println("Select your wanted items (please type correctly)");
 				System.out.println(Menu_of_restaurants);
 				String added_items = s.nextLine();
+
 				m.addMenuItem(added_items);
 			}if(menu_option == 2) {
 				System.out.println("Select your wanted items to delete (please type correctly)");
@@ -41,7 +50,7 @@ public class UI{
 
 		System.out.println("Our Final Menu: " + customer_menu);
 		int revenue = 0;
-		for(int i =0; i<customer_menu.size(); i++){
+		for(int i =0; i < customer_menu.size(); i++){
 			revenue += Menu_of_restaurants.get(customer_menu.get(i));
 		}
 		Revenue.add(revenue);
@@ -49,7 +58,6 @@ public class UI{
 
 	private static void Booking() {
 		// TODO - implement UI.Booking
-		static ArrayList<Table>tables= new ArrayList<Table>();
 		throw new UnsupportedOperationException();
 	}
 
@@ -64,12 +72,19 @@ public class UI{
 			if(option == 1) {
 				System.out.println("Enter Item you want to add");
 				String item = s.nextLine();
-				System.out.println("Enter the description for the item");
-				String description = s.nextLine();
-				System.out.println("Enter the price");
-				int price = s.nextInt();
-				s.nextLine();
-				m.addMenuItem(item,description,price);
+				if(!m.checkifexist(item)) {
+					System.out.println("Enter the description for the item");
+					String description = s.nextLine();
+					System.out.println("Enter the price");
+					int price = s.nextInt();
+					s.nextLine();
+					System.out.println("Enter the category: 1. Main Course, 2. Drinks, 3. Dessert");
+					String cate = s.nextLine();
+					m.addMenuItem(item, description, price, cate);
+
+				}else{
+					System.out.println("Already exists, try another name");
+				}
 			}
 			else if (option == 2) {
 				m.displayMenu();
