@@ -5,6 +5,7 @@ public class Table {
 	public int tableId;
 	private boolean assigned;
 	private int customerId;
+	private int table_size;
 	//tableNo would be the max number of table in the list - will be set in the mainUI
 	//public static final int tableNo=10;
 	
@@ -27,9 +28,10 @@ public class Table {
 		return this.assigned;
 	}
 	
-	public void assign(int tableId , int customerId) {
+	public void assign(int tableId , int customerId , int table_size) {
 		this.tableId=tableId;
 		this.customerId = customerId;
+		this.table_size = table_size;
 		this.assigned = true;
 	}
 	
