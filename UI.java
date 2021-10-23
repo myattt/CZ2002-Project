@@ -1,10 +1,10 @@
 import java.util.Scanner;
 import java.util.*;
 public class UI{
+	// Not needed for now
+	//static ArrayList<Integer> Revenue = new ArrayList<Integer>();
 
-	static ArrayList<Integer> Revenue = new ArrayList<Integer>();
-//	static HashMap <String, Integer> Menu_of_restaurants = new HashMap <String,  Integer>();
-	static ArrayList<String> customer_menu = new ArrayList<String>();
+	//static ArrayList<String> customer_menu = new ArrayList<String>();
 
 
 	public static HashMap<String, Integer> Menu_of_restaurants = new HashMap <String,  Integer>();
@@ -16,49 +16,11 @@ public class UI{
 
 
 	private static void MakeOrder() {
-		Staff ss = new Staff();
-		ss.createOrder();
-
-		customer_menu.clear();
-		Menu_ForCustomer m = new Menu_ForCustomer();
-		Scanner s = new Scanner(System.in);
-		System.out.println("Please select option \n 1. Add Item \n 2. Remove Item \n 3. DisplayItems \n 4. Finish");
-		int menu_option = s.nextInt();
-		s.nextLine();
-
-		while(menu_option != 4){
-			if(menu_option == 1) {
-				System.out.println("Select your wanted items (please type correctly)");
-				System.out.println(Menu_of_restaurants);
-				String added_items = s.nextLine();
-
-				m.addMenuItem(added_items);
-			}if(menu_option == 2) {
-				System.out.println("Select your wanted items to delete (please type correctly)");
-				System.out.println(Menu_of_restaurants);
-				String del_items = s.nextLine();
-				m.removeMenuItem(del_items);
-			}if(menu_option == 3) {
-				System.out.println(customer_menu);
-			}
-
-
-			System.out.println("Please select option \n 1. Add Item \n 2. Remove Item \n 3. DisplayItems \n 4. Finish");
-			menu_option = s.nextInt();
-			s.nextLine();
-		}
-
-		System.out.println("Our Final Menu: " + customer_menu);
-		int revenue = 0;
-		for(int i =0; i < customer_menu.size(); i++){
-			revenue += Menu_of_restaurants.get(customer_menu.get(i));
-		}
-		Revenue.add(revenue);
+		
 	}
 
 	private static void Booking() {
-		// TODO - implement UI.Booking
-		throw new UnsupportedOperationException();
+		
 	}
 
 	private static void CreateMenu() {
