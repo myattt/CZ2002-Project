@@ -14,11 +14,15 @@ public class TableList {
 		System.out.println("There are " + this.numEmptyTables + " empty tables");
 	}
 	
+	public int getNumEmptyTables() {
+		return this.numEmptyTables;
+	}
+	
 	public void showEmptyTables() {
 		System.out.println("The following tables are empty:");
 		for (int i=0; i<10; i++) {
 			if (this.table[i].isOccupied() == false) {
-				System.out.println("TableID " + (i+1) + "TableSize" + this.table[i].getTableSize());
+				System.out.println("TableID " + (i+1) + " TableSize" + this.table[i].getTableSize());
 			}
 		}
 	}
@@ -38,7 +42,7 @@ public class TableList {
 		} else {
 			this.table[tableId-1].assign(cust_id);
 			this.numEmptyTables--;
-			System.out.println("Table Assigned!");
+			System.out.println("Table Assigned! Table ID:" + tableId );
 		}
 	}
 	
@@ -46,5 +50,17 @@ public class TableList {
 		this.table[seatId-1].unAssign();
 		this.numEmptyTables++;
 		System.out.println("Table Unassigned!");
+	}
+	
+	public int findSuitableTable(int table_size) {
+		if(table_size==-1)
+			return -1;
+		for(int i=9 ; i>=0; i--) {
+			if(table_size <= this.table[i].getTableSize() && this.table[i].isOccupied()==false)
+				return i;
+		}
+		
+		System.out.println("Unable to a table of suitable size");
+		return -1;
 	}
 }
