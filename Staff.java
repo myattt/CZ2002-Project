@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -14,13 +15,14 @@ public class Staff {
 			CustomerList custlist = new CustomerList();
 			TableList tablelist= new TableList();
 			Scanner sc = new Scanner(System.in);
-			int input1 , input2;
+			int input1;
 			boolean loop=false;
 			
 			do{
 			//print menu
 				System.out.println("(1) Check Customer Information");
-				System.out.println("(2) Create Order");
+				System.out.println("(2)Booking");
+				System.out.println("(3) Create Order");
 				choice = sc.nextInt();
 				switch(choice) {
 				case 1:
@@ -33,6 +35,8 @@ public class Staff {
 						  System.out.println(customer.getCustomerID());
 					  }
 					  else {
+						  //Booking();
+						  System.out.println("Customer not in system");
 						  System.out.println("Enter Customer Name:");
 						  String custName = sc.nextLine();
 						  sc.nextLine();
@@ -40,20 +44,39 @@ public class Staff {
 						  char membership = sc.next().charAt(0);
 						  System.out.println("Customer pax?");
 						  int paxsize=sc.nextInt();
+						  //will generate the suitable table size for customer -- if pax of 3 , suitable for table of 4,6,8,10
+						  int tableSize = table_size(paxsize);
 						  
 						  
+						  //finding if there are tables with sizes more than or equals to suitable size
+						  //if yes, return tableId , else try again
+						  
+						  int tableId = tablelist.findSuitableTable(tableSize);
+						  
+						  if(tablelist.getNumEmptyTables()<=0 )
+							  System.out.println("All tables are filled.. Please try again later");
+						  
+						  else if(tableId == -1)
+							  System.out.println("Please try again");
 						  
 						  
-						  			if(membership =='y' || membership=='Y') {
-						  					custlist.createCust(custName , -1 , true,paxsize);
-						  			}
-						  			else {
-						  					custlist.createCust(custName , -1 , false,paxsize);
-						  			}
-						  			Customer customer = new Customer(custlist.getCListSize()); 
-						  			int customerId = customer.getCustomerID();
-						 
-						
+						  else {
+						  		if(membership =='y' || membership=='Y') {
+						  				custlist.createCust(custName , -1 , true, paxsize);
+						  		}
+						  		else {
+						  				custlist.createCust(custName , -1 , false, paxsize);
+						  		}
+						  		Customer customer = new Customer(custlist.getCListSize()); 
+						  		int customerId = customer.getCustomerID();
+						  		tablelist.assignTable(tableId+1 , customerId);
+						  		tablelist.showAssignedTables();
+						  		System.out.println("\n");
+						  		tablelist.showEmptyTables();
+						  		System.out.println("\n");
+						  }
+						  
+						  loop=true;
 					  }
 					  
 					break;
@@ -64,7 +87,10 @@ public class Staff {
 					System.out.println("Try again");
 					loop=true;
 				}
+
+				
 			}while(loop);
+			sc.close();
 			
 	  }
 	  
@@ -102,10 +128,10 @@ public class Staff {
 		   tableSize = 10; 
 		   break; 
 		  default: 
-		   paxsize=0; 
-		   System.out.println("Size unknown. Please try again!"); 
+		   System.out.println("Size unknown."); 
 		   tableSize=-1; 
 		   break; 
 		  } 
 		  return tableSize; 
 		 }
+}
