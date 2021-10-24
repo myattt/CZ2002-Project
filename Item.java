@@ -1,5 +1,3 @@
-
-public interface Item {
-	public String getFood();
-	
+interface Item {
+	 public void displayItem();
 }
