@@ -1,6 +1,7 @@
 import java.util.HashMap;
 
-public class Ala_Carte {
+
+public class Ala_Carte implements Item{
 
 	public static HashMap<String, Integer> Menu_of_restaurants = new HashMap <String,  Integer>() {{put("Coca Cola",100);put("Ice cream",66);put("Pizza",123);put("Spaghetti",444); }};
 	//Name of item, price
@@ -8,8 +9,6 @@ public class Ala_Carte {
 	//Name of item, description
 	public static HashMap<String, String> categories = new HashMap <String,  String>(){{put("Coca Cola","Drinks");put("Ice cream","Dessert");put("Pizza","Main Course");put("Spaghetti","Main Course"); }};
 	//Name of item, categories
-
-
 
 	public void addItem( String item , String description, int price, String category) {
 		Ala_Carte.Menu_of_restaurants.put(item, price);
@@ -26,7 +25,7 @@ public class Ala_Carte {
 
 	}
 
-	public static boolean checkifexist(String item) {
+	public boolean checkifexist(String item) {
 		if(Ala_Carte.Menu_of_restaurants.containsKey(item)){
 			return true;
 		}
@@ -34,7 +33,7 @@ public class Ala_Carte {
 		return false;
 	}
 
-	public static void displayItem(){
+	public void displayItem(){
 
 		String[] catecate= {"Main Course", "Drinks", "Dessert"};
 		for(String cate:catecate){
