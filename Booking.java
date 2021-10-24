@@ -1,12 +1,15 @@
+import java.util.Date;
+
+
 public class Booking {
 
 	private int date;
 	private int time;
 	private int pax;
-	private string name;
+	private String name;
 	private int contact;
 
-	public void createReservation(int date, int time, int pax, string name, int contact) {
+	public void createReservation(int date, int time, int pax, String name, int contact) {
 		// TODO - implement Booking.createReservation
 		this.date=date;
 		this.time=time;
