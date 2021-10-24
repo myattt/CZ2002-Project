@@ -1,5 +1,6 @@
 public class Customer { 
-	   
+	 
+	   private int pax;
 	   private int cust_id; 
 	   private String cust_name; 
 	   private int tableId; 
@@ -41,4 +42,12 @@ public class Customer {
 	   public void member(boolean membership) {
 	    this.membership = membership;
 	  }
-}
+	   public void setPaxSize(int paxsize)
+	   {
+		   this.pax=paxsize;
+	   }
+	   public int getPaxSize()
+	   {
+		   return this.pax;
+	   }
+	}
