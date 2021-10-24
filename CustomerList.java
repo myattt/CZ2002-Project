@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
-
 public class CustomerList {
-
 
 	ArrayList<Customer> list = new ArrayList<Customer>();
 	int cust_id;
@@ -19,11 +17,13 @@ public class CustomerList {
   	}
   	
   
-  	public void createCust(String name , int cust_id , boolean membership)
+  	public void createCust(String name , int cust_id , boolean membership,int paxsize)
   	{
+  		cust_id=list.size();
   		Customer newCust = new Customer(cust_id);
   		newCust.setCustomerName(name);
   		newCust.member(membership);
+  		newCust.setPaxSize(paxsize);
   		list.add(newCust);
   		
   	}
@@ -37,4 +37,9 @@ public class CustomerList {
   		}
   		return null;
   	}
+  	public int getCListSize()
+  	{
+  		return list.size();
+  	}
+  	
 }
