@@ -20,7 +20,7 @@ public class UI{
 	}
 
 
-	private static void CreateMenu() {
+	private static void ModifyMenu() {
 		Menu m = new Menu();
 		Scanner s = new Scanner(System.in);
 		int option;
@@ -66,7 +66,13 @@ public class UI{
 	}
 
 	public static void main(String[] args) {
-
+		Menu m = new Menu();
+		m.addMenuItem("Coca Cola", "Cool", 123, "Drinks");
+		m.addMenuItem("Pizza", "Hot", 456, "Main Course");
+		m.addMenuItem("Spaghetti", "Delicious", 789, "Main Course");
+		m.addMenuItem("Ice cream", "Cold", 666, "Dessert");
+		
+		
 		Scanner s = new Scanner(System.in);
 		int option;
 		do {
@@ -77,7 +83,7 @@ public class UI{
 				MakeOrder();
 			}
 			else if (option == 2) {
-				CreateMenu();
+				ModifyMenu();
 			}
 			else if (option == 3){
 				PrintReport();
