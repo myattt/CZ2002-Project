@@ -11,7 +11,6 @@ public class Customer {
 	   public Customer(int cust_id) { 
 	    this.cust_id = cust_id;  
 	    // TODO - implement Customer.operation 
-	    throw new UnsupportedOperationException(); 
 	   } 
 	    
 	    
