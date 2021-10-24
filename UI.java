@@ -1,27 +1,19 @@
 import java.util.Scanner;
 import java.util.*;
 public class UI{
-	// Not needed for now
-	//static ArrayList<Integer> Revenue = new ArrayList<Integer>();
 
-	//static ArrayList<String> customer_menu = new ArrayList<String>();
-
-
-	public static HashMap<String, Integer> Menu_of_restaurants = new HashMap <String,  Integer>();
-	//Name of item, price
-	public static HashMap<String, String> descriptions = new HashMap <String,  String>();
-	//Name of item, description
-	public static HashMap<String, String> categories = new HashMap <String,  String>();
-	//Name of item, categories
 
 
 	private static void MakeOrder() {
-		
+
+
+	private static void Booking() {
+		// TODO - implement UI.Booking
+		throw new UnsupportedOperationException();
 	}
 
-
-	private static void ModifyMenu() {
-		Menu m = new Menu();
+	private static void CreateMenu() {
+		Ala_Carte m = new Ala_Carte();
 		Scanner s = new Scanner(System.in);
 		int option;
 		do {
@@ -39,40 +31,33 @@ public class UI{
 					s.nextLine();
 					System.out.println("Enter the category: 1. Main Course, 2. Drinks, 3. Dessert");
 					String cate = s.nextLine();
-					m.addMenuItem(item, description, price, cate);
+					m.addItem(item, description, price, cate);
 
 				}else{
 					System.out.println("Already exists, try another name");
 				}
 			}
 			else if (option == 2) {
-				m.displayMenu();
+				m.displayItem();
 				System.out.println("Enter the item you want to delete");
 				String item_to_delete = s.nextLine();
-				m.removeMenuItem(item_to_delete);
+				m.removeItem(item_to_delete);
 			}
 			else if (option == 3) {
-				Menu_of_restaurants.clear();
+				Ala_Carte.Menu_of_restaurants.clear();
 			}
 			else if (option == 4){
-				m.displayMenu();
+				m.displayItem();
 			}
 			else option=0;
 		}while(option != 0);
 	}
 
 	private static void PrintReport() {
-		System.out.println(Revenue);
+
 	}
 
 	public static void main(String[] args) {
-		Menu m = new Menu();
-		m.addMenuItem("Coca Cola", "Cool", 123, "Drinks");
-		m.addMenuItem("Pizza", "Hot", 456, "Main Course");
-		m.addMenuItem("Spaghetti", "Delicious", 789, "Main Course");
-		m.addMenuItem("Ice cream", "Cold", 666, "Dessert");
-		
-		
 		Scanner s = new Scanner(System.in);
 		int option;
 		do {
@@ -82,10 +67,12 @@ public class UI{
 			if(option == 1) {
 				MakeOrder();
 			}
-			else if (option == 2) {
-				ModifyMenu();
+			else if (option == 2)
+				Booking();
+			else if (option == 3) {
+				CreateMenu();
 			}
-			else if (option == 3){
+			else if (option == 4){
 				PrintReport();
 			}
 			else option=0;
