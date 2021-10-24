@@ -11,14 +11,41 @@ public class Ala_Carte {
 
 
 
-	public void operation() {
-		// TODO - implement Ala_Carte.operation
-		throw new UnsupportedOperationException();
+	public void addItem( String item , String description, int price, String category) {
+		Ala_Carte.Menu_of_restaurants.put(item, price);
+		Ala_Carte.descriptions.put(item, description);
+		Ala_Carte.categories.put(item, category);
 	}
 
-	public void operation2() {
-		// TODO - implement Ala_Carte.operation2
-		throw new UnsupportedOperationException();
+	public void removeItem(String item) {
+		if(Ala_Carte.Menu_of_restaurants.containsKey(item)){
+			Ala_Carte.Menu_of_restaurants.remove(item);
+			Ala_Carte.categories.remove(item);
+			Ala_Carte.descriptions.remove(item);
+		}
+
+	}
+
+	public static boolean checkifexist(String item) {
+		if(Ala_Carte.Menu_of_restaurants.containsKey(item)){
+			return true;
+		}
+
+		return false;
+	}
+
+	public static void displayItem(){
+
+		String[] catecate= {"Main Course", "Drinks", "Dessert"};
+		for(String cate:catecate){
+			System.out.println("******* " + cate +" ******* ");
+			for(String key: Ala_Carte.Menu_of_restaurants.keySet()) {
+				if(Ala_Carte.categories.get(key).equals(cate)) {
+					System.out.println(key +": " + Ala_Carte.descriptions.get(key) + "($"+Ala_Carte.Menu_of_restaurants.get(key)+")");
+				}
+			}
+		}
+
 	}
 
 }
