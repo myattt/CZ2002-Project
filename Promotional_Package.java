@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Promotional_Package {
+public class Promotional_Package implements Item{
 
 	static HashMap<Integer,ArrayList<String>> bundle=new HashMap<Integer,ArrayList<String>>(){{
 		put(1,new ArrayList<String>(Arrays.asList("Coca Cola", "Pizza", "Ice cream")));
@@ -8,12 +8,12 @@ public class Promotional_Package {
 	}};
 	static HashMap<Integer,Integer> bundle_prices=new HashMap<Integer,Integer>(){{put(1,300);put(2,400);}};
 
-	public static void displayItem() {
+	 public void displayItem() {
 		System.out.println(bundle);
 		System.out.println(bundle_prices);
 	}
 
-	public static void addItem() {
+	 static void addItem() {
 		int s = bundle.size();
 		int id_bundle = 99999;
 		for(int i =1; i<=s+1;i++){
@@ -40,9 +40,10 @@ public class Promotional_Package {
 		bundle_prices.put(id_bundle,bundle_price);
 	}
 
-	public static void removeitem() {
+	 public static void removeitem() {
 		System.out.println("Select id bundle to delete");
-		displayItem();
+		System.out.println(bundle);
+		System.out.println(bundle_prices);
 		Scanner sc = new Scanner(System.in);
 		int id = sc.nextInt();
 		if(bundle.containsKey(id)){
@@ -56,12 +57,7 @@ public class Promotional_Package {
 	}
 
 	public static void main(String[] args) {
-		addItem();
-		displayItem();
-		removeitem();
-		displayItem();
-		addItem();
-		displayItem();
+
 
 	}
 
