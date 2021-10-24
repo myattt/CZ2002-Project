@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Staff {
+  private Table[] tables = new Table[10];
   public static final int tableNo=10;
   public static int tablesoccupied=0;
   public static int custID=1;
