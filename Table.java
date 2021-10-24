@@ -1,8 +1,8 @@
 package project;
+
 import java.util.ArrayList;
 
 public class Table {
-
 	public int tableId;
 	private boolean assigned=false;
 	private int customerId;
@@ -14,7 +14,11 @@ public class Table {
 	{
 		this.tableId=tableId;
 		this.table_size=table_size;
-		this.customerId=customerId;
+		this.customerId=-1;
+	}
+	public int getTableSize()
+	{
+		return this.table_size;
 	}
 	public int gettableID() {
 		return this.tableId;
