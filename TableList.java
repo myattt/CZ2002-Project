@@ -36,18 +36,20 @@ public class TableList {
 			}
 	}
 	
-	public void assignTable(int tableId, int cust_id) {
+	public boolean assignTable(int tableId, int cust_id) {
 		if (this.table[tableId-1].isOccupied()) {
 			System.out.println("Table already assigned to a customer.");
+			return false;
 		} else {
 			this.table[tableId-1].assign(cust_id);
 			this.numEmptyTables--;
 			System.out.println("Table Assigned! Table ID:" + tableId );
+			return true;
 		}
 	}
 	
-	public void unAssignSeat(int seatId) {
-		this.table[seatId-1].unAssign();
+	public void unAssignSeat(int tableId) {
+		this.table[tableId-1].unAssign();
 		this.numEmptyTables++;
 		System.out.println("Table Unassigned!");
 	}
