@@ -13,12 +13,15 @@ public class Order {
 	private static ArrayList<String> order_ala = new ArrayList<>();
 	private static ArrayList<Integer> order_bundle = new ArrayList<>();
 
+	public static void startOrder(){
+		order_bundle.clear();
+		order_ala.clear();
+	}
 	public static void viewMenu(){
 		Ala_Carte a = new Ala_Carte();
 		Promotional_Package p = new Promotional_Package();
 		a.displayItem();
 		p.displayItem();
-
 	}
 
 	public static void addalaItem() {
@@ -37,7 +40,9 @@ public class Order {
 		int b;
 		Scanner sc = new Scanner(System.in);
 		do{
-			System.out.println("Type the item you want to add to your order (q to quit)");
+			System.out.println(Promotional_Package.bundle);
+			System.out.println("Type the bundle id you want to add to your order (0 to quit)");
+
 			b = sc.nextInt();
 
 			if(b == 0)break;
@@ -85,6 +90,7 @@ public class Order {
 	public static void main(String[] args) {
 		viewMenu();
 		addalaItem();
+		addbundleItem();
 		viewOrder();
 
 	}
