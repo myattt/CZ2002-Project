@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class CustomerList {
 
@@ -17,14 +18,12 @@ public class CustomerList {
   	}
   	
   
-  	public void createCust(String name , int cust_id , boolean membership,int paxsize)
+  	public Customer createCust(String name , int cust_id , boolean membership,int paxsize, double contact, Calendar rDate)
   	{
   		cust_id=list.size();
-  		Customer newCust = new Customer(cust_id);
-  		newCust.setCustomerName(name);
-  		newCust.member(membership);
-  		newCust.setPaxSize(paxsize);
+  		Customer newCust = new Customer(paxsize, cust_id, name, membership, contact, rDate);
   		list.add(newCust);
+  		return newCust;
   		
   	}
   	public Customer getCust(int cust_id) 
@@ -43,3 +42,4 @@ public class CustomerList {
   	}
   	
 }
+
