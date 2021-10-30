@@ -8,7 +8,32 @@ public class UI{
  
  
  private static void MakeOrder() { 
-  System.out.print(false); 
+ 		Scanner s = new Scanner(System.in);
+		Order o = new Order();
+		o.startOrder();
+		int op;
+		do{
+			System.out.println("1.View menu 2.Add Ala_Carte Item 3.Add Bundle 4.Remove Ala_Carte Item 5.Remove Bundle 6.View order 0.Quit");
+			op = s.nextInt();
+			if(op == 1){
+				o.viewMenu();
+			}else if(op == 2){
+				o.addalaItem();
+			}else if(op == 3){
+				o.addbundleItem();
+			}else if(op == 4){
+				o.removealaItem();
+			}else if(op == 5){
+				o.removebundleItem();
+			}
+			else if(op == 6){
+				o.viewOrder();
+			}
+
+		}
+		while(op  != 0);
+		
+		System.out.println("FINISH, LET's ADD THE ORDER INTO DATABASE TO PRINT REPORT");
  } 
  
  private static void Booking(TableList tablelist , CustomerList custlist){ 
