@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 public class Customer { 
 	 
 	   private int pax;
@@ -5,11 +7,16 @@ public class Customer {
 	   private String cust_name; 
 	   private int tableId; 
 	   private boolean membership;
-	    
-	   public Customer() {}
-	   
-	   public Customer(int cust_id) { 
-	    this.cust_id = cust_id;  
+	   private double contact;
+	   private Calendar rDate;
+	     
+	   public Customer(int pax, int cust_id, String cust_name, boolean membership, double contact, Calendar rDate) { 
+	    this.pax=pax;
+		this.cust_id = cust_id;  
+	    this.cust_name=cust_name;
+	    this.membership=membership;
+	    this.contact=contact;
+	    this.rDate=rDate;
 	    // TODO - implement Customer.operation 
 	   } 
 	    
@@ -48,5 +55,13 @@ public class Customer {
 	   public int getPaxSize()
 	   {
 		   return this.pax;
+	   }
+	   public void setContact(double contact)
+	   {
+		   this.contact=contact;
+	   }
+	   public void setRDate(Calendar rDate)
+	   {
+		   this.rDate=rDate;
 	   }
 	}
