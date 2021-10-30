@@ -37,44 +37,43 @@ public class UI{
  } 
  
  private static void Booking(TableList tablelist , CustomerList custlist){ 
-	 
- if(tablelist.getNumEmptyTables()<=0 ) 
-	     System.out.println("All tables are filled.. Please try again later"); 
- else {     
-	  Scanner sc = new Scanner(System.in); 
-	  System.out.println("Enter Customer Name:"); 
-	  String custName = sc.nextLine(); 
-	  sc.nextLine(); 
-	  System.out.println("Are you a member? Y/N"); 
-	  boolean membership = sc.nextBoolean(); 
-	  System.out.println("Customer pax?"); 
-	  int paxsize=sc.nextInt(); 
-	  System.out.println("Customer contact?"); 
-	  double contact=sc.nextDouble(); 
-	  System.out.println("Enter reservation month");
-	  int month=sc.nextInt();
-	  System.out.println("Enter reservation day");
-	  int day=sc.nextInt();
-	  System.out.println("Enter reservation hour"); 
-	  int hour=sc.nextInt();
-	  Calendar aDate;
-	  aDate = new GregorianCalendar(2021, month, day, hour, 00);
-	  int suitableTable = table_size(paxsize); 
-	  int tableId = tablelist.findSuitableTable(suitableTable); 
-	  if(tableId == -1) 
-	  {
-		  System.out.println("Please try again");
-	  }
-	  else { 
-      Customer customer= custlist.createCust(custName , (custlist.getCListSize())+1 , membership, paxsize, contact , aDate); 
-      int customerId = customer.getCustomerID(); 
-      tablelist.assignTable(tableId+1 , customerId); 
-      tablelist.showAssignedTables(); 
-      System.out.println("\n"); 
-      tablelist.showEmptyTables(); 
-      System.out.println("\n"); 
-    } 
- }
+	 if(tablelist.getNumEmptyTables()<=0) 
+		     System.out.println("All tables are filled.. Please try again later"); 
+	 else{     
+		  Scanner sc = new Scanner(System.in); 
+		  System.out.println("Enter Customer Name:"); 
+		  String custName = sc.nextLine(); 
+		  sc.nextLine(); 
+		  System.out.println("Are you a member? Y/N"); 
+		  boolean membership = sc.nextBoolean(); 
+		  System.out.println("Customer pax?"); 
+		  int paxsize=sc.nextInt(); 
+		  System.out.println("Customer contact?"); 
+		  double contact=sc.nextDouble(); 
+		  System.out.println("Enter reservation month");
+		  int month=sc.nextInt();
+		  System.out.println("Enter reservation day");
+		  int day=sc.nextInt();
+		  System.out.println("Enter reservation hour"); 
+		  int hour=sc.nextInt();
+		  Calendar aDate;
+		  aDate = new GregorianCalendar(2021, month, day, hour, 00);
+		  int suitableTable = table_size(paxsize); 
+		  int tableId = tablelist.findSuitableTable(suitableTable); 
+		  if(tableId == -1) 
+		  {
+			  System.out.println("Please try again");
+		  }
+		  else { 
+	      Customer customer= custlist.createCust(custName , (custlist.getCListSize())+1 , membership, paxsize, contact , aDate); 
+	      int customerId = customer.getCustomerID(); 
+	      tablelist.assignTable(tableId+1 , customerId); 
+	      tablelist.showAssignedTables(); 
+	      System.out.println("\n"); 
+	      tablelist.showEmptyTables(); 
+	      System.out.println("\n"); 
+	    } 
+	 }
  } 
   
    private static int table_size(int paxsize) {  
