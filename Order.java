@@ -1,3 +1,8 @@
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Order {
 
 	private int custID;
@@ -5,28 +10,61 @@ public class Order {
 	private int timeStamp;
 	private int taxDetails;
 	private int employeeID;
-	
-	public Order(int custID,int tableNumber, int timeStamp, int taxDetails, int employeeID)
-	{
-		this.custID=custID;
-		this.tableNumber=tableNumber;
-		this.timeStamp=timeStamp;
-		this.taxDetails=taxDetails;
-		this.employeeID=employeeID;
-	}
-	public void addItem() {
-		// TODO - implement Order.addItem
-		throw new UnsupportedOperationException();
+	private static ArrayList<String> order_ala = new ArrayList<>();
+	private static ArrayList<Integer> order_bundle = new ArrayList<>();
+
+	public static void viewMenu(){
+		Ala_Carte a = new Ala_Carte();
+		Promotional_Package p = new Promotional_Package();
+		a.displayItem();
+		p.displayItem();
+
 	}
 
-	public void removeItem() {
-		// TODO - implement Order.removeItem
-		throw new UnsupportedOperationException();
+	public static void addalaItem() {
+		String item;
+		Scanner sc = new Scanner(System.in);
+		do{
+			System.out.println("Type the item you want to add to your order (q to quit)");
+			item = sc.nextLine();
+			if(item.equals("q"))break;
+			if(Ala_Carte.Menu_of_restaurants.containsKey(item)) order_ala.add(item);
+			else System.out.println("Invalid item");
+		}while(!item.equals("q"));
 	}
 
-	public void viewOrder() {
-		// TODO - implement Order.viewOrder
-		throw new UnsupportedOperationException();
+	public static void addbundleItem() {
+		int b;
+		Scanner sc = new Scanner(System.in);
+		do{
+			System.out.println("Type the item you want to add to your order (q to quit)");
+			b = sc.nextInt();
+
+			if(b == 0)break;
+			if(Promotional_Package.bundle.containsKey(b))order_bundle.add(b);
+			else System.out.println("Invalid bundle id");
+		}while(b != 0);
+	}
+
+	public static void removealaItem() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Which one?");
+		String item = sc.nextLine();
+		if(order_ala.contains(item)) order_ala.remove(item);
+		else System.out.println("Haven't chosen yet");
+	}
+
+	public static void removebundleItem() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Which one?");
+		int b = sc.nextInt();
+		if(order_bundle.contains(b)) order_bundle.remove(b);
+		else System.out.println("Haven't chosen yet");
+	}
+
+	public static void viewOrder() {
+		System.out.println(order_ala);
+		System.out.println(order_bundle);
 	}
 
 	public void discount() {
@@ -42,6 +80,13 @@ public class Order {
 	public void orderInvoice() {
 		// TODO - implement Order.orderInvoice
 		throw new UnsupportedOperationException();
+	}
+
+	public static void main(String[] args) {
+		viewMenu();
+		addalaItem();
+		viewOrder();
+
 	}
 
 }
