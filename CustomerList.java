@@ -6,6 +6,17 @@ public class CustomerList {
 	ArrayList<Customer> list = new ArrayList<Customer>();
 	int cust_id;
 	
+	public void printList() {
+		for(int i=0 ; i<list.size() ; i++) {
+			System.out.println("Customer Name:	" + list.get(i).getCustomerName());
+			System.out.println("Customer Id:	" + list.get(i).getCustomerID() +"\n");
+		}
+	}
+	
+	public void removeCust(int cust_id) {
+		list.remove(cust_id);
+		System.out.println("Removed");
+	}
 	
   	public boolean checkCustInfo(int cust_id)
   	{
@@ -42,4 +53,3 @@ public class CustomerList {
   	}
   	
 }
-
