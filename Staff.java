@@ -21,8 +21,7 @@ public class Staff {
 			do{
 			//print menu
 				System.out.println("(1) Check Customer Information");
-				System.out.println("(2)Booking");
-				System.out.println("(3) Create Order");
+				System.out.println("(2) Create Order");
 				choice = sc.nextInt();
 				switch(choice) {
 				case 1:
