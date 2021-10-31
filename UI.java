@@ -6,33 +6,9 @@ public class UI{
  
  
  
- private static void MakeOrder() { 
- 		Scanner s = new Scanner(System.in);
-		Order o = new Order();
-		o.startOrder();
-		int op;
-		do{
-			System.out.println("1.View menu 2.Add Ala_Carte Item 3.Add Bundle 4.Remove Ala_Carte Item 5.Remove Bundle 6.View order 0.Quit");
-			op = s.nextInt();
-			if(op == 1){
-				o.viewMenu();
-			}else if(op == 2){
-				o.addalaItem();
-			}else if(op == 3){
-				o.addbundleItem();
-			}else if(op == 4){
-				o.removealaItem();
-			}else if(op == 5){
-				o.removebundleItem();
-			}
-			else if(op == 6){
-				o.viewOrder();
-			}
-
-		}
-		while(op  != 0);
-		
-		System.out.println("FINISH, LET's ADD THE ORDER INTO DATABASE TO PRINT REPORT");
+ private static void MakeOrder(Customer cust) { 
+ 		Staff staff=new Staff();
+ 		staff.main(cust);
  } 
  
  private static void Booking(TableList tablelist , CustomerList custlist){ 
@@ -185,18 +161,33 @@ public class UI{
 	 private static void PrintReport() { 
 	  System.out.print(false); 
  } 
+public static boolean checkCustomerDetails(int cust_id , CustomerList cust_list){
+	boolean exist =cust_list.checkCustInfo(cust_id);
+	return exist;
+
+}
+	  
  
  public static void main(String[] args){ 
-	  Scanner s = new Scanner(System.in); 
+	  Scanner sc = new Scanner(System.in); 
 	  TableList tablelist= new TableList(); 
 	  CustomerList custlist = new CustomerList(); 
 	  int option; 
 	  do { 
 	   System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6.Quit"); 
-	   option = s.nextInt(); 
-	   s.nextLine(); 
+	   option = sc.nextInt(); 
+	   sc.nextLine(); 
 	   if(option == 1) { 
-	    MakeOrder(); 
+	    System.out.println("Enter Customer ID");
+		int input1 = sc.nextInt();
+		boolean exist = checkCustomerDetails(input1 , custlist);
+		if (exist) {
+		Customer cust= custlist.getCust(input1);
+		MakeOrder(cust);
+		}
+		else {
+		System.out.println("Please make a booking first");
+		}
 	   } 
 	   else if (option == 2) { 
 	    Booking(tablelist , custlist); 
