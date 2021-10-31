@@ -8,66 +8,47 @@ public class Staff {
 	  private static String[] gender = {"M", "M", "F"};
 	  private static int[] employeeID = {0,1,2};
 	  private static String[] jobTitle = {"waiter", "waiter", "waitress"};
-	  
-	 
-	  public static void main(String[] args){
+
+	  public static void main(Customer cust) {
 			int choice;
-			CustomerList custlist = new CustomerList();
-			TableList tablelist= new TableList();
 			Scanner sc = new Scanner(System.in);
-			int input1;
-			boolean loop=false;
-			
+			Order o = new Order();
+			o.startOrder();
+			int op;
 			do{
-			//print menu
-				System.out.println("(1) Check Customer Information");
-				System.out.println("(2) Create Order");
-				System.out.println("(3) Add Order");
-				System.out.println("(4) Remove Order");
-				choice = sc.nextInt();
-				switch(choice) {
-				case 1:
-					System.out.println("Enter Customer ID");
-					input1 = sc.nextInt();
-					boolean exist = checkCustomerDetails(input1 , custlist);
-	
-				case 2:
-					 if(exist) {
-						 // returns customer object
-						  Customer customer = custlist.getCust(input1);
-						  createOrder();
-						  //System.out.println(customer.getCustomerID());
-					  }
-					 else 
-					 {
-						// make booking 
-					 }
-					
-					break;
-				default:
-					System.out.println("Try again");
-					loop=true;
+				System.out.println("1.View menu 2.Add Ala_Carte Item 3.Add Bundle 4.Remove Ala_Carte Item 5.Remove Bundle 6.View order 0.Quit");
+				op = sc.nextInt();
+				if(op == 1){
+					staffInfo();
+					o.viewMenu();
+				}else if(op == 2){
+					o.addalaItem();
+				}else if(op == 3){
+					o.addbundleItem();
+				}else if(op == 4){
+					o.removealaItem();
+				}else if(op == 5){
+					o.removebundleItem();
 				}
+				else if(op == 6){
+					o.viewOrder();
+				}
+			}
+			while(op  != 0);
 
-				
-			}while(loop);
-			sc.close();
-			
+			System.out.println("FINISH, LET's ADD THE ORDER INTO DATABASE TO PRINT REPORT");
+			ArrayList ala=o.getAlaOrder();
+			ArrayList bundle=o.getBundleOrder();
+			cust.setAlaOrder(ala);
+			cust.setBundleOrder(bundle);
 	  }
-	  
-	  public static boolean checkCustomerDetails(int cust_id , CustomerList cust_list){
-		  boolean exist =cust_list.checkCustInfo(cust_id);
-		  return exist;
-
-	  }
-	  
-	  private static void createOrder() {
-	    //Order o = new Order(1,2,3,4,5);
+	 
+	  private static void staffInfo() {
 	    Random rand = new Random();
-	    // Generate random integers in range 0 to 999
 	    int rdint = rand.nextInt(3);
 	    System.out.println("The staff who serves you is " + name[rdint] +", " + gender[rdint]+", "+jobTitle[rdint]);
 	    System.out.println("Let's create your menu");
 	    System.out.println();
 	  }
 }
+
