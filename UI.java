@@ -7,7 +7,7 @@ public class UI{
  
  
  private static void MakeOrder() { 
-/* 		Scanner s = new Scanner(System.in);
+ 		Scanner s = new Scanner(System.in);
 		Order o = new Order();
 		o.startOrder();
 		int op;
@@ -32,7 +32,7 @@ public class UI{
 		}
 		while(op  != 0);
 		
-		System.out.println("FINISH, LET's ADD THE ORDER INTO DATABASE TO PRINT REPORT");*/
+		System.out.println("FINISH, LET's ADD THE ORDER INTO DATABASE TO PRINT REPORT");
  } 
  
  private static void Booking(TableList tablelist , CustomerList custlist){ 
