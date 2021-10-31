@@ -75,4 +75,14 @@ public class Customer {
 	   {
 		   this.bundle=bundle;
 	   }
+	   
+	   
+	   public ArrayList getAlaOrder()
+	   {
+		   return this.ala;
+	   }
+	   public ArrayList getBundleOrder()
+	   {
+		   return this.bundle;
+	   }
 	}
