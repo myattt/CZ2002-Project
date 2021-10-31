@@ -1,9 +1,8 @@
-
 import java.util.Scanner; 
 import java.util.*; 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-public class MainUI{ 
+public class UI{ 
  
  
  
@@ -38,13 +37,15 @@ public class MainUI{
  
  private static void Booking(TableList tablelist , CustomerList custlist){ 
 	 System.out.println("****Booking Interface****");
+	 boolean cont=false;
 	 if(tablelist.getNumEmptyTables()<=0 ) 
 		     System.out.println("All tables are filled.. Please try again later"); 
-	 else {     
+	 else {
+		 do {
 		  Scanner sc = new Scanner(System.in); 
 		  System.out.println("Enter Customer Name:"); 
 		  String custName = sc.nextLine();
-		  System.out.println("Are you a member? Y/N"); 
+		  System.out.println("Are you a member? true/false"); 
 		  boolean membership = sc.nextBoolean(); 
 		  System.out.println("Customer pax?"); 
 		  int paxsize=sc.nextInt(); 
@@ -74,8 +75,12 @@ public class MainUI{
 	      System.out.println("\n"); 
 	      tablelist.showEmptyTables(); 
 	      System.out.println("\n"); 
-	    } 
-	 }
+		  } 
+		  System.out.println("Continue adding reservations? true/false");
+		  //need exception here
+		  cont=sc.nextBoolean();
+		 }while(cont==true && tablelist.getNumEmptyTables()>0);
+		 }
  } 
   
    private static int table_size(int paxsize) {  
@@ -120,7 +125,7 @@ public class MainUI{
 		System.out.println("Customer Name	:" + customer.getCustomerName());
 		System.out.println("Table ID	:" + customer.getTableId()+"\n");
 		
-		System.out.println("Remove Reservation? True/False");
+		System.out.println("Remove Reservation? true/false");
 		boolean choice = sc.nextBoolean();
 		
 		if(choice) {
@@ -133,6 +138,8 @@ public class MainUI{
 			System.out.println("\nCurrent Customer list");
 			custlist.printList();
 		}
+		else
+			System.out.println("No reservations removed...");
  }
  private static void ModifyMenu() { 
 	  Ala_Carte m = new Ala_Carte(); 
@@ -185,7 +192,7 @@ public class MainUI{
 	  CustomerList custlist = new CustomerList(); 
 	  int option; 
 	  do { 
-	   System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport"); 
+	   System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6.Quit"); 
 	   option = s.nextInt(); 
 	   s.nextLine(); 
 	   if(option == 1) { 
@@ -198,9 +205,17 @@ public class MainUI{
 	   {
 		RemoveReservation(tablelist , custlist);
 	   }
-	   else if (option == 3){ 
+	   else if (option==4)
+	   {
+		ModifyMenu();
+	   }
+	   else if (option == 5){ 
 	    PrintReport(); 
 	   } 
+	   else if(option ==6) {
+		   System.out.println("******End******");
+		   option=0;
+	   }
 	   else option=0; 
 	  }while(option != 0); 
 	 } 
