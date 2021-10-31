@@ -184,6 +184,8 @@ public static boolean checkCustomerDetails(int cust_id , CustomerList cust_list)
 		if (exist) {
 		Customer cust= custlist.getCust(input1);
 		MakeOrder(cust);
+		System.out.println("***Current Customers and Order***");
+		custlist.printList();
 		}
 		else {
 		System.out.println("Please make a booking first");
