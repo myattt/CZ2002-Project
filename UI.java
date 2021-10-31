@@ -173,6 +173,7 @@ public static boolean checkCustomerDetails(int cust_id , CustomerList cust_list)
 	  TableList tablelist= new TableList(); 
 	  CustomerList custlist = new CustomerList(); 
 	  int option; 
+	  System.out.println("Welcome to the Res-Tau-Rant\n");
 	  do { 
 	   System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6.Quit"); 
 	   option = sc.nextInt(); 
