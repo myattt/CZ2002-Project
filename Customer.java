@@ -1,4 +1,5 @@
 import java.util.Calendar;
+import java.util.ArrayList;
 
 public class Customer { 
 	 
@@ -9,6 +10,8 @@ public class Customer {
 	   private boolean membership;
 	   private double contact;
 	   private Calendar rDate;
+	   private ArrayList ala;
+	   private ArrayList bundle;
 	     
 	   public Customer(int pax, int cust_id, String cust_name, boolean membership, double contact, Calendar rDate) { 
 	    this.pax=pax;
@@ -63,5 +66,13 @@ public class Customer {
 	   public void setRDate(Calendar rDate)
 	   {
 		   this.rDate=rDate;
+	   }
+	   public void setAlaOrder(ArrayList ala)
+	   {
+		   this.ala=ala;
+	   }
+	   public void setBundleOrder(ArrayList bundle)
+	   {
+		   this.bundle=bundle;
 	   }
 	}
