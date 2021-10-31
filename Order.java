@@ -71,7 +71,7 @@ public class Order {
 		System.out.println(order_ala);
 		System.out.println(order_bundle);
 	}
-
+	
 	public void discount() {
 		// TODO - implement Order.discount
 		throw new UnsupportedOperationException();
@@ -81,18 +81,17 @@ public class Order {
 		// TODO - implement Order.getTaxesDetails
 		throw new UnsupportedOperationException();
 	}
-
+	
+	public ArrayList getAlaOrder()
+	{
+		return order_ala;
+	}
+	
+	public ArrayList getBundleOrder()
+	{
+		return order_bundle;
+	}
 	public void orderInvoice() {
-		// TODO - implement Order.orderInvoice
-		throw new UnsupportedOperationException();
+		
 	}
-
-	public static void main(String[] args) {
-		viewMenu();
-		addalaItem();
-		addbundleItem();
-		viewOrder();
-
-	}
-
 }
