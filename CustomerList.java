@@ -12,7 +12,9 @@ public class CustomerList {
 			System.out.println("Customer Id:	" + list.get(i).getCustomerID());
 			System.out.println("Table Id:	" + list.get(i).getTableId());
 			System.out.println("Ala Carte Orders: " + list.get(i).getAlaOrder());
-			System.out.println("Bundle Orders: " + list.get(i).getBundleOrder()+"\n");
+			System.out.println("Bundle Orders: " + list.get(i).getBundleOrder());
+			Staff.staffInfo();
+			System.out.println();
 			
 			
 		}
