@@ -9,8 +9,10 @@ public class Promotional_Package implements Item{
 	static HashMap<Integer,Integer> bundle_prices=new HashMap<Integer,Integer>(){{put(1,300);put(2,400);}};
 
 	 public void displayItem() {
-		System.out.println(bundle);
-		System.out.println(bundle_prices);
+		System.out.println("******* Promotional Package *******");
+	 	for(int i=1; i<bundle.size()+1; i++){
+			System.out.println(bundle.get(i) +": ($" + bundle_prices.get(i)+")");
+		}
 	}
 
 	 static void addItem() {
