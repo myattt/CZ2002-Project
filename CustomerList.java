@@ -13,7 +13,8 @@ public class CustomerList {
 			System.out.println("Table Id:	" + list.get(i).getTableId());
 			System.out.println("Ala Carte Orders: " + list.get(i).getAlaOrder());
 			System.out.println("Bundle Orders: " + list.get(i).getBundleOrder());
-			Staff.staffInfo();
+			int staff_id = Staff.staffInfo();
+			System.out.println("The staff who serves you is " + Staff.name[staff_id] +", " + Staff.gender[staff_id]+", "+Staff.jobTitle[staff_id]);
 			System.out.println();
 			
 			
