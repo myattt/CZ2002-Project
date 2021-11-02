@@ -35,20 +35,16 @@ public class Staff {
 				}
 			}
 			while(op  != 0);
-
-			System.out.println("FINISH, LET's ADD THE ORDER INTO DATABASE TO PRINT REPORT");
 			ArrayList ala=o.getAlaOrder();
 			ArrayList bundle=o.getBundleOrder();
 			cust.setAlaOrder(ala);
 			cust.setBundleOrder(bundle);
 	  }
 	 
-	  private static void staffInfo() {
+	  public static void staffInfo() {
 	    Random rand = new Random();
 	    int rdint = rand.nextInt(3);
 	    System.out.println("The staff who serves you is " + name[rdint] +", " + gender[rdint]+", "+jobTitle[rdint]);
-	    System.out.println("Let's create your menu");
-	    System.out.println();
 	  }
 }
 
