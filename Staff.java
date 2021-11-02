@@ -4,10 +4,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Staff {
-	  private static String[] name = {"Harry", "Ron", "Hermione"};
-	  private static String[] gender = {"M", "M", "F"};
-	  private static int[] employeeID = {0,1,2};
-	  private static String[] jobTitle = {"waiter", "waiter", "waitress"};
+	  public static String[] name = {"Harry", "Ron", "Hermione"};
+	public static String[] gender = {"M", "M", "F"};
+	public static int[] employeeID = {0,1,2};
+	public static String[] jobTitle = {"waiter", "waiter", "waitress"};
 
 	  public static void main(Customer cust) {
 			int choice;
@@ -41,10 +41,10 @@ public class Staff {
 			cust.setBundleOrder(bundle);
 	  }
 	 
-	  public static void staffInfo() {
+	  public static int staffInfo() {
 	    Random rand = new Random();
 	    int rdint = rand.nextInt(3);
-	    System.out.println("The staff who serves you is " + name[rdint] +", " + gender[rdint]+", "+jobTitle[rdint]);
+	    return rdint;
 	  }
 }
 
