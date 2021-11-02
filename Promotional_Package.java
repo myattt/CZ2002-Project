@@ -7,11 +7,12 @@ public class Promotional_Package implements Item{
 		put(2, new ArrayList<String>(Arrays.asList("Coca Cola", "Pizza")));
 	}};
 	static HashMap<Integer,Integer> bundle_prices=new HashMap<Integer,Integer>(){{put(1,300);put(2,400);}};
+	static HashMap<Integer,String> bundle_desc=new HashMap<Integer,String>(){{put(1,"Very cheap");put(2,"Best choice award");}};
 
 	 public void displayItem() {
 		System.out.println("******* Promotional Package *******");
 	 	for(int i=1; i<bundle.size()+1; i++){
-			System.out.println(bundle.get(i) +": ($" + bundle_prices.get(i)+")");
+			System.out.println(bundle.get(i) +": " + bundle_desc.get(i) + " ($" + bundle_prices.get(i)+")");
 		}
 	}
 
@@ -38,8 +39,12 @@ public class Promotional_Package implements Item{
 				System.out.println("Not in menu");
 			}
 		}while(!bundle_item.equals("q"));
+		Scanner sc = new Scanner(System.in);
+		 System.out.println("Enter description:");
+		 String desc = sc.nextLine();
 		bundle.put(id_bundle, bundle_items);
 		bundle_prices.put(id_bundle,bundle_price);
+		bundle_desc.put(id_bundle,desc);
 	}
 
 	 public static void removeitem() {
@@ -51,6 +56,7 @@ public class Promotional_Package implements Item{
 		if(bundle.containsKey(id)){
 			bundle.remove(id);
 			bundle_prices.remove(id);
+			bundle_desc.remove(id);
 			System.out.println("Deleted Successfully");
 		}
 		else {
