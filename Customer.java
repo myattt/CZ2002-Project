@@ -17,6 +17,11 @@ public class Customer {
 	   private String staff_position;
 	   private int employeeID;
 	   private int totalPrice;
+	   private int month;
+	   private int day;
+	   private int minute;
+	   private int hours;
+
 	   
 	   public Customer(int pax, int cust_id, String cust_name, boolean membership, double contact, Calendar rDate) { 
 	    this.pax=pax;
