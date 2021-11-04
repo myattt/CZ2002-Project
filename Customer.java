@@ -32,7 +32,9 @@ public class Customer {
 	   public int getCustomerID() { 
 	    return this.cust_id; 
 	   } 
-	    
+	   public Calendar getRDate(){
+	     return this.rDate;
+	   }
 	   public String getCustomerName() { 
 	    return this.cust_name; 
 	   } 
