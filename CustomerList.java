@@ -70,7 +70,11 @@ public class CustomerList {
   		return var++;
   	}
   	
-  	
+  	public int[] getCustDate(int cust_id) {
+  		int[] date = list.get(cust_id).getDate();
+  		return date;
+  	}
+	
   	public int getCListSize()
   	{
   		return list.size();
