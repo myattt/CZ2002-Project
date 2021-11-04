@@ -20,29 +20,12 @@ public class CustomerList {
 			System.out.println("Bundle Orders: " + Arrays.toString(list.get(i).getBundleOrder()));
 			System.out.println("The staff who serves you is " + list.get(i).getStaffName() +", " + list.get(i).getStaffGender()+", "+list.get(i).getStaffPos());
 
-			System.out.println("Total Price: $" + getTotalPrices(list.get(i).getCustomerID()));
+			System.out.println("Total Price: $" + list.get(i).getTotalPrice());
 			System.out.println();
 			}
 			
 			
 		}
-	}
-	
-	public int getTotalPrices(int cust_id) {
-		String[] ala = list.get(cust_id).getAlaOrder();
-		Integer[] bunbun = list.get(cust_id).getBundleOrder();
-		int total_price = 0;
-		int total_prices_ala = 0;
-		
-		for(int k = 0; k < ala.length; k++){
-			total_prices_ala += Ala_Carte.Menu_of_restaurants.get(ala[k]);
-		}
-		int total_prices_bunbun = 0;
-		for(int k = 0; k < bunbun.length; k++){
-			total_prices_ala += Promotional_Package.bundle_prices.get(bunbun[k]);
-		}
-		total_price = total_prices_ala + total_prices_bunbun;
-		return total_price;
 	}
 	
 	
