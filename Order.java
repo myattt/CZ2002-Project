@@ -1,5 +1,4 @@
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -82,12 +81,12 @@ public class Order {
 		throw new UnsupportedOperationException();
 	}
 	
-	public ArrayList getAlaOrder()
+	public ArrayList<String> getAlaOrder()
 	{
 		return order_ala;
 	}
 	
-	public ArrayList getBundleOrder()
+	public ArrayList<Integer> getBundleOrder()
 	{
 		return order_bundle;
 	}
