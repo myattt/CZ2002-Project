@@ -1,6 +1,10 @@
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.*;
 
 public class OrderInvoice {
 	private static double taxRate=0.07;
@@ -25,19 +29,19 @@ public class OrderInvoice {
                   + "Items Ordered                    \n"
                   + "Name             Qty       Amount\n"
                 //add order items and price and quantity
-                  + "-----------------------------------\n";
+                  + "-----------------------------------";
       
           // String a=jLabel4.getText()+"      "+jTextField1.getText()+"      "+jLabel2.getText()+"\n;";
           //String h=Header+a;
       String amt  =
-                  "\n-----------------------------------\n"
+                  "-----------------------------------\n"
     		  	// add in subtotal amount
-                  + "SubTotal Amount:      	SGD"+ df.format(calcSubtotal(customer)) +"\n"
+                  + "SubTotal Amount:      	   "+ df.format(calcSubtotal(customer)) +"\n"
     		    // calculate gst 
-                  + "7% GST:			SGD"+ df.format(calcGST(customer))+"\n"
+                  + "7% GST:			   "+ df.format(calcGST(customer))+"\n"
     		  	// calculate svc charge  
-    		  	  + "10% GST:		SGD"+ df.format(calcSvcCharge(customer))+"\n"
-    		  	  + "Member Discount:	-SGD"+ df.format(calcDiscount(customer))+"\n"
+    		  	  + "10% GST:		   "+ df.format(calcSvcCharge(customer))+"\n"
+    		  	  + "Member Discount:	   -"+ df.format(calcDiscount(customer))+"\n"
     		    // add in total amt with gst, svccharge and discount
                   + "Total Amount:		SGD"+df.format(calcTotal(customer))+"\n"
                   + "-----------------------------------\n"
@@ -45,7 +49,10 @@ public class OrderInvoice {
                   + "             Thank You              \n"
                   + "___________________________________\n";
       
-      	System.out.println(Header+amt);
+      	System.out.println(Header);
+      	findAlaQuantity(customer);
+      	System.out.println(amt);
+      	
 	}
 	
 	public double calcSubtotal(Customer customer) {
@@ -73,6 +80,19 @@ public class OrderInvoice {
 		return(customer.getTotalPrice()*svcCharge);
 	}
 	
-	
-	
+	public void findAlaQuantity(Customer cust) {
+		DecimalFormat df = new DecimalFormat("0.00");
+		List<String> ala_list = Arrays.asList(cust.getAlaOrder());
+		Set<String> distinct = new HashSet<>(ala_list);
+        for (String s: distinct) {
+        	int quantity = Collections.frequency(ala_list, s);
+            System.out.println(s + "	  " + quantity + "	   " + df.format(Ala_Carte.Menu_of_restaurants.get(s)*quantity));
+	}
+        List<Integer> bunbun_list = Arrays.asList(cust.getBundleOrder());
+		Set<Integer> distinctbundle = new HashSet<>(bunbun_list);
+        for (Integer s: distinctbundle) {
+        	int quantity = Collections.frequency(bunbun_list, s);
+            System.out.println("Bundle " + s + "	  " + quantity + "	   " + df.format(Promotional_Package.bundle_prices.get(s)*quantity));
+	}
+	}
 }
