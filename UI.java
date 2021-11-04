@@ -169,7 +169,7 @@ public class UI{
 		 } while (option != 0);
 	 }
 	 else if (op == 2) {
-		 Promotional_Package p = new Promotional_Package();
+		 PromotionalPackage p = new PromotionalPackage();
 		 Scanner s = new Scanner(System.in);
 		 int option;
 		 do {
@@ -183,9 +183,9 @@ public class UI{
 				 p.displayItem();
 				 p.removeitem();
 			 } else if (option == 3) {
-				 Promotional_Package.bundle.clear();
-				 Promotional_Package.bundle_desc.clear();
-				 Promotional_Package.bundle_prices.clear();
+				 PromotionalPackage.bundle.clear();
+				 PromotionalPackage.bundle_desc.clear();
+				 PromotionalPackage.bundle_prices.clear();
 			 } else if (option == 4) {
 				 p.displayItem();
 			 } else option = 0;
@@ -211,7 +211,7 @@ public static boolean checkCustomerDetails(int cust_id , CustomerList cust_list)
 	  CustomerList custlist = new CustomerList(); 
 	  int option; 
 	  
-	  System.out.println("Welcome to the Res-Tau-Rant\n");
+	  System.out.println("Welcome to the Pub & Grill\n");
 	  do { 
 	   System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6. Quit");
 	   option = sc.nextInt(); 
@@ -223,8 +223,10 @@ public static boolean checkCustomerDetails(int cust_id , CustomerList cust_list)
 		   if (exist) {
 			   Customer cust= custlist.getCust(input1);
 			   MakeOrder(cust);
-			   System.out.println("***Current Customers and Order***");
-			   custlist.printList();
+			   OrderInvoice invoice=new OrderInvoice();
+			   invoice.printInvoice(input1,custlist);
+			   //System.out.println("***Current Customers and Order***");
+			   //custlist.printList();
 		}
 		else {
 			System.out.println("Please make a booking first");
