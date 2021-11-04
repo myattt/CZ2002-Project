@@ -67,8 +67,14 @@ public class Order {
 	}
 
 	public static void viewOrder() {
-		System.out.println(order_ala);
-		System.out.println(order_bundle);
+		System.out.println("ORDER - ALA CARTE");
+		for(String item : order_ala){
+			System.out.print(item);
+		}
+		System.out.println("ORDER - PROMOTIONAL PACKAGE");
+		for(Integer item: order_bundle){
+			System.out.println(item);
+		}
 	}
 	
 	public void discount() {
