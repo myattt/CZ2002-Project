@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.io.*;
 import java.util.*;
@@ -6,7 +5,6 @@ import java.util.Calendar;
 
 public class CustomerList {
 	int var=1001;
-
 	ArrayList<Customer> list = new ArrayList<Customer>();
 	int cust_id;
 	
@@ -67,7 +65,7 @@ public class CustomerList {
   	public Customer createCust(String name , int cust_id , boolean membership,int paxsize, double contact, Calendar rDate)
   	{
   		
-  		this.cust_id=list.size();
+  		this.cust_id=cust_id;
   		Customer newCust = new Customer(paxsize, cust_id, name, membership, contact, rDate);
   		list.add(newCust);
   		return newCust;
@@ -83,6 +81,13 @@ public class CustomerList {
   		}
   		return null;
   	}
+  	
+  	public int getCustID() 
+  	{
+  		return var++;
+  	}
+  	
+  	
   	public int getCListSize()
   	{
   		return list.size();
