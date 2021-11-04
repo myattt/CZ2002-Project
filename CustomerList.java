@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 public class CustomerList {
 	int var=1001;
-	ArrayList<Customer> list = new ArrayList<Customer>();
+	static ArrayList<Customer> list = new ArrayList<Customer>();
 	int cust_id;
 	
 	public void printList() {
