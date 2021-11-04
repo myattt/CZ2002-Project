@@ -42,7 +42,11 @@ public class SalesRevenueReport {
 
 			revenue_day.put(CustomerList.list.get(i).getRDate().getTime().toString().substring(0,10),revenue_day.get(CustomerList.list.get(i).getRDate().getTime().toString().substring(0,10)) + total_price);
 		}
-		System.out.println(revenue_day);
+		System.out.println("REVENUE BY DAY");
+		for(String x : revenue_day.keySet()){
+			System.out.print(x + ": $");
+			System.out.println(revenue_day.get(x));
+		}
 	}
 
 	public static void generateByMonth() {
@@ -77,7 +81,11 @@ public class SalesRevenueReport {
 
 			revenue_month.put(CustomerList.list.get(i).getRDate().getTime().toString().substring(4,7),revenue_month.get(CustomerList.list.get(i).getRDate().getTime().toString().substring(4,7)) + total_price);
 		}
-		System.out.println(revenue_month);
+		System.out.println("REVENUE BY MONTH");
+		for(String x : revenue_month.keySet()){
+			System.out.print(x + ": $");
+			System.out.println(revenue_month.get(x));
+		}
 	}
 
 	public static void main(String[] args) {
