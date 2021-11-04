@@ -7,13 +7,15 @@ public class UI{
 
 
  private static void MakeOrder(Customer cust) {
+	 	System.out.println("****Order Interface****");
  		Staff staff=new Staff();
  		staff.main(cust);
  }
 
  private static void Booking(TableList tablelist , CustomerList custlist){
 	 System.out.println("****Booking Interface****");
-	 boolean cont=false;
+	 char cont;
+	 boolean member = false;
 	 if(tablelist.getNumEmptyTables()<=0 )
 		     System.out.println("All tables are filled.. Please try again later");
 	 else {
@@ -21,10 +23,17 @@ public class UI{
 		  Scanner sc = new Scanner(System.in);
 		  System.out.println("Enter Customer Name:");
 		  String custName = sc.nextLine();
-		  System.out.println("Are you a member? true/false");
-		  boolean membership = sc.nextBoolean();
+		  System.out.println("Are you a member? t/f");
+		  char membership = sc.next().charAt(0);
+		  if(membership=='t'||membership=='T')
+			  member = true;
 		  System.out.println("Customer pax?");
 		  int paxsize=sc.nextInt();
+		  while(paxsize<1 || paxsize>10) {
+			  System.out.println("Customer pax too large!");
+			  System.out.println("Customer pax?");
+			  paxsize=sc.nextInt();
+		  }
 		  System.out.println("Customer contact?");
 		  double contact=sc.nextDouble();
 		  System.out.println("Enter reservation month");
@@ -42,7 +51,7 @@ public class UI{
 			  System.out.println("Please try again");
 		  }
 		  else {
-	      Customer customer= custlist.createCust(custName , (custlist.getCListSize())+1 , membership, paxsize, contact , aDate);
+	      Customer customer= custlist.createCust(custName , (custlist.getCListSize())+1 , member, paxsize, contact , aDate);
 	      int customerId = customer.getCustomerID();
 	      boolean assigned = tablelist.assignTable(tableId+1 , customerId);
 	      if(assigned)
@@ -52,10 +61,11 @@ public class UI{
 	      tablelist.showEmptyTables();
 	      System.out.println("\n");
 		  }
-		  System.out.println("Continue adding reservations? true/false");
+		  System.out.println("Continue adding reservations? t/f");
 		  //need exception here
-		  cont=sc.nextBoolean();
-		 }while(cont==true && tablelist.getNumEmptyTables()>0);
+		  cont=sc.next().charAt(0);
+		  
+		 }while((cont=='t' || cont=='T') && tablelist.getNumEmptyTables()>0);
 		 }
  }
 
@@ -118,7 +128,7 @@ public class UI{
 			System.out.println("No reservations removed...");
  }
  private static void ModifyMenu() {
-	 System.out.println("1. Ala Carte or 2. Promotional Package?");
+	 System.out.println("1. Ala Carte\n2. Promotional Package?");
 	 Scanner sc = new Scanner(System.in);
 	 int op = sc.nextInt();
 	 if (op == 1) {
