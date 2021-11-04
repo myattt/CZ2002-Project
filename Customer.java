@@ -10,9 +10,13 @@ public class Customer {
 	   private boolean membership;
 	   private double contact;
 	   private Calendar rDate;
-	   private ArrayList ala;
-	   private ArrayList bundle;
-	     
+	   private ArrayList<String> ala;
+	   private ArrayList<Integer> bundle;
+	   private String staff_name;
+	   private String staff_gender;
+	   private String staff_position;
+	   private int employeeID;
+	   
 	   public Customer(int pax, int cust_id, String cust_name, boolean membership, double contact, Calendar rDate) { 
 	    this.pax=pax;
 		this.cust_id = cust_id;  
@@ -67,22 +71,50 @@ public class Customer {
 	   {
 		   this.rDate=rDate;
 	   }
-	   public void setAlaOrder(ArrayList ala)
+	   public void setAlaOrder(ArrayList<String> ala)
 	   {
 		   this.ala=ala;
 	   }
-	   public void setBundleOrder(ArrayList bundle)
+	   public void setBundleOrder(ArrayList<Integer> bundle)
 	   {
 		   this.bundle=bundle;
 	   }
 	   
 	   
-	   public ArrayList getAlaOrder()
+	   public ArrayList<String> getAlaOrder()
 	   {
 		   return this.ala;
 	   }
-	   public ArrayList getBundleOrder()
+	   public ArrayList<Integer> getBundleOrder()
 	   {
 		   return this.bundle;
+	   }
+	   
+	   public void setStaffinfo(String staff_name , String staff_gender , String staff_position ,int employeeID) {
+		   this.staff_name = staff_name;
+		   this.staff_gender = staff_gender;
+		   this.staff_position = staff_position;
+		   this.employeeID = employeeID;
+	   }
+	   
+	   
+	   public String getStaffName()
+	   {
+		   return this.staff_name;
+	   }
+	   
+	   public String getStaffGender()
+	   {
+		   return this.staff_gender;
+	   }
+	   
+	   public String getStaffPos()
+	   {
+		   return this.staff_position;
+	   }
+	   
+	   public int getEmployeeId()
+	   {
+		   return this.employeeID;
 	   }
 	}
