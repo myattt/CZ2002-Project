@@ -11,9 +11,12 @@ public class CustomerList {
 			System.out.println("Customer Name:	" + list.get(i).getCustomerName());
 			System.out.println("Customer Id:	" + list.get(i).getCustomerID());
 			System.out.println("Table Id:	" + list.get(i).getTableId());
+			if(list.get(i).getAlaOrder()==null && list.get(i).getBundleOrder()==null)
+				System.out.println("Order has not been placed.");
+			else {
 			System.out.println("Ala Carte Orders: " + list.get(i).getAlaOrder());
 			System.out.println("Bundle Orders: " + list.get(i).getBundleOrder());
-			System.out.println("The staff who serves you is " + list.get(i).getStaffName() +", " + list.get(i).getStaffGender()+", "+list.get(i).getStaffPos());
+			System.out.println("The staff who serves you is " + list.get(i).getStaffName() +", " + list.get(i).getStaffGender()+", "+list.get(i).getStaffPos());}
 			System.out.println();
 			
 			
