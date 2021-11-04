@@ -69,11 +69,11 @@ public class Order {
 	public static void viewOrder() {
 		System.out.println("ORDER - ALA CARTE");
 		for(String item : order_ala){
-			System.out.print(item);
+			System.out.println(item);
 		}
 		System.out.println("ORDER - PROMOTIONAL PACKAGE");
 		for(Integer item: order_bundle){
-			System.out.println(item);
+			System.out.println("P"+item+": " + Promotional_Package.bundle.get(item));
 		}
 	}
 	
