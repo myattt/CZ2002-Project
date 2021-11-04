@@ -196,7 +196,8 @@ public class UI{
  }
 	 
 	 private static void PrintReport() { 
-	  System.out.print(false); 
+	  SalesRevenueReport.generateByDay();
+          SalesRevenueReport.generateByMonth();
  } 
 public static boolean checkCustomerDetails(int cust_id , CustomerList cust_list){
 	boolean exist =cust_list.checkCustInfo(cust_id);
