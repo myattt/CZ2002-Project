@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -10,13 +9,14 @@ public class Staff {
 	public static String[] jobTitle = {"waiter", "waiter", "waitress"};
 
 	  public static void main(Customer cust) {
-			int choice;
 			Scanner sc = new Scanner(System.in);
 			Order o = new Order();
 			o.startOrder();
 			int op;
+			int staff_id = staffInfo();
+			cust.setStaffinfo(name[staff_id], gender[staff_id], jobTitle[staff_id] , employeeID[staff_id]);
 			do{
-				System.out.println("1.View menu 2.Add Ala_Carte Item 3.Add Bundle 4.Remove Ala_Carte Item 5.Remove Bundle 6.View order 0.Quit");
+				System.out.println("1.View menu \n2.Add Ala_Carte Item \n3.Add Bundle \n4.Remove Ala_Carte Item \n5.Remove Bundle \n6.View order \n0.Quit");
 				op = sc.nextInt();
 				if(op == 1){
 					staffInfo();
@@ -33,10 +33,10 @@ public class Staff {
 				else if(op == 6){
 					o.viewOrder();
 				}
-			}
-			while(op  != 0);
-			ArrayList ala=o.getAlaOrder();
-			ArrayList bundle=o.getBundleOrder();
+			}while(op  != 0);
+			
+			ArrayList<String> ala=o.getAlaOrder();
+			ArrayList<Integer> bundle=o.getBundleOrder();
 			cust.setAlaOrder(ala);
 			cust.setBundleOrder(bundle);
 	  }
@@ -47,4 +47,3 @@ public class Staff {
 	    return rdint;
 	  }
 }
-
