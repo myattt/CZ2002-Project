@@ -100,7 +100,7 @@ public class UI{
 		System.out.println("Enter CustomerID");
 		Scanner sc = new Scanner(System.in);
 		int cust_id = sc.nextInt();
-		while(cust_id>custlist.getCListSize() || cust_id<0) {
+		while( cust_id<0) {
 			System.out.println("Error!");
 			System.out.println("Enter CustomerID");
 			cust_id = sc.nextInt();
