@@ -195,8 +195,11 @@ public class UI{
 	}
 
 	private static void PrintReport() {
+		System.out.println("-----------------REPORT-----------------");
 		SalesRevenueReport.generateByDay();
 		SalesRevenueReport.generateByMonth();
+		SalesRevenueReport.individualitemsales();
+		System.out.println("-----------------REPORT-----------------");
 
 	}
 	public static boolean checkCustomerDetails(int cust_id , CustomerList cust_list){
