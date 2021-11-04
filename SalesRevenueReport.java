@@ -42,7 +42,7 @@ public class SalesRevenueReport {
 
 			revenue_day.put(CustomerList.list.get(i).getRDate().getTime().toString().substring(0,10),revenue_day.get(CustomerList.list.get(i).getRDate().getTime().toString().substring(0,10)) + total_price);
 		}
-		System.out.println("REVENUE BY DAY");
+		System.out.println("**REVENUE BY DAY");
 		for(String x : revenue_day.keySet()){
 			System.out.print(x + ": $");
 			System.out.println(revenue_day.get(x));
@@ -81,15 +81,33 @@ public class SalesRevenueReport {
 
 			revenue_month.put(CustomerList.list.get(i).getRDate().getTime().toString().substring(4,7),revenue_month.get(CustomerList.list.get(i).getRDate().getTime().toString().substring(4,7)) + total_price);
 		}
-		System.out.println("REVENUE BY MONTH");
+		System.out.println("**REVENUE BY MONTH");
 		for(String x : revenue_month.keySet()){
 			System.out.print(x + ": $");
 			System.out.println(revenue_month.get(x));
 		}
 	}
 
-	public static void main(String[] args) {
+
+	public static void individualitemsales(){
+		System.out.println("**INDIVIDUAL ITEM SALES");
+		HashMap<String, Integer> item_sales= new HashMap<String,Integer>();
+		for(String item: Ala_Carte.Menu_of_restaurants.keySet()){
+			item_sales.put(item, 0);
+		}
+		for(int i=0 ; i<CustomerList.list.size() ; i++){
+			for(String item: CustomerList.list.get(i).getAlaOrder()){
+				item_sales.put(item, item_sales.get(item) + 1);
+			}
+		}
+		for(String x : item_sales.keySet()){
+			System.out.print(x + ": has ");
+			System.out.print(item_sales.get(x));
+			System.out.println(" dishes sold");
+		}
 
 	}
+
+
 
 }
