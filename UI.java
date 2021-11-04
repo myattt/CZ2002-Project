@@ -44,8 +44,7 @@ public class UI{
 				int hour=sc.nextInt();
 				System.out.println("Enter reservation minutes");
 				int minute =sc.nextInt();
-				Calendar aDate, rDate;
-				aDate = new GregorianCalendar(2021, month, day, hour, 00);
+				Calendar rDate;
 				rDate = Calendar.getInstance();
 				int suitableTable = table_size(paxsize);
 				int tableId = tablelist.findSuitableTable(suitableTable);
@@ -54,7 +53,7 @@ public class UI{
 					System.out.println("Please try again");
 				}
 				else {
-					Customer customer= custlist.createCust(custName , (custlist.getCListSize()) , member, paxsize, contact , aDate);
+					Customer customer= custlist.createCust(custName , (custlist.getCListSize()) , member, paxsize, contact);
 					int customerId = customer.getCustomerID();
 					boolean assigned = tablelist.assignTable(tableId+1 , customerId);
 					if(assigned){
