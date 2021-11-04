@@ -45,11 +45,11 @@ public class CustomerList {
   	}
   	
   
-  	public Customer createCust(String name , int cust_id , boolean membership,int paxsize, double contact, Calendar rDate)
+  	public Customer createCust(String name , int cust_id , boolean membership,int paxsize, double contact)
   	{
   		
   		this.cust_id=cust_id;
-  		Customer newCust = new Customer(paxsize, cust_id, name, membership, contact, rDate);
+  		Customer newCust = new Customer(paxsize, cust_id, name, membership, contact);
   		list.add(newCust);
   		return newCust;
   		
