@@ -27,7 +27,10 @@ public class Customer {
 	    // TODO - implement Customer.operation 
 	   } 
 	    
-	    
+	    public boolean getMembership()
+	   {
+		   return membership;
+	   }
 	   public int getCustomerID() { 
 	    return this.cust_id; 
 	   } 
