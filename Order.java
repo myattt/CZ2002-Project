@@ -39,7 +39,10 @@ public class Order {
 		int b;
 		Scanner sc = new Scanner(System.in);
 		do{
-			System.out.println(Promotional_Package.bundle);
+			System.out.println("******* Promotional Package *******");
+			for(int i=1; i<Promotional_Package.bundle.size()+1; i++){
+				System.out.println(Promotional_Package.bundle.get(i) +": " + Promotional_Package.bundle_desc.get(i) + " ($" + Promotional_Package.bundle_prices.get(i)+")");
+			}
 			System.out.println("Type the bundle id you want to add to your order (0 to quit)");
 
 			b = sc.nextInt();
