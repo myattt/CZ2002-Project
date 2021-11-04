@@ -1,9 +1,11 @@
+
 import java.util.ArrayList;
 import java.io.*;
 import java.util.*;
 import java.util.Calendar;
 
 public class CustomerList {
+	int var=1001;
 
 	ArrayList<Customer> list = new ArrayList<Customer>();
 	int cust_id;
@@ -18,27 +20,33 @@ public class CustomerList {
 			else {
 			System.out.println("Ala Carte Orders: " + Arrays.toString(list.get(i).getAlaOrder()));
 			System.out.println("Bundle Orders: " + Arrays.toString(list.get(i).getBundleOrder()));
-			System.out.println("The staff who serves you is " + list.get(i).getStaffName() +", " + list.get(i).getStaffGender()+", "+list.get(i).getStaffPos());}
-			
-			String[] ala = list.get(i).getAlaOrder();
-			Integer[] bunbun = list.get(i).getBundleOrder();
-			int total_price = 0;
-			int total_prices_ala = 0;
-			for(int k = 0; k < ala.length; k++){
-				total_prices_ala += Ala_Carte.Menu_of_restaurants.get(ala[k]);
-			}
-			int total_prices_bunbun = 0;
-			for(int k = 0; k < bunbun.length; k++){
-				total_prices_ala += Promotional_Package.bundle_prices.get(bunbun[k]);
-			}
-			total_price = total_prices_ala + total_prices_bunbun;
+			System.out.println("The staff who serves you is " + list.get(i).getStaffName() +", " + list.get(i).getStaffGender()+", "+list.get(i).getStaffPos());
 
-			System.out.println("Total Price: " + total_price);
+			System.out.println("Total Price: $" + getTotalPrices(list.get(i).getCustomerID()));
 			System.out.println();
+			}
 			
 			
 		}
 	}
+	
+	public int getTotalPrices(int cust_id) {
+		String[] ala = list.get(cust_id).getAlaOrder();
+		Integer[] bunbun = list.get(cust_id).getBundleOrder();
+		int total_price = 0;
+		int total_prices_ala = 0;
+		
+		for(int k = 0; k < ala.length; k++){
+			total_prices_ala += Ala_Carte.Menu_of_restaurants.get(ala[k]);
+		}
+		int total_prices_bunbun = 0;
+		for(int k = 0; k < bunbun.length; k++){
+			total_prices_ala += Promotional_Package.bundle_prices.get(bunbun[k]);
+		}
+		total_price = total_prices_ala + total_prices_bunbun;
+		return total_price;
+	}
+	
 	
 	public void removeCust(int cust_id) {
 		list.remove(cust_id);
@@ -58,7 +66,8 @@ public class CustomerList {
   
   	public Customer createCust(String name , int cust_id , boolean membership,int paxsize, double contact, Calendar rDate)
   	{
-  		cust_id=list.size();
+  		
+  		this.cust_id=list.size();
   		Customer newCust = new Customer(paxsize, cust_id, name, membership, contact, rDate);
   		list.add(newCust);
   		return newCust;
