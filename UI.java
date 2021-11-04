@@ -1,3 +1,4 @@
+
 import java.util.Scanner; 
 import java.util.*; 
 import java.util.Calendar;
@@ -51,7 +52,7 @@ public class UI{
 			  System.out.println("Please try again");
 		  }
 		  else {
-	      Customer customer= custlist.createCust(custName , (custlist.getCListSize())+1 , member, paxsize, contact , aDate);
+	      Customer customer= custlist.createCust(custName , custlist.getCustID() , member, paxsize, contact , aDate);
 	      int customerId = customer.getCustomerID();
 	      boolean assigned = tablelist.assignTable(tableId+1 , customerId);
 	      if(assigned)
@@ -195,8 +196,7 @@ public class UI{
  }
 	 
 	 private static void PrintReport() { 
-	  SalesRevenueReport.generateByDay();
- 	SalesRevenueReport.generateByMonth();
+	  System.out.print(false); 
  } 
 public static boolean checkCustomerDetails(int cust_id , CustomerList cust_list){
 	boolean exist =cust_list.checkCustInfo(cust_id);
@@ -210,44 +210,46 @@ public static boolean checkCustomerDetails(int cust_id , CustomerList cust_list)
 	  TableList tablelist= new TableList(); 
 	  CustomerList custlist = new CustomerList(); 
 	  int option; 
+	  
 	  System.out.println("Welcome to the Res-Tau-Rant\n");
 	  do { 
 	   System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6. Quit");
 	   option = sc.nextInt(); 
 	   sc.nextLine(); 
 	   if(option == 1) { 
-	    System.out.println("Enter Customer ID");
-		int input1 = sc.nextInt();
-		boolean exist = checkCustomerDetails(input1 , custlist);
-		if (exist) {
-		Customer cust= custlist.getCust(input1);
-		MakeOrder(cust);
-		System.out.println("***Current Customers and Order***");
-		custlist.printList();
+		   System.out.println("Enter Customer ID");
+		   int input1 = sc.nextInt();
+		   boolean exist = checkCustomerDetails(input1 , custlist);
+		   if (exist) {
+			   Customer cust= custlist.getCust(input1);
+			   MakeOrder(cust);
+			   System.out.println("***Current Customers and Order***");
+			   custlist.printList();
 		}
 		else {
-		System.out.println("Please make a booking first");
+			System.out.println("Please make a booking first");
 		}
 	   } 
 	   else if (option == 2) { 
-	    Booking(tablelist , custlist); 
+		   Booking(tablelist , custlist); 
 	   } 
 	   else if (option==3)
 	   {
-		RemoveReservation(tablelist , custlist);
+		   RemoveReservation(tablelist , custlist);
 	   }
 	   else if (option==4)
 	   {
-		ModifyMenu();
+		   ModifyMenu();
 	   }
 	   else if (option == 5){ 
-	    PrintReport(); 
+		   PrintReport(); 
 	   } 
 	   else if(option ==6) {
 		   System.out.println("******End******");
 		   option=0;
 	   }
 	   else option=0; 
+	   
 	  }while(option != 0); 
 	 } 
  
