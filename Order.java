@@ -1,7 +1,3 @@
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Order {
 
 	private int custID;
@@ -70,25 +66,10 @@ public class Order {
 	}
 
 	public static void viewOrder() {
-		System.out.println("ORDER - ALA CARTE");
-		for(String item : order_ala){
-			System.out.println(item);
-		}
-		System.out.println("ORDER - PROMOTIONAL PACKAGE");
-		for(Integer item: order_bundle){
-			System.out.println("P"+item+": " + Promotional_Package.bundle.get(item));
-		}
+		System.out.println(order_ala);
+		System.out.println(order_bundle);
 	}
 	
-	public void discount() {
-		// TODO - implement Order.discount
-		throw new UnsupportedOperationException();
-	}
-
-	public void getTaxesDetails() {
-		// TODO - implement Order.getTaxesDetails
-		throw new UnsupportedOperationException();
-	}
 	
 	public ArrayList<String> getAlaOrder()
 	{
@@ -99,7 +80,5 @@ public class Order {
 	{
 		return order_bundle;
 	}
-	public void orderInvoice() {
-		
-	}
+
 }
