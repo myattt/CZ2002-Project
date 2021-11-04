@@ -10,8 +10,8 @@ public class Customer {
 	   private boolean membership;
 	   private double contact;
 	   private Calendar rDate;
-	   private ArrayList<String> ala;
-	   private ArrayList<Integer> bundle;
+	   private String[] ala;
+	   private Integer[] bundle;
 	   private String staff_name;
 	   private String staff_gender;
 	   private String staff_position;
@@ -71,21 +71,21 @@ public class Customer {
 	   {
 		   this.rDate=rDate;
 	   }
-	   public void setAlaOrder(ArrayList<String> ala)
+	   public void setAlaOrder(String[] ala)
 	   {
 		   this.ala=ala;
 	   }
-	   public void setBundleOrder(ArrayList<Integer> bundle)
+	   public void setBundleOrder(Integer[] bundle)
 	   {
 		   this.bundle=bundle;
 	   }
 	   
 	   
-	   public ArrayList<String> getAlaOrder()
+	   public String[] getAlaOrder()
 	   {
 		   return this.ala;
 	   }
-	   public ArrayList<Integer> getBundleOrder()
+	   public Integer[] getBundleOrder()
 	   {
 		   return this.bundle;
 	   }
