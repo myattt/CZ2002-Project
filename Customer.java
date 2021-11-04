@@ -16,6 +16,7 @@ public class Customer {
 	   private String staff_gender;
 	   private String staff_position;
 	   private int employeeID;
+	   private int totalPrice;
 	   
 	   public Customer(int pax, int cust_id, String cust_name, boolean membership, double contact, Calendar rDate) { 
 	    this.pax=pax;
@@ -27,10 +28,7 @@ public class Customer {
 	    // TODO - implement Customer.operation 
 	   } 
 	    
-	    public boolean getMembership()
-	   {
-		   return membership;
-	   }
+	    
 	   public int getCustomerID() { 
 	    return this.cust_id; 
 	   } 
@@ -58,6 +56,10 @@ public class Customer {
 	   public void member(boolean membership) {
 	    this.membership = membership;
 	  }
+	   
+	   public boolean getMembership() {
+		   return this.membership;
+	   }
 	   public void setPaxSize(int paxsize)
 	   {
 		   this.pax=paxsize;
@@ -92,9 +94,6 @@ public class Customer {
 	   {
 		   return this.bundle;
 	   }
-	   public Calendar getRDate() {
-		   return this.rDate; 
-	   }
 	   
 	   public void setStaffinfo(String staff_name , String staff_gender , String staff_position ,int employeeID) {
 		   this.staff_name = staff_name;
@@ -123,4 +122,23 @@ public class Customer {
 	   {
 		   return this.employeeID;
 	   }
+	   
+	   public int getTotalPrice() {
+		   	String[] alaorder = this.ala;
+			Integer[] bunbun = this.bundle;
+			int total_price = 0;
+			int total_prices_ala = 0;
+			
+			for(int k = 0; k < ala.length; k++){
+				total_prices_ala += Ala_Carte.Menu_of_restaurants.get(alaorder[k]);
+			}
+			int total_prices_bunbun = 0;
+			for(int k = 0; k < bunbun.length; k++){
+				total_prices_ala += Promotional_Package.bundle_prices.get(bunbun[k]);
+			}
+			total_price = total_prices_ala + total_prices_bunbun;
+			this.totalPrice = total_price;
+			return this.totalPrice;
+	   }
+
 	}
