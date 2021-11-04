@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 public class UI{
 
-private static final String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+	private static final String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 
 	private static void MakeOrder(Customer cust) {
 		System.out.println("****Order Interface****");
@@ -42,10 +42,10 @@ private static final String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun
 				int day=sc.nextInt();
 				System.out.println("Enter reservation hour");
 				int hour=sc.nextInt();
-				System.out.println("Enter reservation minutes");
-		                int minute =sc.nextInt();
 				Calendar aDate;
-				aDate = Calendar.getInstance();
+				System.out.println("Enter reservation minutes");
+                int minute =sc.nextInt();
+                aDate = Calendar.getInstance();
 				int suitableTable = table_size(paxsize);
 				int tableId = tablelist.findSuitableTable(suitableTable);
 				if(tableId == -1)
@@ -56,10 +56,9 @@ private static final String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun
 					Customer customer= custlist.createCust(custName , custlist.getCustID() , member, paxsize, contact , aDate);
 					int customerId = customer.getCustomerID();
 					boolean assigned = tablelist.assignTable(tableId+1 , customerId);
-					if(assigned){
+					if(assigned) {
 						customer.setTableId(tableId+1);
-						customer.setDate(month, day, hour, minute);
-					}
+					customer.setDate(month, day, hour, minute);}
 					tablelist.showAssignedTables();
 					System.out.println("\n");
 					tablelist.showEmptyTables();
@@ -104,7 +103,7 @@ private static final String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun
 		System.out.println("Enter CustomerID");
 		Scanner sc = new Scanner(System.in);
 		int cust_id = sc.nextInt();
-		while( cust_id<0) {
+		while(cust_id<0) {
 			System.out.println("Error!");
 			System.out.println("Enter CustomerID");
 			cust_id = sc.nextInt();
@@ -213,31 +212,31 @@ private static final String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun
 	}
 	
 	public static boolean checkPeriodExpiry(int cust_id, CustomerList cust_list) {
-	int[] date = cust_list.getCustDate(cust_id);
-	Calendar Period = Calendar.getInstance();
-	int periodMon = date[0];
-	int periodDay = date[1];
-	int periodMin = date[3];
-	int periodHour = date[2];
-	if(date[3] + 30 > 59) {
-		periodHour++;
-		periodMin -= 30;
+		int[] date = cust_list.getCustDate(cust_id);
+		Calendar Period = Calendar.getInstance();
+		int periodMon = date[0];
+		int periodDay = date[1];
+		int periodMin = date[3];
+		int periodHour = date[2];
+		if(date[3] + 30 > 59) {
+			periodHour++;
+			periodMin -= 30;
+		}
+		System.out.printf("Reserved on %02d %s %02d : %02d \n", date[1], monthName[date[0]-1], date[2], date[3]);
+		int mon = Period.get(Calendar.MONTH);
+		int day =  Period.get(Calendar.DAY_OF_MONTH);
+		int hour = Period.get(Calendar.HOUR_OF_DAY);
+		int min = Period.get(Calendar.MINUTE);
+		System.out.printf("Currently %02d %s %02d : %02d \n",day,monthName[mon], hour, min );
+
+		if(mon >= periodMon && min > periodMin && hour >= periodHour && day >= day) {
+
+			cust_list.removeCust(cust_id);
+			System.out.println("Due to Period Expired");
+			return true;
+		}
+		return false;			
 	}
-	System.out.printf("Reserved on %02d %s %02d : %02d \n", date[1], monthName[date[0]-1], date[2], date[3]);
-	int mon = Period.get(Calendar.MONTH);
-	int day =  Period.get(Calendar.DAY_OF_MONTH);
-	int hour = Period.get(Calendar.HOUR_OF_DAY);
-	int min = Period.get(Calendar.MINUTE);
-	System.out.printf("Currently %02d %s %02d : %02d \n",day,monthName[mon], hour, min );
-	
-	if(mon >= periodMon && min > periodMin && hour >= periodHour && day >= day) {
-		
-		cust_list.removeCust(cust_id);
-		System.out.println("Due to Period Expired");
-		return true;
-	}
-	return false;			
-}
 
 
 	public static void main(String[] args){
@@ -256,9 +255,9 @@ private static final String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun
 				boolean exist = checkCustomerDetails(input1 , custlist);
 				if (exist) {
 					Customer cust= custlist.getCust(input1);
+					MakeOrder(cust);
 					boolean expire = checkPeriodExpiry(input1,custlist);
 					if(expire == false){
-					MakeOrder(cust);
 					OrderInvoice invoice=new OrderInvoice();
 					invoice.printInvoice(input1,custlist);
 					//System.out.println("***Current Customers and Order***");
@@ -273,9 +272,9 @@ private static final String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun
 					System.out.println("\nCurrent Customer list");
 					custlist.printList();*/
 					}
-				else{
-					System.out.println("Your reservation period has expired, please book again");
-				}
+					else{
+						System.out.println("Your reservation period has expired, please book again");
+					}
 				}
 				else {
 					System.out.println("Please make a booking first");
