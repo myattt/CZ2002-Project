@@ -23,13 +23,12 @@ public class Customer {
 	   private int hours;
 
 	   
-	   public Customer(int pax, int cust_id, String cust_name, boolean membership, double contact, Calendar rDate) { 
+	   public Customer(int pax, int cust_id, String cust_name, boolean membership, double contact) { 
 	    this.pax=pax;
 		this.cust_id = cust_id;  
 	    this.cust_name=cust_name;
 	    this.membership=membership;
 	    this.contact=contact;
-	    this.rDate=rDate;
 	    // TODO - implement Customer.operation 
 	   } 
 	    
