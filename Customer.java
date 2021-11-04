@@ -142,5 +142,17 @@ public class Customer {
 			this.totalPrice = total_price;
 			return this.totalPrice;
 	   }
+           public int[] getDate() {
+		   int[] date = {month,day,hours,minute};
+		   return date;
+	   }
+	   public void setDate(int month, int day, int hours, int minutes) {
+		  this.month = month;
+		  this.day = day;
+		  this.hours = hours;
+		  this.minute = minutes;
+
+	   }
+	
 
 	}
