@@ -51,7 +51,7 @@ public class UI{
 					System.out.println("Please try again");
 				}
 				else {
-					Customer customer= custlist.createCust(custName , (custlist.getCListSize()) , member, paxsize, contact , aDate);
+					Customer customer= custlist.createCust(custName , custlist.getCustID() , member, paxsize, contact , aDate);
 					int customerId = customer.getCustomerID();
 					boolean assigned = tablelist.assignTable(tableId+1 , customerId);
 					if(assigned)
@@ -230,6 +230,15 @@ public class UI{
 					invoice.printInvoice(input1,custlist);
 					//System.out.println("***Current Customers and Order***");
 					//custlist.printList();
+					
+					tablelist.unAssignSeat(cust.getTableId());
+					System.out.println("Assigned seats");
+					custlist.removeCust(input1);
+					/*tablelist.showAssignedTables();
+					System.out.println("Empty seats");
+					tablelist.showEmptyTables();
+					System.out.println("\nCurrent Customer list");
+					custlist.printList();*/
 				}
 				else {
 					System.out.println("Please make a booking first");
