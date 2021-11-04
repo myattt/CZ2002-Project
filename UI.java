@@ -42,8 +42,11 @@ public class UI{
 				int day=sc.nextInt();
 				System.out.println("Enter reservation hour");
 				int hour=sc.nextInt();
-				Calendar aDate;
+				System.out.println("Enter reservation minutes");
+				int minute =sc.nextInt();
+				Calendar aDate, rDate;
 				aDate = new GregorianCalendar(2021, month, day, hour, 00);
+				rDate = Calendar.getInstance();
 				int suitableTable = table_size(paxsize);
 				int tableId = tablelist.findSuitableTable(suitableTable);
 				if(tableId == -1)
@@ -54,8 +57,11 @@ public class UI{
 					Customer customer= custlist.createCust(custName , (custlist.getCListSize()) , member, paxsize, contact , aDate);
 					int customerId = customer.getCustomerID();
 					boolean assigned = tablelist.assignTable(tableId+1 , customerId);
-					if(assigned)
+					if(assigned){
 						customer.setTableId(tableId+1);
+						customer.setDate(month, day, hour, minute);
+					}
+		
 					tablelist.showAssignedTables();
 					System.out.println("\n");
 					tablelist.showEmptyTables();
@@ -207,6 +213,33 @@ public class UI{
 		return exist;
 
 	}
+	
+	public static boolean checkPeriodExpiry(int cust_id, CustomerList cust_list) {
+	int[] date = cust_list.getCustDate(cust_id);
+	Calendar Period = Calendar.getInstance();
+	int periodMon = date[0];
+	int periodDay = date[1];
+	int periodMin = date[3];
+	int periodHour = date[2];
+	if(date[3] + 30 > 59) {
+		periodHour++;
+		periodMin -= 30;
+	}
+	System.out.printf("Reserved on %02d %s %02d : %02d \n", date[1], monthName[date[0]-1], date[2], date[3]);
+	int mon = Period.get(Calendar.MONTH);
+	int day =  Period.get(Calendar.DAY_OF_MONTH);
+	int hour = Period.get(Calendar.HOUR_OF_DAY);
+	int min = Period.get(Calendar.MINUTE);
+	System.out.printf("Currently %02d %s %02d : %02d \n",day,monthName[mon], hour, min );
+	
+	if(mon >= periodMon && min > periodMin && hour >= periodHour && day >= day) {
+		
+		cust_list.removeCust(cust_id);
+		System.out.println("Due to Period Expired");
+		return true;
+	}
+	return false;
+	}
 
 
 	public static void main(String[] args){
@@ -225,11 +258,17 @@ public class UI{
 				boolean exist = checkCustomerDetails(input1 , custlist);
 				if (exist) {
 					Customer cust= custlist.getCust(input1);
+					boolean expire = checkPeriodExpiry(input1,custlist);
+					if(expire == false){
 					MakeOrder(cust);
 					OrderInvoice invoice=new OrderInvoice();
 					invoice.printInvoice(input1,custlist);
 					//System.out.println("***Current Customers and Order***");
 					//custlist.printList();
+					}
+				else {
+					System.out.println("Your reservation period has expired, please book again");
+				}
 				}
 				else {
 					System.out.println("Please make a booking first");
