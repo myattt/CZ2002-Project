@@ -4,9 +4,15 @@ import java.util.Scanner;
 
 public class Staff {
 	  public static String[] name = {"Harry", "Ron", "Hermione"};
-	public static String[] gender = {"M", "M", "F"};
-	public static int[] employeeID = {0,1,2};
-	public static String[] jobTitle = {"waiter", "waiter", "waitress"};
+	  public static String[] gender = {"M", "M", "F"};
+	  public static int[] employeeID = {0,1,2};
+	  public static String[] jobTitle = {"waiter", "waiter", "waitress"};
+	  public static String[] alaorder;
+	  public static Integer[] bundleorder;
+	  
+	  public static ArrayList<String> ala;
+	  public static ArrayList<Integer> bundle;
+	  
 
 	  public static void main(Customer cust) {
 			Scanner sc = new Scanner(System.in);
@@ -35,10 +41,16 @@ public class Staff {
 				}
 			}while(op  != 0);
 			
-			ArrayList<String> ala=o.getAlaOrder();
-			ArrayList<Integer> bundle=o.getBundleOrder();
-			cust.setAlaOrder(ala);
-			cust.setBundleOrder(bundle);
+
+				ala=o.getAlaOrder();
+				
+				alaorder =ala.toArray(new String[ala.size()]);
+		
+				bundle=o.getBundleOrder();
+				bundleorder=bundle.toArray(new Integer[bundle.size()]);
+				
+				cust.setAlaOrder(alaorder);
+				cust.setBundleOrder(bundleorder);
 	  }
 	 
 	  public static int staffInfo() {
