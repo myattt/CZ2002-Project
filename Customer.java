@@ -89,6 +89,9 @@ public class Customer {
 	   {
 		   return this.bundle;
 	   }
+	   public Calendar getRDate() {
+		   return this.rDate; 
+	   }
 	   
 	   public void setStaffinfo(String staff_name , String staff_gender , String staff_position ,int employeeID) {
 		   this.staff_name = staff_name;
