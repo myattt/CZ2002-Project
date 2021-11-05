@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class SalesRevenueReport {
@@ -10,16 +11,18 @@ public class SalesRevenueReport {
 
 
 
-	public static void generateByDay() {
+	public static void generateByDay(CustomerList cust_list) {
 		ArrayList<String>dates = new ArrayList<>();
 		HashMap<String, Integer> revenue_day= new HashMap<String,Integer>();
 
-		for(int i=0 ; i<CustomerList.list.size() ; i++) {
 
-			if(!dates.contains(CustomerList.list.get(i).getRDate().getTime().toString().substring(0,10))) {
-				dates.add(CustomerList.list.get(i).getRDate().getTime().toString().substring(0, 10));
-				revenue_day.put(CustomerList.list.get(i).getRDate().getTime().toString().substring(0, 10) , 0);
-			}
+
+
+
+		for(int i=0 ; i<CustomerList.list.size() ; i++) {
+			int[] date = cust_list.getCustDate(i+1001);
+			String day = String.valueOf(date[1]) +"/"+String.valueOf(date[0]);
+			revenue_day.put(day, 0);
 		}
 
 
@@ -38,10 +41,12 @@ public class SalesRevenueReport {
 			total_price = total_prices_ala + total_prices_bunbun;
 
 
+			int[] date = cust_list.getCustDate(i+1001);
+			String day = String.valueOf(date[1]) +"/"+String.valueOf(date[0]);
 
-
-			revenue_day.put(CustomerList.list.get(i).getRDate().getTime().toString().substring(0,10),revenue_day.get(CustomerList.list.get(i).getRDate().getTime().toString().substring(0,10)) + total_price);
+			revenue_day.put(day, revenue_day.get(day) + total_price);
 		}
+
 		System.out.println("**REVENUE BY DAY");
 		for(String x : revenue_day.keySet()){
 			System.out.print(x + ": $");
@@ -49,16 +54,18 @@ public class SalesRevenueReport {
 		}
 	}
 
-	public static void generateByMonth() {
+	public static void generateByMonth(CustomerList cust_list) {
 		ArrayList<String>dates = new ArrayList<>();
 		HashMap<String, Integer> revenue_month= new HashMap<String,Integer>();
 
+
+
+
+
 		for(int i=0 ; i<CustomerList.list.size() ; i++) {
-			
-			if(!dates.contains(CustomerList.list.get(i).getRDate().getTime().toString().substring(4,7))) {
-				dates.add(CustomerList.list.get(i).getRDate().getTime().toString().substring(4,7));
-				revenue_month.put(CustomerList.list.get(i).getRDate().getTime().toString().substring(4,7) , 0);
-			}
+			int[] date = cust_list.getCustDate(i+1001);
+			String day = "Month "+ String.valueOf(date[0]);
+			revenue_month.put(day, 0);
 		}
 
 
@@ -77,10 +84,12 @@ public class SalesRevenueReport {
 			total_price = total_prices_ala + total_prices_bunbun;
 
 
+			int[] date = cust_list.getCustDate(i+1001);
+			String day = "Month "+ String.valueOf(date[0]);
 
-
-			revenue_month.put(CustomerList.list.get(i).getRDate().getTime().toString().substring(4,7),revenue_month.get(CustomerList.list.get(i).getRDate().getTime().toString().substring(4,7)) + total_price);
+			revenue_month.put(day, revenue_month.get(day) + total_price);
 		}
+
 		System.out.println("**REVENUE BY MONTH");
 		for(String x : revenue_month.keySet()){
 			System.out.print(x + ": $");
