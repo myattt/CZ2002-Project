@@ -13,7 +13,7 @@ public class OrderInvoice {
 		DecimalFormat df = new DecimalFormat("0.00");
 		Customer customer =custlist.getCust(custID);
 		String Header =
-                 "\n***********Pub & Grill*************\n"
+                 "\n***********Pub & Grill************\n"
                  // add timestamp of current time and date 
                   + "         Pulau NTU S60056          \n"
                   + "           Tel: 65652722           \n"
