@@ -200,10 +200,10 @@ public class UI{
 		}
 	}
 
-	private static void PrintReport() {
+	private static void PrintReport(CustomerList custlist) {
 		System.out.println("-----------------REPORT-----------------");
-		SalesRevenueReport.generateByDay();
-		SalesRevenueReport.generateByMonth();
+		SalesRevenueReport.generateByDay(custlist);
+		SalesRevenueReport.generateByMonth(custlist);
 		SalesRevenueReport.individualitemsales();
 		System.out.println("-----------------REPORT-----------------");
 
@@ -286,7 +286,7 @@ public class UI{
 				ModifyMenu();
 			}
 			else if (option == 5){
-				PrintReport();
+				PrintReport(custlist);
 			}
 			else if(option ==6) {
 				System.out.println("******End******");
