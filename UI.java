@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 public class UI{
 
+	private static final String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 
 
 	private static void MakeOrder(Customer cust) {
@@ -53,7 +54,7 @@ public class UI{
 					System.out.println("Please try again");
 				}
 				else {
-					Customer customer= custlist.createCust(custName , (custlist.getCListSize()) , member, paxsize, contact);
+					Customer customer= custlist.createCust(custName , custlist.getCustID() , member, paxsize, contact);
 					int customerId = customer.getCustomerID();
 					boolean assigned = tablelist.assignTable(tableId+1 , customerId);
 					if(assigned){
@@ -105,7 +106,7 @@ public class UI{
 		System.out.println("Enter CustomerID");
 		Scanner sc = new Scanner(System.in);
 		int cust_id = sc.nextInt();
-		while(cust_id>custlist.getCListSize() || cust_id<0) {
+		while(cust_id<0) {
 			System.out.println("Error!");
 			System.out.println("Enter CustomerID");
 			cust_id = sc.nextInt();
