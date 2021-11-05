@@ -117,7 +117,7 @@ public class SalesRevenueReport {
 			System.out.println(" dishes sold");
 		}
 
-		System.out.println("****PROMOTIONAL PACKAGE");
+		System.out.println("****Promotional Package");
 		HashMap<Integer, Integer> bundle_sales= new HashMap<Integer,Integer>();
 		for(Integer bun: Promotional_Package.bundle.keySet()){
 			bundle_sales.put(bun, 0);
