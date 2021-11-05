@@ -100,6 +100,7 @@ public class SalesRevenueReport {
 
 	public static void individualitemsales(){
 		System.out.println("**INDIVIDUAL ITEM SALES");
+		System.out.println("****Ala Carte");
 		HashMap<String, Integer> item_sales= new HashMap<String,Integer>();
 		for(String item: Ala_Carte.Menu_of_restaurants.keySet()){
 			item_sales.put(item, 0);
@@ -109,10 +110,29 @@ public class SalesRevenueReport {
 				item_sales.put(item, item_sales.get(item) + 1);
 			}
 		}
+
 		for(String x : item_sales.keySet()){
 			System.out.print(x + ": has ");
 			System.out.print(item_sales.get(x));
 			System.out.println(" dishes sold");
+		}
+
+		System.out.println("****PROMOTIONAL PACKAGE");
+		HashMap<Integer, Integer> bundle_sales= new HashMap<Integer,Integer>();
+		for(Integer bun: Promotional_Package.bundle.keySet()){
+			bundle_sales.put(bun, 0);
+		}
+
+
+		for(int i=0 ; i<CustomerList.list.size() ; i++){
+			for(Integer item: CustomerList.list.get(i).getBundleOrder()){
+				bundle_sales.put(item, bundle_sales.get(item) + 1);
+			}
+		}
+		for(Integer x : bundle_sales.keySet()){
+			System.out.print("Bundle " + x + ": has ");
+			System.out.print(bundle_sales.get(x));
+			System.out.println(" times sold");
 		}
 
 	}
