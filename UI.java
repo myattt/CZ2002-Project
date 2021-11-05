@@ -154,8 +154,26 @@ public class UI{
 						System.out.println("Enter the price");
 						int price = s.nextInt();
 						s.nextLine();
+						String cate="";
+						int choice;
+						do {
 						System.out.println("Enter the category: 1. Main Course, 2. Drinks, 3. Dessert");
-						String cate = s.nextLine();
+						choice = s.nextInt();
+						switch(choice) {
+						case 1:
+							cate ="Main Course";
+							break;
+						case 2:
+							cate="Drinks";
+							break;
+						case 3:
+							cate="Dessert";
+							break;
+						default:
+							System.out.println("Enter correct integer!");
+							choice=0;
+						}}while(choice==0);
+;
 						m.addItem(item, description, price, cate);
 
 					} else {
@@ -250,12 +268,7 @@ public class UI{
 		System.out.println("Welcome to the Res-Tau-Rant\n");
 		do {
 			System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6. Quit");
-			option = 0;
-			try {
-				option = sc.nextInt();
-			}catch (Exception e) {
-				System.out.println("User input was not a number.");
-			}
+			option = sc.nextInt();
 			sc.nextLine();
 			if(option == 1) {
 				System.out.println("Enter Customer ID");
