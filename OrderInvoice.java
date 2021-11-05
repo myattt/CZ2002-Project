@@ -1,9 +1,4 @@
-
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.*;
 
 public class OrderInvoice {
@@ -26,6 +21,8 @@ public class OrderInvoice {
                   + "Customer:"+ customer.getCustomerName()+"\n"
                   + "Table ID:"+ customer.getTableId()+"\n"
                   + "Staff:"+ customer.getStaffName()+"\n"
+                  + "Date:"+ customer.getDate()[1] + "/" + customer.getDate()[0]+ "/"+ Calendar.getInstance().get(Calendar.YEAR)+"\n"
+                  + "Time:"+ (customer.getDate()[2]+2) +":"+customer.getDate()[3]+"\n"
                   + "Items Ordered                    \n"
                   + "Name             Qty       Amount\n"
                 //add order items and price and quantity
