@@ -30,8 +30,13 @@ public class CustomerList {
 	
 	
 	public void removeCust(int cust_id) {
-		list.remove(cust_id);
-		System.out.println("Removed");
+		for(int i=0; i<list.size();i++) {
+  			if(list.get(i).getCustomerID()==cust_id) {
+  				list.remove(i);
+  				System.out.println("Removed");
+  				break;
+  			}
+  		}
 	}
 	
   	public boolean checkCustInfo(int cust_id)
@@ -71,7 +76,14 @@ public class CustomerList {
   	}
   	
   	public int[] getCustDate(int cust_id) {
-  		int[] date = list.get(cust_id).getDate();
+  		int[] date=null;
+  		for(int i=0; i<list.size();i++) {
+  			if(list.get(i).getCustomerID()==cust_id) {
+  				date = list.get(i).getDate();
+  				break;
+  			}
+  		}
+  		//int[] date = list.get(cust_id).getDate();
   		return date;
   	}
 	
