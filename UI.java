@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 public class UI{
 
-	private static final String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+	
 
 
 	private static void MakeOrder(Customer cust) {
@@ -243,6 +243,7 @@ public class UI{
 		periodHour++;
 		periodMin -= 30;
 	}
+	String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 	System.out.printf("Reserved on %02d %s %02d : %02d \n", date[1], monthName[date[0]-1], date[2], date[3]);
 	int mon = Period.get(Calendar.MONTH);
 	int day =  Period.get(Calendar.DAY_OF_MONTH);
