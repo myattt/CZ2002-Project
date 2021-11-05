@@ -250,7 +250,12 @@ public class UI{
 		System.out.println("Welcome to the Res-Tau-Rant\n");
 		do {
 			System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6. Quit");
-			option = sc.nextInt();
+			option = 0;
+			try {
+				option = sc.nextInt();
+			}catch (Exception e) {
+				System.out.println("User input was not a number.");
+			}
 			sc.nextLine();
 			if(option == 1) {
 				System.out.println("Enter Customer ID");
