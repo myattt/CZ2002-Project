@@ -25,13 +25,7 @@ public class Ala_Carte implements Item{
 
 	}
 
-	public boolean checkifexist(String item) {
-		if(Ala_Carte.Menu_of_restaurants.containsKey(item)){
-			return true;
-		}
-
-		return false;
-	}
+	
 
 	public void displayItem(){
 
