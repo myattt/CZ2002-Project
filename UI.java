@@ -280,7 +280,54 @@ public class UI{
 	}
 	return false;
 	}
-
+	
+	private static void ReservationandTables(TableList tablelist,CustomerList custlist)
+	{
+		Scanner sc = new Scanner(System.in);
+		int choice=0;
+		
+		do{
+			System.out.println("****Reservation and Table Settings*****");
+			System.out.println("1. Make Reservation\n2. Check Reservation\n3. Remove Reservation\n4. Table Availability\n0. Quit");
+			boolean error=true;
+			while (error)
+			{
+				try {
+	            	choice = sc.nextInt();
+	            	error=false;
+	                }
+	            catch (Exception e){
+	                System.out.println("You did not enter an integer, please enter an integer value");
+	                sc.next();
+	                }
+			}
+			if(choice == 1){
+				Booking(tablelist , custlist);
+			}
+			else if(choice == 2){
+				System.out.println("Enter CustomerID");
+				int cust_id = sc.nextInt();
+				Customer customer =custlist.getCust(cust_id);
+				boolean expired=checkPeriodExpiry(cust_id ,custlist , tablelist);
+				if(!expired && customer!=null) {
+					System.out.println("****Check Customer Info****");
+					System.out.println("Customer ID	:" + customer.getCustomerID());
+					System.out.println("Customer Name	:" + customer.getCustomerName());
+					System.out.println("Table ID	:" + customer.getTableId());
+					System.out.println("Reservation Date:"+ customer.getDate()[1] + "/" + customer.getDate()[0]+ "/"+ Calendar.getInstance().get(Calendar.YEAR));
+					System.out.println("Reservation Time:"+ customer.getDate()[2] +":"+customer.getDate()[3]+"\n");}
+				}
+			else if(choice == 3){
+				RemoveReservation(tablelist , custlist);
+			}
+			else if(choice == 4){
+				System.out.println("***Table Availability****\n");
+				tablelist.showEmptyTables();
+				System.out.println("\n");
+			}
+		}while(choice != 0);
+				    
+	}
 
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
@@ -289,7 +336,7 @@ public class UI{
 		int option;
 		System.out.println("Welcome to Pub & Grill\n");
 		do {
-			System.out.println("Please select option \n 1. Make Order \n 2. Reservations & Tables \n 3. ModifyMenu \n 4. PrintReport \n 5. Quit");
+			System.out.println("Please select option \n 1. Make Order \n 2. Reservations & Tables \n 3. ModifyMenu \n 4. PrintReport \n 5. CheckPeriodExpiry \n 6. Quit");
 			option = sc.nextInt();
 			sc.nextLine();
 			if(option == 1) {
@@ -316,62 +363,7 @@ public class UI{
 				}
 			}
 			else if (option == 2) {
-				System.out.println("****Reservation and Table Settings*****");
-				System.out.println("1. Make Reservation\n2. Check Reservation\n3. Update Reservation\n4. Remove Reservation\n5. Table Availability");
-			    
-				int choice=0;
-				try {
-			    	choice = sc.nextInt();
-			      } catch (Exception e){
-			          System.out.println("Error");
-			      }
-				
-				switch(choice) {
-				case 1:
-					Booking(tablelist , custlist);
-					break;
-				case 2:
-					//get customer info and details
-					System.out.println("Enter CustomerID");
-					int cust_id = sc.nextInt();
-					while(cust_id<0) {
-						System.out.println("Error!");
-						System.out.println("Enter CustomerID");
-						cust_id = sc.nextInt();
-					}
-					Customer customer =custlist.getCust(cust_id);
-					if(!checkPeriodExpiry(cust_id ,custlist , tablelist) && customer!=null) {
-						System.out.println("****Check Customer Info****");
-						System.out.println("Customer ID	:" + customer.getCustomerID());
-						System.out.println("Customer Name	:" + customer.getCustomerName());
-						System.out.println("Table ID	:" + customer.getTableId());
-						System.out.println("Reservation Date:"+ customer.getDate()[1] + "/" + customer.getDate()[0]+ "/"+ Calendar.getInstance().get(Calendar.YEAR));
-						System.out.println("Reservation Time:"+ customer.getDate()[2] +":"+customer.getDate()[3]+"\n");}
-					break;
-				case 3:
-					for(int i=0 ; i<10; i++) {
-						Table table = tablelist.getTable(i);
-						if(!table.isOccupied())
-							continue;
-						else {
-							checkPeriodExpiry(table.getCustomerID() ,custlist , tablelist);
-						}
-					}
-					break;
-					
-				case 4:
-					RemoveReservation(tablelist , custlist);
-					break;
-				case 5:	
-					System.out.println("***Table Availability****\n");
-					tablelist.showEmptyTables();
-					System.out.println("\n"); 
-					break;
-				default:
-					System.out.println("Invalid value");
-					break;
-				}
-			    
+				ReservationandTables(tablelist,custlist);
 			}
 			else if (option==3)
 			{
@@ -380,12 +372,22 @@ public class UI{
 			else if (option == 4){
 				PrintReport(custlist);
 			}
-			else if(option ==5) {
+			else if (option== 5)
+			{
+				for(int i=0 ; i<10; i++) {
+					Table table = tablelist.getTable(i);
+					if(!table.isOccupied())
+						continue;
+					else {
+						checkPeriodExpiry(table.getCustomerID() ,custlist , tablelist);
+					}
+				}
+			}
+			else if(option ==6) {
 				System.out.println("******End******");
 				option=0;
 			}
 			else option=0;
 		}while(option != 0);
 	}
-
 }
