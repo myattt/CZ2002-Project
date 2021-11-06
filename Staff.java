@@ -18,12 +18,24 @@ public class Staff {
 			Scanner sc = new Scanner(System.in);
 			Order o = new Order();
 			o.startOrder();
-			int op;
+			int op=0;
 			int staff_id = staffInfo();
 			cust.setStaffinfo(name[staff_id], gender[staff_id], jobTitle[staff_id] , employeeID[staff_id]);
 			do{
-				System.out.println("1.View menu \n2.Add Ala_Carte Item \n3.Add Bundle \n4.Remove Ala_Carte Item \n5.Remove Bundle \n6.View order \n0.Quit");
-				op = sc.nextInt();
+			
+				boolean error=true;
+				while(error) {
+					System.out.println("1.View menu \n2.Add Ala_Carte Item \n3.Add Bundle \n4.Remove Ala_Carte Item \n5.Remove Bundle \n6.View order \n0.Quit");
+			         try {
+			            op = sc.nextInt();
+			            error=false;
+			          }
+			          catch (Exception e){
+			        	  System.out.println("User input was not a number.\n");
+			        	  sc.next();
+			          }
+				}
+			    
 				if(op == 1){
 					staffInfo();
 					o.viewMenu();
