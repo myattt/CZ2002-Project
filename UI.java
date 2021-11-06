@@ -151,8 +151,16 @@ public class UI{
 					if(!Ala_Carte.Menu_of_restaurants.containsKey(item)) {
 						System.out.println("Enter the description for the item");
 						String description = s.nextLine();
-						System.out.println("Enter the price");
-						int price = s.nextInt();
+						int price = 0;
+						String sizeString;
+						do {
+							System.out.println("Enter the price (integer)");
+							sizeString = s.nextLine();
+
+						} while (!(sizeString.matches("[0-9]+") && sizeString.length() > 0));
+						price = Integer.parseInt(sizeString);
+
+
 						s.nextLine();
 						String cate="";
 						int choice;
