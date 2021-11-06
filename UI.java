@@ -75,6 +75,44 @@ public class UI{
 		}
 	}
 
+	private static void RemoveReservation(TableList tablelist , CustomerList custlist)
+	{
+		System.out.println("Enter CustomerID");
+		Scanner sc = new Scanner(System.in);
+		int cust_id = sc.nextInt();
+		while(cust_id<0) {
+			System.out.println("Error!");
+			System.out.println("Enter CustomerID");
+			cust_id = sc.nextInt();
+		}
+		Customer customer =custlist.getCust(cust_id);
+		if(customer==null) {
+			System.out.println("No customer found");
+		}
+		else {
+		System.out.println("**** Double Check Customer Info****");
+		System.out.println("Customer ID	:" + customer.getCustomerID());
+		System.out.println("Customer Name	:" + customer.getCustomerName());
+		System.out.println("Table ID	:" + customer.getTableId()+"\n");
+
+		System.out.println("Remove Reservation? true/false");
+		boolean choice = sc.nextBoolean();
+
+		if(choice) {
+			tablelist.unAssignSeat(customer.getTableId());
+			System.out.println("Assigned seats");
+			tablelist.showAssignedTables();
+			System.out.println("Empty seats");
+			tablelist.showEmptyTables();
+			custlist.removeCust(cust_id);
+			System.out.println("\nCurrent Customer list");
+			custlist.printList();
+		}
+		else
+			System.out.println("No reservations removed...");
+		}
+	}
+	
 	private static int table_size(int paxsize) {
 		int tableSize;
 		switch(paxsize){
@@ -101,39 +139,8 @@ public class UI{
 		return tableSize;
 	}
 
-	private static void RemoveReservation(TableList tablelist , CustomerList custlist)
-	{
-		System.out.println("Enter CustomerID");
-		Scanner sc = new Scanner(System.in);
-		int cust_id = sc.nextInt();
-		while(cust_id<0) {
-			System.out.println("Error!");
-			System.out.println("Enter CustomerID");
-			cust_id = sc.nextInt();
-		}
-		Customer customer =custlist.getCust(cust_id);
-		System.out.println("**** Double Check Customer Info****");
-		System.out.println("Customer ID	:" + customer.getCustomerID());
-		System.out.println("Customer Name	:" + customer.getCustomerName());
-		System.out.println("Table ID	:" + customer.getTableId()+"\n");
-
-		System.out.println("Remove Reservation? true/false");
-		boolean choice = sc.nextBoolean();
-
-		if(choice) {
-			tablelist.unAssignSeat(customer.getTableId());
-			System.out.println("Assigned seats");
-			tablelist.showAssignedTables();
-			System.out.println("Empty seats");
-			tablelist.showEmptyTables();
-			custlist.removeCust(cust_id);
-			System.out.println("\nCurrent Customer list");
-			custlist.printList();
-		}
-		else
-			System.out.println("No reservations removed...");
-	}
-	private static void ModifyMenu(){
+	
+	private static void ModifyMenu() {
 		System.out.println("1. Ala Carte\n2. Promotional Package?");
 		Scanner sc = new Scanner(System.in);
 		int op;
@@ -141,41 +148,25 @@ public class UI{
 			System.out.println("User input was not a number.");
 			return;
 		}
+		
+		
 		if (op == 1) {
 			Ala_Carte m = new Ala_Carte();
 			Scanner s = new Scanner(System.in);
 			int option;
 			do {
 				System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");
-				String ss;
-				int cout = 0;
-				do {
-					cout += 1;
-					if(cout >= 2) {System.out.println("Integer only");
-						System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");}
-					ss = s.nextLine();
-
-				} while (!(ss.matches("[0-9]+") && ss.length() > 0));
-				option = Integer.parseInt(ss);
-
-
-
-
+				option = s.nextInt();
+				s.nextLine();
 				if (option == 1) {
 					System.out.println("Enter Item you want to add");
 					String item = s.nextLine();
 					if(!Ala_Carte.Menu_of_restaurants.containsKey(item)) {
 						System.out.println("Enter the description for the item");
 						String description = s.nextLine();
-						int price = 0;
-						String sizeString;
-						do {
-							System.out.println("Enter the price (integer)");
-							sizeString = s.nextLine();
-
-						} while (!(sizeString.matches("[0-9]+") && sizeString.length() > 0));
-						price = Integer.parseInt(sizeString);
-
+						System.out.println("Enter the price");
+						int price = s.nextInt();
+						s.nextLine();
 						String cate="";
 						int choice;
 						do {
@@ -185,7 +176,6 @@ public class UI{
 							System.out.println("User input was not a number.");
 							break;
 						}
-
 						switch(choice) {
 						case 1:
 							cate ="Main Course";
@@ -224,16 +214,8 @@ public class UI{
 			int option;
 			do {
 				System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");
-				String ss;
-				int cout = 0;
-				do {
-					cout += 1;
-					if(cout >= 2) {System.out.println("Integer only");
-						System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");}
-					ss = s.nextLine();
-
-				} while (!(ss.matches("[0-9]+") && ss.length() > 0));
-				option = Integer.parseInt(ss);
+				option = s.nextInt();
+				s.nextLine();
 				if (option == 1) {
 					p.addItem();
 				}
@@ -267,7 +249,7 @@ public class UI{
 
 	}
 	
-	public static boolean checkPeriodExpiry(int cust_id, CustomerList cust_list) {
+	public static boolean checkPeriodExpiry(int cust_id, CustomerList cust_list , TableList tablelist) {
 	int[] date = cust_list.getCustDate(cust_id);
 	Calendar Period = Calendar.getInstance();
 	int periodMon = date[0];
@@ -284,10 +266,14 @@ public class UI{
 	int day =  Period.get(Calendar.DAY_OF_MONTH);
 	int hour = Period.get(Calendar.HOUR_OF_DAY);
 	int min = Period.get(Calendar.MINUTE);
-	System.out.printf("Currently %02d %s %02d : %02d \n",day,monthName[mon], hour, min );
 	
-	if(mon >= periodMon && min > periodMin && hour >= periodHour && day >= day) {
-		
+
+	if(mon >= periodMon-1 && min >= periodMin && hour >= periodHour && day >= periodDay) {
+		System.out.printf("Currently %02d %s %02d : %02d \n",day,monthName[mon], hour, min );
+		Customer cust = cust_list.getCust(cust_id);
+		tablelist.unAssignSeat(cust.getTableId());
+		System.out.println("\nCustomer ID:"+cust.getCustomerID() + " 		" + "Customer Name:" + cust.getCustomerName());
+		System.out.print("Reservation was ");
 		cust_list.removeCust(cust_id);
 		System.out.println("Due to Period Expired");
 		return true;
@@ -301,34 +287,23 @@ public class UI{
 		TableList tablelist= new TableList();
 		CustomerList custlist = new CustomerList();
 		int option;
-		System.out.println("Welcome to the Res-Tau-Rant\n");
+		System.out.println("Welcome to Pub & Grill\n");
 		do {
-			System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6. Quit");
-
-
-			String ss;
-			int cout = 0;
-			do {
-				cout += 1;
-				if(cout >= 2) {System.out.println("Integer only");
-					System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6. Quit");}
-				ss = sc.nextLine();
-
-			} while (!(ss.matches("[0-9]+") && ss.length() > 0));
-			option = Integer.parseInt(ss);
-
-
+			System.out.println("Please select option \n 1. Make Order \n 2. Reservations & Tables \n 3. ModifyMenu \n 4. PrintReport \n 5. Quit");
+			option = sc.nextInt();
+			sc.nextLine();
 			if(option == 1) {
 				System.out.println("Enter Customer ID");
 				int input1 = sc.nextInt();
 				boolean exist = checkCustomerDetails(input1 , custlist);
 				if (exist) {
 					Customer cust= custlist.getCust(input1);
-					boolean expire = checkPeriodExpiry(input1,custlist);
-					if(expire == false){
+					boolean expire = checkPeriodExpiry(input1,custlist , tablelist);
+					if(expire == false && cust.getAlaOrder()==null && cust.getBundleOrder()==null){
 					MakeOrder(cust);
 					OrderInvoice invoice=new OrderInvoice();
 					invoice.printInvoice(input1,custlist);
+					tablelist.unAssignSeat(cust.getTableId());
 					//System.out.println("***Current Customers and Order***");
 					//custlist.printList();
 					}
@@ -341,20 +316,71 @@ public class UI{
 				}
 			}
 			else if (option == 2) {
-				Booking(tablelist , custlist);
+				System.out.println("****Reservation and Table Settings*****");
+				System.out.println("1. Make Reservation\n2. Check Reservation\n3. Update Reservation\n4. Remove Reservation\n5. Table Availability");
+			    
+				int choice=0;
+				try {
+			    	choice = sc.nextInt();
+			      } catch (Exception e){
+			          System.out.println("Error");
+			      }
+				
+				switch(choice) {
+				case 1:
+					Booking(tablelist , custlist);
+					break;
+				case 2:
+					//get customer info and details
+					System.out.println("Enter CustomerID");
+					int cust_id = sc.nextInt();
+					while(cust_id<0) {
+						System.out.println("Error!");
+						System.out.println("Enter CustomerID");
+						cust_id = sc.nextInt();
+					}
+					Customer customer =custlist.getCust(cust_id);
+					if(!checkPeriodExpiry(cust_id ,custlist , tablelist) && customer!=null) {
+						System.out.println("****Check Customer Info****");
+						System.out.println("Customer ID	:" + customer.getCustomerID());
+						System.out.println("Customer Name	:" + customer.getCustomerName());
+						System.out.println("Table ID	:" + customer.getTableId());
+						System.out.println("Reservation Date:"+ customer.getDate()[1] + "/" + customer.getDate()[0]+ "/"+ Calendar.getInstance().get(Calendar.YEAR));
+						System.out.println("Reservation Time:"+ customer.getDate()[2] +":"+customer.getDate()[3]+"\n");}
+					break;
+				case 3:
+					for(int i=0 ; i<10; i++) {
+						Table table = tablelist.getTable(i);
+						if(!table.isOccupied())
+							continue;
+						else {
+							checkPeriodExpiry(table.getCustomerID() ,custlist , tablelist);
+						}
+					}
+					break;
+					
+				case 4:
+					RemoveReservation(tablelist , custlist);
+					break;
+				case 5:	
+					System.out.println("***Table Availability****\n");
+					tablelist.showEmptyTables();
+					System.out.println("\n"); 
+					break;
+				default:
+					System.out.println("Invalid value");
+					break;
+				}
+			    
 			}
 			else if (option==3)
 			{
-				RemoveReservation(tablelist , custlist);
-			}
-			else if (option==4)
-			{
 				ModifyMenu();
 			}
-			else if (option == 5){
+			else if (option == 4){
 				PrintReport(custlist);
 			}
-			else if(option ==6) {
+			else if(option ==5) {
 				System.out.println("******End******");
 				option=0;
 			}
