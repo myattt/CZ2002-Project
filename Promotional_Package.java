@@ -39,18 +39,18 @@ public class Promotional_Package implements Item{
 				System.out.println("Not in menu");
 			}
 		}while(!bundle_item.equals("q"));
-		Scanner sc = new Scanner(System.in);
-		 System.out.println("Enter description:");
-		 String desc = sc.nextLine();
-		bundle.put(id_bundle, bundle_items);
-		bundle_prices.put(id_bundle,bundle_price);
-		bundle_desc.put(id_bundle,desc);
+		if(bundle_items.size() != 0) {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter description:");
+			String desc = sc.nextLine();
+			bundle.put(id_bundle, bundle_items);
+			bundle_prices.put(id_bundle, bundle_price);
+			bundle_desc.put(id_bundle, desc);
+		}
 	}
 
 	 public static void removeitem() {
 		System.out.println("Select id bundle to delete");
-		System.out.println(bundle);
-		System.out.println(bundle_prices);
 		Scanner sc = new Scanner(System.in);
 		int id = sc.nextInt();
 		if(bundle.containsKey(id)){
