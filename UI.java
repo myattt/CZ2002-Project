@@ -13,7 +13,7 @@ public class UI{
 		staff.main(cust);
 	}
 
-	private static void Booking(TableList tablelist , CustomerList custlist){
+		private static void Booking(TableList tablelist , CustomerList custlist){
 		System.out.println("****Booking Interface****");
 		char cont;
 		boolean member = false;
@@ -28,23 +28,110 @@ public class UI{
 				char membership = sc.next().charAt(0);
 				if(membership=='t'||membership=='T')
 					member = true;
-				System.out.println("Customer pax?");
-				int paxsize=sc.nextInt();
-				while(paxsize<1 || paxsize>10) {
-					System.out.println("Customer pax too large!");
+				int paxsize=0;
+				boolean error=true;
+				while(error) {
 					System.out.println("Customer pax?");
-					paxsize=sc.nextInt();
+			         try {
+			        	paxsize=sc.nextInt();
+			        	if(paxsize<1 || paxsize>10) {
+							System.out.println("Customer pax too large!");
+							continue;
+						}
+			            error=false;
+			          }
+			          catch (Exception e){
+			        	  System.out.println("User input was not a number.");
+			        	  sc.next();
+			          }
 				}
-				System.out.println("Customer contact?");
-				double contact=sc.nextDouble();
-				System.out.println("Enter reservation month");
-				int month=sc.nextInt();
-				System.out.println("Enter reservation day");
-				int day=sc.nextInt();
-				System.out.println("Enter reservation hour");
-				int hour=sc.nextInt();
-				System.out.println("Enter reservation minutes");
-				int minute =sc.nextInt();
+				
+				error=true;
+				double contact=0;
+				while(error) {
+					System.out.println("Customer contact?");
+			         try {
+			        	contact=sc.nextDouble();
+			            error=false;
+			          }
+			          catch (Exception e){
+			        	  System.out.println("Please input a double");
+			        	  sc.next();
+			          }
+				}
+				error=true;
+				int month=0;
+				while(error) {
+					System.out.println("Enter reservation month");
+			         try {
+			        	month=sc.nextInt();
+			        	if(month<1 || month>12) {
+							System.out.println("Please enter the Month from 1 - 12");
+							continue;
+						}
+			            error=false;
+			          }
+			          catch (Exception e){
+			        	  System.out.println("Please input a number.");
+			        	  sc.next();
+			          }
+				}
+				
+				int day=0;
+				error=true;
+				while(error) {
+					System.out.println("Enter reservation day");
+			         try {
+			        	 day=sc.nextInt();
+			        	if(day<1 || day>29) {
+							System.out.println("Please enter the Day from 1 - 28");
+							continue;
+						}
+			            error=false;
+			          }
+			          catch (Exception e){
+			        	  System.out.println("Please input a number.");
+			        	  sc.next();
+			          }
+				}
+				
+				int hour=0;
+				error=true;
+				while(error) {
+					System.out.println("Enter reservation hour in  24H time");
+			         try {
+			        	hour=sc.nextInt();
+			        	if(hour<10 || hour>22) {
+							System.out.println("Store Operating Hours : 10AM - 10PM");
+							System.out.println("Please enter a time between 10 and 22");
+							continue;
+						}
+			            error=false;
+			          }
+			          catch (Exception e){
+			        	  System.out.println("Please input a number.\n");
+			        	  sc.next();
+			          }
+				}
+				
+				error = true;
+				int minute=0;
+				while(error) {
+					System.out.println("Enter reservation minute");
+			         try {
+			        	minute=sc.nextInt();
+			        	if(minute<0 || minute>59) {
+							System.out.println("Please enter a number between 0 - 59");
+							continue;
+						}
+			            error=false;
+			          }
+			          catch (Exception e){
+			        	  System.out.println("Please input a number.");
+			        	  sc.next();
+			          }
+				}
+				
 				Calendar rDate;
 				rDate = Calendar.getInstance();
 				int suitableTable = table_size(paxsize);
