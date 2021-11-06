@@ -155,8 +155,6 @@ public class UI{
 				option = Integer.parseInt(ss);
 
 
-				s.nextLine();
-
 
 
 				if (option == 1) {
@@ -174,8 +172,6 @@ public class UI{
 						} while (!(sizeString.matches("[0-9]+") && sizeString.length() > 0));
 						price = Integer.parseInt(sizeString);
 
-
-						s.nextLine();
 						String cate="";
 						int choice;
 						do {
@@ -224,8 +220,16 @@ public class UI{
 			int option;
 			do {
 				System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");
-				option = s.nextInt();
-				s.nextLine();
+				String ss;
+				int cout = 0;
+				do {
+					cout += 1;
+					if(cout >= 2) {System.out.println("Integer only");
+						System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");}
+					ss = s.nextLine();
+
+				} while (!(ss.matches("[0-9]+") && ss.length() > 0));
+				option = Integer.parseInt(ss);
 				if (option == 1) {
 					p.addItem();
 				}
@@ -296,8 +300,20 @@ public class UI{
 		System.out.println("Welcome to the Res-Tau-Rant\n");
 		do {
 			System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6. Quit");
-			option = sc.nextInt();
-			sc.nextLine();
+
+
+			String ss;
+			int cout = 0;
+			do {
+				cout += 1;
+				if(cout >= 2) {System.out.println("Integer only");
+					System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6. Quit");}
+				ss = sc.nextLine();
+
+			} while (!(ss.matches("[0-9]+") && ss.length() > 0));
+			option = Integer.parseInt(ss);
+
+
 			if(option == 1) {
 				System.out.println("Enter Customer ID");
 				int input1 = sc.nextInt();
