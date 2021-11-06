@@ -136,7 +136,11 @@ public class UI{
 	private static void ModifyMenu(){
 		System.out.println("1. Ala Carte\n2. Promotional Package?");
 		Scanner sc = new Scanner(System.in);
-		int op = sc.nextInt();
+		int op;
+		try {op = sc.nextInt();}catch (Exception e) {
+			System.out.println("User input was not a number.");
+			return;
+		}
 		if (op == 1) {
 			Ala_Carte m = new Ala_Carte();
 			Scanner s = new Scanner(System.in);
