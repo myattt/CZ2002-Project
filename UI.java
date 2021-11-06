@@ -133,7 +133,7 @@ public class UI{
 		else
 			System.out.println("No reservations removed...");
 	}
-	private static void ModifyMenu() {
+	private static void ModifyMenu(){
 		System.out.println("1. Ala Carte\n2. Promotional Package?");
 		Scanner sc = new Scanner(System.in);
 		int op = sc.nextInt();
@@ -143,8 +143,22 @@ public class UI{
 			int option;
 			do {
 				System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");
-				option = s.nextInt();
+				String ss;
+				int cout = 0;
+				do {
+					cout += 1;
+					if(cout >= 2) {System.out.println("Integer only");
+						System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");}
+					ss = s.nextLine();
+
+				} while (!(ss.matches("[0-9]+") && ss.length() > 0));
+				option = Integer.parseInt(ss);
+
+
 				s.nextLine();
+
+
+
 				if (option == 1) {
 					System.out.println("Enter Item you want to add");
 					String item = s.nextLine();
