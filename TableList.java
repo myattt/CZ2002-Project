@@ -36,6 +36,7 @@ public class TableList {
 			}
 	}
 	
+	
 	public boolean assignTable(int tableId, int cust_id) {
 		if (this.table[tableId-1].isOccupied()) {
 			System.out.println("Table already assigned to a customer.");
@@ -46,6 +47,10 @@ public class TableList {
 			System.out.println("Table Assigned! Table ID:" + tableId );
 			return true;
 		}
+	}
+	
+	public Table getTable(int tableId) {
+		return this.table[tableId];
 	}
 	
 	public void unAssignSeat(int tableId) {
