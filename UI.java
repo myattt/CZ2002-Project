@@ -148,7 +148,7 @@ public class UI{
 				if (option == 1) {
 					System.out.println("Enter Item you want to add");
 					String item = s.nextLine();
-					if (!m.checkifexist(item)) {
+					if(!Ala_Carte.Menu_of_restaurants.containsKey(item)) {
 						System.out.println("Enter the description for the item");
 						String description = s.nextLine();
 						System.out.println("Enter the price");
@@ -158,7 +158,12 @@ public class UI{
 						int choice;
 						do {
 						System.out.println("Enter the category: 1. Main Course, 2. Drinks, 3. Dessert");
-						choice = s.nextInt();
+						choice = 0 ;
+						try {choice = sc.nextInt();}catch (Exception e) {
+							System.out.println("User input was not a number.");
+							break;
+						}
+
 						switch(choice) {
 						case 1:
 							cate ="Main Course";
