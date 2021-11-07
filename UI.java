@@ -34,12 +34,30 @@ public class UI{
 				Scanner sc = new Scanner(System.in);
 				System.out.println("Enter Customer Name:");
 				String custName = sc.nextLine();
-				System.out.println("Are you a member? t/f");
-				char membership = sc.next().charAt(0);
-				if(membership=='t'||membership=='T')
-					member = true;
+				char membership = 0;
+				
+				boolean error = true;
+				while(error) {
+					System.out.println("Are you a member? t/f");
+			         try {
+			        	 membership = sc.next().charAt(0);
+			        	 if(membership=='t'||membership=='T') {
+							member = true;
+							
+			        	 }
+			        	 else if(membership=='f'||membership=='F') {
+			        		 member = false;
+			        	 }
+			            error=false;
+			          }
+			          catch (Exception e){
+			        	  System.out.println("User input invalid.");
+			        	  sc.next();
+			          }
+				}
+				
 				int paxsize=0;
-				boolean error=true;
+				error=true;
 				while(error) {
 					System.out.println("Customer pax?");
 			         try {
@@ -442,7 +460,7 @@ public class UI{
 		System.out.printf("Currently %02d %s %02d : %02d \n",day,monthName[mon], hour, min );
 		Customer cust = cust_list.getCust(cust_id);
 		tablelist.unAssignSeat(cust.getTableId());
-		System.out.println("\nCustomer ID:"+cust.getCustomerID() + " 		" + "Customer Name:" + cust.getCustomerName());
+		System.out.println("\nCustomer ID:"+cust.getCustomerID() + "\nCustomer Name:" + cust.getCustomerName());
 		System.out.print("Reservation was ");
 		cust_list.removeCust(cust_id);
 		System.out.println("Due to Period Expired");
