@@ -39,21 +39,18 @@ public class UI{
 				boolean error = true;
 				while(error) {
 					System.out.println("Are you a member? t/f");
-			         try {
-			        	 membership = sc.next().charAt(0);
-			        	 if(membership=='t'||membership=='T') {
-							member = true;
-							
-			        	 }
-			        	 else if(membership=='f'||membership=='F') {
-			        		 member = false;
-			        	 }
-			            error=false;
-			          }
-			          catch (Exception e){
-			        	  System.out.println("User input invalid.");
-			        	  sc.next();
-			          }
+			        membership = sc.next().charAt(0);
+			        if(membership=='t'||membership=='T') {
+						member = true;
+						error=false;
+					}
+			        else if(membership=='f'||membership=='F') {
+			        	member = false;
+			        	error=false;
+			        }
+			        else {
+			        	System.out.println("User input invalid.");
+			        }
 				}
 				
 				int paxsize=0;
