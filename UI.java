@@ -511,7 +511,7 @@ public class UI{
 				tablelist.showEmptyTables();
 				System.out.println("\n");
 			}
-		}}while(choice != 0);			    
+		}while(choice != 0);			    
 	}
 	private static void printRInfo(Customer customer)
 	{
