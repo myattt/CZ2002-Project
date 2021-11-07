@@ -423,7 +423,7 @@ public class UI{
 		int option;
 		System.out.println("Welcome to Pub & Grill\n");
 		do {
-			System.out.println("Please select option \n 1. Make Order \n 2. Reservations & Tables \n 3. ModifyMenu \n 4. PrintReport \n 5. CheckPeriodExpiry \n 6. Quit");
+			System.out.println("Please select option \n 1. Make Order \n 2. Reservations & Tables \n 3. Modify Menu \n 4. Print Report \n 5. Update System \n 6. Quit");
 			option = sc.nextInt();
 			sc.nextLine();
 			if(option == 1) {
