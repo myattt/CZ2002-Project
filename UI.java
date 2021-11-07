@@ -228,7 +228,11 @@ public class UI{
 
 	
 	private static void ModifyMenu() {
-		System.out.println("1. Ala Carte\n2. Promotional Package?");
+		System.out.println(
+				"| 1 | Ala Carte                        |");
+		System.out.println(
+				"| 2 | Promotional Package              |");
+
 		Scanner sc = new Scanner(System.in);
 		int op;
 		try {op = sc.nextInt();}catch (Exception e) {
@@ -448,9 +452,21 @@ public class UI{
 		TableList tablelist= new TableList();
 		CustomerList custlist = new CustomerList();
 		int option;
-		System.out.println("Welcome to Pub & Grill\n");
+
 		do {
-			System.out.println("Please select option \n 1. Make Order \n 2. Reservations & Tables \n 3. Modify Menu \n 4. Print Report \n 5. Update System \n 6. Quit");
+			System.out.println(
+					"+------------------------------------------------------------------------------------------+");
+			System.out.println(
+					"|                                  Welcome to Pub & Grill                                  |");
+			System.out.println(
+					"+---+----------------------------------+----+----------------------------------------------+");
+			System.out.println(
+					"| 1 | Make Order                       |  4 | Modify Menu                                  |");
+			System.out.println(
+					"| 2 | Reservations & Tables            |  5 | Print Report                                 |");
+			System.out.println(
+					"| 3 | Modify Menu                      |  6 | Quit                                         |");
+			System.out.println("Please enter your option:");
 			// EXCEPTION HANDLER
 			String ss;
 			int cout = 0;
