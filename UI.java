@@ -461,9 +461,9 @@ public class UI{
 			System.out.println(
 					"+---+----------------------------------+----+----------------------------------------------+");
 			System.out.println(
-					"| 1 | Make Order                       |  4 | Modify Menu                                  |");
+					"| 1 | Make Order                       |  4 | Print Report                                 |");
 			System.out.println(
-					"| 2 | Reservations & Tables            |  5 | Print Report                                 |");
+					"| 2 | Reservations & Tables            |  5 | Update System                                |");
 			System.out.println(
 					"| 3 | Modify Menu                      |  6 | Quit                                         |");
 			System.out.println("Please enter your option:");
