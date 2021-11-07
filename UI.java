@@ -419,6 +419,8 @@ public class UI{
 	
 	public static boolean checkPeriodExpiry(int cust_id, CustomerList cust_list , TableList tablelist) {
 	int[] date = cust_list.getCustDate(cust_id);
+	if(date==null)
+		return false;
 	Calendar Period = Calendar.getInstance();
 	int periodMon = date[0];
 	int periodDay = date[1];
@@ -499,6 +501,8 @@ public class UI{
 				if(!expired && customer!=null) {
 					printRInfo(customer);
 				}
+				if(customer==null)
+					System.out.println("Customer does not exist!");}
 			else if(choice == 3){
 				RemoveReservation(tablelist , custlist);
 			}
@@ -507,8 +511,7 @@ public class UI{
 				tablelist.showEmptyTables();
 				System.out.println("\n");
 			}
-		}while(choice != 0);
-				    
+		}while(choice != 0);			    
 	}
 	private static void printRInfo(Customer customer)
 	{
