@@ -52,7 +52,19 @@ public class Promotional_Package implements Item{
 	 public static void removeitem() {
 		System.out.println("Select id bundle to delete");
 		Scanner sc = new Scanner(System.in);
-		int id = sc.nextInt();
+		int id;
+		 String ss;
+		 int cout = 0;
+		 do {
+			 cout += 1;
+			 if(cout >= 2) {System.out.println("Integer only");
+				 System.out.println("Select id bundle to delete");}
+			 ss = sc.nextLine();
+
+		 } while (!(ss.matches("[0-9]+") && ss.length() > 0));
+		 id = Integer.parseInt(ss);
+
+
 		if(bundle.containsKey(id)){
 			bundle.remove(id);
 			bundle_prices.remove(id);
