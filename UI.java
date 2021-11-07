@@ -238,10 +238,10 @@ public class UI{
 
 	
 	private static void ModifyMenu() {
-		System.out.println(
-				"| 1 | Ala Carte                        |");
-		System.out.println(
-				"| 2 | Promotional Package              |");
+		System.out.println("+---+------------------------------------+");
+		System.out.println("| 1 |  Modify Ala Carte Items            |");
+		System.out.println("| 2 |  Modify Promotional Package Items  |");
+		System.out.println("+---+------------------------------------+");
 
 		Scanner sc = new Scanner(System.in);
 		int op;
@@ -256,21 +256,27 @@ public class UI{
 			Scanner s = new Scanner(System.in);
 			int option;
 			do {
-				System.out.println("Please select option (0 to quit)");
-				System.out.println(
-						"| 1 | Add item                         |  3 | Clear Menu                                   |");
-				System.out.println(
-						"| 2 | Delete items                     |  4 | Display the Menu                             |");
+				System.out.println("Please select an option");
+				System.out.println("+---+------------------------------------+");
+				System.out.println("| 1 |  Add Items                         |");
+				System.out.println("| 2 |  Delete Items                      |");
+				System.out.println("| 3 |  Clear Menu                        |");
+				System.out.println("| 4 |  Display Menu                      |");
+				System.out.println("| 0 |  Quit                              |");
+				System.out.println("+---+------------------------------------+");
 				String ss;
 				int cout = 0;
 				do {
 					cout += 1;
 					if(cout >= 2) {System.out.println("Integer only");
-						System.out.println("Please select option (0 to quit)");
-						System.out.println(
-								"| 1 | Add item                         |  3 | Clear Menu                                   |");
-						System.out.println(
-								"| 2 | Delete items                     |  4 | Display the Menu                             |");
+						System.out.println("Please select an option");
+						System.out.println("+---+------------------------------------+");
+						System.out.println("| 1 |  Add Items                         |");
+						System.out.println("| 2 |  Delete Items                      |");
+						System.out.println("| 3 |  Clear Menu                        |");
+						System.out.println("| 4 |  Display Menu                      |");
+						System.out.println("| 0 |  Quit                              |");
+						System.out.println("+---+------------------------------------+");
 					}
 					ss = s.nextLine();
 
@@ -295,7 +301,12 @@ public class UI{
 						String cate="";
 						int choice;
 						do {
-						System.out.println("Enter the category: 1. Main Course, 2. Drinks, 3. Dessert");
+						System.out.println("Enter the category");
+						System.out.println("+---+------------------------------------+");
+						System.out.println("| 1 |  Main Course                       |");
+						System.out.println("| 2 |  Drinks                            |");
+						System.out.println("| 3 |  Dessert                           |");
+						System.out.println("+---+------------------------------------+");
 						choice = 0 ;
 						try {choice = sc.nextInt();}catch (Exception e) {
 							System.out.println("User input was not a number.");
@@ -338,20 +349,26 @@ public class UI{
 			Scanner s = new Scanner(System.in);
 			int option;
 			do {
-				System.out.println("Please select option (0 to quit)");
-				System.out.println(
-						"| 1 | Add item                         |  3 | Clear Menu                                   |");
-				System.out.println(
-						"| 2 | Delete items                     |  4 | Display the Menu                             |");				String ss;
+				System.out.println("Please select an option");
+				System.out.println("+---+------------------------------------+");
+				System.out.println("| 1 |  Add Items                         |");
+				System.out.println("| 2 |  Delete Items                      |");
+				System.out.println("| 3 |  Clear Menu                        |");
+				System.out.println("| 4 |  Display Menu                      |");
+				System.out.println("| 0 |  Quit                              |");
+				System.out.println("+---+------------------------------------+");				String ss;
 				int cout = 0;
 				do {
 					cout += 1;
 					if(cout >= 2) {System.out.println("Integer only");
-						System.out.println("Please select option (0 to quit)");
-						System.out.println(
-								"| 1 | Add item                         |  3 | Clear Menu                                   |");
-						System.out.println(
-								"| 2 | Delete items                     |  4 | Display the Menu                             |");
+						System.out.println("Please select an option");
+						System.out.println("+---+------------------------------------+");
+						System.out.println("| 1 |  Add Items                         |");
+						System.out.println("| 2 |  Delete Items                      |");
+						System.out.println("| 3 |  Clear Menu                        |");
+						System.out.println("| 4 |  Display Menu                      |");
+						System.out.println("| 0 |  Quit                              |");
+						System.out.println("+---+------------------------------------+");
 						      }
 					ss = s.nextLine();
 
@@ -512,6 +529,8 @@ public class UI{
 					"| 2 | Reservations & Tables            |  5 | Update System                                |");
 			System.out.println(
 					"| 3 | Modify Menu                      |  6 | Quit                                         |");
+			System.out.println(
+					"+------------------------------------------------------------------------------------------+");
 			System.out.println("Please enter your option:");
 			// EXCEPTION HANDLER
 			String ss;
@@ -572,7 +591,12 @@ public class UI{
 				}
 			}
 			else if(option ==6) {
-				System.out.println("******End******");
+				System.out.println(
+						"+------------------------------------------------------------------------------------------+");
+				System.out.println(
+						"|                                     Ending...                                            |");
+				System.out.println(
+						"+------------------------------------------------------------------------------------------+");
 			}
 			else System.out.println("Please input number from 1-6");
 		}while(option != 6);
