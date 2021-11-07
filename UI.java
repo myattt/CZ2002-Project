@@ -424,8 +424,18 @@ public class UI{
 		System.out.println("Welcome to Pub & Grill\n");
 		do {
 			System.out.println("Please select option \n 1. Make Order \n 2. Reservations & Tables \n 3. Modify Menu \n 4. Print Report \n 5. Update System \n 6. Quit");
-			option = sc.nextInt();
-			sc.nextLine();
+			// EXCEPTION HANDLER
+			String ss;
+			int cout = 0;
+			do {
+				cout += 1;
+				if(cout >= 2) {System.out.println("Integer only");
+					System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6. Quit");}
+				ss = sc.nextLine();
+
+			} while (!(ss.matches("[0-9]+") && ss.length() > 0));
+			option = Integer.parseInt(ss);
+			// EXCEPTION HANDLER
 			if(option == 1) {
 				System.out.println("Enter Customer ID");
 				int input1 = sc.nextInt();
