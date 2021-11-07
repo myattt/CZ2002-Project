@@ -496,12 +496,7 @@ public class UI{
 				Customer customer =custlist.getCust(cust_id);
 				boolean expired=checkPeriodExpiry(cust_id ,custlist , tablelist);
 				if(!expired && customer!=null) {
-					System.out.println("****Check Customer Info****");
-					System.out.println("Customer ID	:" + customer.getCustomerID());
-					System.out.println("Customer Name	:" + customer.getCustomerName());
-					System.out.println("Table ID	:" + customer.getTableId());
-					System.out.println("Reservation Date:"+ customer.getDate()[1] + "/" + customer.getDate()[0]+ "/"+ Calendar.getInstance().get(Calendar.YEAR));
-					System.out.println("Reservation Time:"+ customer.getDate()[2] +":"+customer.getDate()[3]+"\n");}
+					printRInfo(customer);
 				}
 			else if(choice == 3){
 				RemoveReservation(tablelist , custlist);
@@ -514,6 +509,20 @@ public class UI{
 		}while(choice != 0);
 				    
 	}
+	private static void printRInfo(Customer customer)
+	{
+	System.out.println(
+				"+--------------------------------------+");
+	System.out.println(
+				"|      Double Check Customer Info      |");
+	System.out.println(
+				"+--------------------------------------+");
+		System.out.println("Customer ID	:" + customer.getCustomerID());
+		System.out.println("Customer Name	:" + customer.getCustomerName());
+		System.out.println("Table ID	:" + customer.getTableId());
+		System.out.println("Reservation Date:"+ customer.getDate()[1] + "/" + customer.getDate()[0]+ "/"+ Calendar.getInstance().get(Calendar.YEAR));
+		System.out.println("Reservation Time:"+ customer.getDate()[2] +":"+customer.getDate()[3]+"\n");
+		}
 
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
