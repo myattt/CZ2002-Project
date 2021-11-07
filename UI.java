@@ -8,7 +8,12 @@ public class UI{
 
 
 	private static void MakeOrder(Customer cust) {
-		System.out.println("****Order Interface****");
+	System.out.println(
+				"+--------------------------------------+");
+	System.out.println(
+				"|           Order Interface            |");
+	System.out.println(
+				"+--------------------------------------+");
 		Staff staff=new Staff();
 		staff.main(cust);
 	}
