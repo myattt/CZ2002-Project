@@ -47,7 +47,7 @@ public class SalesRevenueReport {
 			revenue_day.put(day, revenue_day.get(day) + total_price);
 		}
 
-		System.out.println("**REVENUE BY DAY");
+		System.out.println("-------------REVENUE BY DAY-------------");
 		for(String x : revenue_day.keySet()){
 			System.out.print(x + ": $");
 			System.out.println(revenue_day.get(x));
@@ -90,7 +90,8 @@ public class SalesRevenueReport {
 			revenue_month.put(day, revenue_month.get(day) + total_price);
 		}
 
-		System.out.println("**REVENUE BY MONTH");
+		System.out.println("------------REVENUE BY MONTH------------");
+
 		for(String x : revenue_month.keySet()){
 			System.out.print(x + ": $");
 			System.out.println(revenue_month.get(x));
@@ -99,8 +100,9 @@ public class SalesRevenueReport {
 
 
 	public static void individualitemsales(){
-		System.out.println("**INDIVIDUAL ITEM SALES");
-		System.out.println("****Ala Carte");
+		System.out.println("---------INDIVIDUAL ITEM SALES-----------");
+		System.out.println("----Ala Carte----------------------------");
+
 		HashMap<String, Integer> item_sales= new HashMap<String,Integer>();
 		for(String item: Ala_Carte.Menu_of_restaurants.keySet()){
 			item_sales.put(item, 0);
@@ -116,8 +118,8 @@ public class SalesRevenueReport {
 			System.out.print(item_sales.get(x));
 			System.out.println(" dishes sold");
 		}
+		System.out.println("----Promotional Package------------------");
 
-		System.out.println("****Promotional Package");
 		HashMap<Integer, Integer> bundle_sales= new HashMap<Integer,Integer>();
 		for(Integer bun: Promotional_Package.bundle.keySet()){
 			bundle_sales.put(bun, 0);
