@@ -407,6 +407,21 @@ public class UI{
 		do{
 			System.out.println("****Reservation and Table Settings*****");
 			System.out.println("1. Make Reservation\n2. Check Reservation\n3. Remove Reservation\n4. Table Availability\n0. Quit");
+			System.out.println(
+					"+------------------------------------------------------------------------------------------+");
+			System.out.println(
+					"|                                  Reservation and Table Settings                          |");
+			System.out.println(
+					"+---+----------------------------------+----+----------------------------------------------+");
+			System.out.println(
+					"| 1 | Make Reservation                 |  4 | Table Availability                           |");
+			System.out.println(
+					"| 2 | Check Reservation                |  0 | Quit                                         |");
+			System.out.println(
+					"| 3 | Remove Reservation               |                                                   |");
+			System.out.println("Please enter your option:");
+
+
 			boolean error=true;
 			while (error)
 			{
