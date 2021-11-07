@@ -31,7 +31,10 @@ public class Ala_Carte implements Item{
 
 		String[] catecate= {"Main Course", "Drinks", "Dessert"};
 		for(String cate:catecate){
-			System.out.println("******* " + cate +" ******* ");
+			System.out.println("+----------------------------------------+");
+			String ItemNameSpacing = new String(new char[19 - cate.length()]).replace('\0', ' ');
+			System.out.println("|         "+cate+ ItemNameSpacing+"            |");
+			System.out.println("+----------------------------------------+");
 			for(String key: Ala_Carte.Menu_of_restaurants.keySet()) {
 				if(Ala_Carte.categories.get(key).equals(cate)) {
 					System.out.println(key +": " + Ala_Carte.descriptions.get(key) + "($"+Ala_Carte.Menu_of_restaurants.get(key)+")");
