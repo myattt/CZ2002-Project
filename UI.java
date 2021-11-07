@@ -243,17 +243,32 @@ public class UI{
 			int option;
 			do {
 				System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");
-				option = s.nextInt();
-				s.nextLine();
+				String ss;
+				int cout = 0;
+				do {
+					cout += 1;
+					if(cout >= 2) {System.out.println("Integer only");
+						System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");}
+					ss = s.nextLine();
+
+				} while (!(ss.matches("[0-9]+") && ss.length() > 0));
+				option = Integer.parseInt(ss);
 				if (option == 1) {
 					System.out.println("Enter Item you want to add");
 					String item = s.nextLine();
 					if(!Ala_Carte.Menu_of_restaurants.containsKey(item)) {
 						System.out.println("Enter the description for the item");
 						String description = s.nextLine();
-						System.out.println("Enter the price");
-						int price = s.nextInt();
-						s.nextLine();
+
+						int price = 0;
+						String sizeString;
+						do {
+							System.out.println("Enter the price (integer)");
+							sizeString = s.nextLine();
+
+						} while (!(sizeString.matches("[0-9]+") && sizeString.length() > 0));
+						price = Integer.parseInt(sizeString);
+
 						String cate="";
 						int choice;
 						do {
@@ -301,8 +316,16 @@ public class UI{
 			int option;
 			do {
 				System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");
-				option = s.nextInt();
-				s.nextLine();
+				String ss;
+				int cout = 0;
+				do {
+					cout += 1;
+					if(cout >= 2) {System.out.println("Integer only");
+						System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");}
+					ss = s.nextLine();
+
+				} while (!(ss.matches("[0-9]+") && ss.length() > 0));
+				option = Integer.parseInt(ss);
 				if (option == 1) {
 					p.addItem();
 				}
