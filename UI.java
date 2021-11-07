@@ -14,7 +14,12 @@ public class UI{
 	}
 
 		private static void Booking(TableList tablelist , CustomerList custlist){
-		System.out.println("****Booking Interface****");
+		System.out.println(
+					"+--------------------------------------+");
+		System.out.println(
+					"|       Creating New Reservation       |");
+		System.out.println(
+					"+--------------------------------------+");
 		char cont;
 		boolean member = false;
 		if(tablelist.getNumEmptyTables()<=0 )
@@ -164,7 +169,7 @@ public class UI{
 
 	private static void RemoveReservation(TableList tablelist , CustomerList custlist)
 	{
-		System.out.println("Enter CustomerID");
+		System.out.println("Please enter Customer's ID");
 		Scanner sc = new Scanner(System.in);
 		int cust_id = sc.nextInt();
 		while(cust_id<0) {
@@ -177,7 +182,12 @@ public class UI{
 			System.out.println("No customer found");
 		}
 		else {
-		System.out.println("**** Double Check Customer Info****");
+		System.out.println(
+					"+--------------------------------------+");
+		System.out.println(
+					"|      Double Check Customer Info      |");
+		System.out.println(
+					"+--------------------------------------+");
 		System.out.println("Customer ID	:" + customer.getCustomerID());
 		System.out.println("Customer Name	:" + customer.getCustomerName());
 		System.out.println("Table ID	:" + customer.getTableId()+"\n");
@@ -417,23 +427,27 @@ public class UI{
 		int choice=0;
 		
 		do{
-			System.out.println("****Reservation and Table Settings*****");
-			System.out.println("1. Make Reservation\n2. Check Reservation\n3. Remove Reservation\n4. Table Availability\n0. Quit");
 			System.out.println(
-					"+------------------------------------------------------------------------------------------+");
+					"+--------------------------------------+");
 			System.out.println(
-					"|                                  Reservation and Table Settings                          |");
+					"|    Reservation and Table Settings    |");
 			System.out.println(
-					"+---+----------------------------------+----+----------------------------------------------+");
+					"+---+----------------------------------+");
 			System.out.println(
-					"| 1 | Make Reservation                 |  4 | Table Availability                           |");
+					"| 1 | Make Reservation                 |");
 			System.out.println(
-					"| 2 | Check Reservation                |  0 | Quit                                         |");
+					"| 2 | Check Reservation                |");
 			System.out.println(
-					"| 3 | Remove Reservation               |                                                   |");
+					"| 3 | Remove Reservation               |");
+			System.out.println(
+					"| 4 | Table Availability               |");
+			System.out.println(
+					"+---+----------------------------------+");
+			System.out.println(
+					"|                            (0): Quit |");
+			System.out.println(
+					"+--------------------------------------+");
 			System.out.println("Please enter your option:");
-
-
 			boolean error=true;
 			while (error)
 			{
