@@ -246,13 +246,22 @@ public class UI{
 			Scanner s = new Scanner(System.in);
 			int option;
 			do {
-				System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");
+				System.out.println("Please select option (0 to quit)");
+				System.out.println(
+						"| 1 | Add item                         |  3 | Clear Menu                                   |");
+				System.out.println(
+						"| 2 | Delete items                     |  4 | Display the Menu                             |");
 				String ss;
 				int cout = 0;
 				do {
 					cout += 1;
 					if(cout >= 2) {System.out.println("Integer only");
-						System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");}
+						System.out.println("Please select option (0 to quit)");
+						System.out.println(
+								"| 1 | Add item                         |  3 | Clear Menu                                   |");
+						System.out.println(
+								"| 2 | Delete items                     |  4 | Display the Menu                             |");
+					}
 					ss = s.nextLine();
 
 				} while (!(ss.matches("[0-9]+") && ss.length() > 0));
@@ -319,8 +328,11 @@ public class UI{
 			Scanner s = new Scanner(System.in);
 			int option;
 			do {
-				System.out.println("Please select option \n 1. Add item \n 2. Delete items \n 3. Clear Menu \n 4. Display the Menu (0 to quit)");
-				String ss;
+				System.out.println("Please select option (0 to quit)");
+				System.out.println(
+						"| 1 | Add item                         |  3 | Clear Menu                                   |");
+				System.out.println(
+						"| 2 | Delete items                     |  4 | Display the Menu                             |");				String ss;
 				int cout = 0;
 				do {
 					cout += 1;
