@@ -39,17 +39,19 @@ public class Order {
 		int b;
 		Scanner sc = new Scanner(System.in);
 		do{
-			System.out.println("******* Promotional Package *******");
+			System.out.println("+----------------------------------------+");
+			System.out.println("|         Promotional Package            |");
+			System.out.println("+----------------------------------------+");
 			for(int i=1; i<Promotional_Package.bundle.size()+1; i++){
 				System.out.println(Promotional_Package.bundle.get(i) +": " + Promotional_Package.bundle_desc.get(i) + " ($" + Promotional_Package.bundle_prices.get(i)+")");
 			}
-			System.out.println("Type the bundle id you want to add to your order (0 to quit)");
+			System.out.println("Type the Bundle Id to add to the order (0 to quit)");
 
 			b = sc.nextInt();
 
 			if(b == 0)break;
 			if(Promotional_Package.bundle.containsKey(b))order_bundle.add(b);
-			else System.out.println("Invalid bundle id");
+			else System.out.println("Invalid Bundle Id");
 		}while(b != 0);
 	}
 
