@@ -45,7 +45,7 @@ public class UI{
 			         try {
 			        	paxsize=sc.nextInt();
 			        	if(paxsize<1 || paxsize>10) {
-							System.out.println("Customer pax too large!");
+							System.out.println("Customer pax invalid!");
 							continue;
 						}
 			            error=false;
@@ -155,6 +155,7 @@ public class UI{
 					int customerId = customer.getCustomerID();
 					boolean assigned = tablelist.assignTable(tableId+1 , customerId);
 					if(assigned){
+						System.out.println("Customer ID: " + customerId);
 						customer.setTableId(tableId+1);
 						customer.setDate(month, day, hour, minute);
 					}
