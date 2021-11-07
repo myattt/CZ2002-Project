@@ -347,9 +347,13 @@ public class UI{
 
 	private static void PrintReport(CustomerList custlist) {
 		System.out.println("-----------------REPORT-----------------");
-		SalesRevenueReport.generateByDay(custlist);
-		SalesRevenueReport.generateByMonth(custlist);
-		SalesRevenueReport.individualitemsales();
+		try {
+			SalesRevenueReport.generateByDay(custlist);
+			SalesRevenueReport.generateByMonth(custlist);
+			SalesRevenueReport.individualitemsales();
+		}catch(Exception e){
+			System.out.println("Something wrong with the system, please contact staff for fixing");
+		}
 		System.out.println("-----------------REPORT-----------------");
 
 	}
@@ -453,11 +457,13 @@ public class UI{
 			do {
 				cout += 1;
 				if(cout >= 2) {System.out.println("Integer only");
-					System.out.println("Please select option \n 1. Make Order \n 2. Create Reservation \n 3. Remove Reservation \n 4. ModifyMenu \n 5. PrintReport \n 6. Quit");}
+				}
 				ss = sc.nextLine();
 
 			} while (!(ss.matches("[0-9]+") && ss.length() > 0));
 			option = Integer.parseInt(ss);
+
+			cout = 0;
 			// EXCEPTION HANDLER
 			if(option == 1) {
 				System.out.println("Enter Customer ID");
@@ -474,9 +480,9 @@ public class UI{
 					//System.out.println("***Current Customers and Order***");
 					//custlist.printList();
 					}
-				else {
-					System.out.println("Your reservation period has expired, please book again");
-				}
+					else {
+						System.out.println("Your reservation period has expired, please book again");
+					}
 				}
 				else {
 					System.out.println("Please make a booking first");
@@ -505,9 +511,8 @@ public class UI{
 			}
 			else if(option ==6) {
 				System.out.println("******End******");
-				option=0;
 			}
-			else option=0;
-		}while(option != 0);
+			else System.out.println("Please input number from 1-6");
+		}while(option != 6);
 	}
 }
