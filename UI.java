@@ -416,13 +416,11 @@ public class UI{
 
 	private static void PrintReport(CustomerList custlist) {
 		System.out.println("-----------------REPORT-----------------");
-		try {
+
 			SalesRevenueReport.generateByDay(custlist);
 			SalesRevenueReport.generateByMonth(custlist);
 			SalesRevenueReport.individualitemsales();
-		}catch(Exception e){
-			System.out.println("Something wrong with the system, please contact staff for fixing");
-		}
+
 		System.out.println("-----------------REPORT-----------------");
 
 	}
