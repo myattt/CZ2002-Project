@@ -4,9 +4,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 public class UI{
 
-	
-
-
+	/**
+	 * create an interface for an order
+	 * @param cust Customer
+	 */
 	private static void MakeOrder(Customer cust) {
 	System.out.println(
 				"+--------------------------------------+");
@@ -18,6 +19,11 @@ public class UI{
 		staff.main(cust);
 	}
 
+	/**
+	 * create an interface for booking/new reservation
+	 * @param tablelist list of tables
+	 * @param custlist list of customers
+	 */
 		private static void Booking(TableList tablelist , CustomerList custlist){
 		System.out.println(
 					"+--------------------------------------+");
@@ -188,6 +194,11 @@ public class UI{
 		}
 	}
 
+	/**
+	 * remove reservation
+	 * @param tablelist list of tables
+	 * @param custlist list of customers
+	 */
 	private static void RemoveReservation(TableList tablelist , CustomerList custlist)
 	{
 		System.out.println("Please enter Customer's ID");
@@ -230,7 +241,12 @@ public class UI{
 			System.out.println("No reservations removed...");
 		}
 	}
-	
+
+	/**
+	 * return the table id (>= paxsize and available)
+	 * @param paxsize the size of customers in an order
+	 * @return integer tableid
+	 */
 	private static int table_size(int paxsize) {
 		int tableSize;
 		switch(paxsize){
@@ -257,7 +273,9 @@ public class UI{
 		return tableSize;
 	}
 
-	
+	/**
+	 * Interface for modifying menu
+	 */
 	private static void ModifyMenu() {
 		System.out.println("+---+------------------------------------+");
 		System.out.println("| 1 |  Modify Ala Carte Items            |");
@@ -414,6 +432,10 @@ public class UI{
 		}
 	}
 
+	/**
+	 * print daily sales report, monthly sales report and individual item sales
+	 * @param custlist list of customers
+	 */
 	private static void PrintReport(CustomerList custlist) {
 		System.out.println("-----------------REPORT-----------------");
 
@@ -424,12 +446,26 @@ public class UI{
 		System.out.println("-----------------REPORT-----------------");
 
 	}
+
+	/**
+	 * check whether a customer id is assigned or not
+	 * @param cust_id id of customer
+	 * @param cust_list list of customers
+	 * @return true/false
+	 */
 	public static boolean checkCustomerDetails(int cust_id , CustomerList cust_list){
 		boolean exist =cust_list.checkCustInfo(cust_id);
 		return exist;
 
 	}
-	
+
+	/**
+	 * check whether the reservation is expired or not
+	 * @param cust_id id of customer
+	 * @param cust_list list of customers
+	 * @param tablelist list of tables
+	 * @return true/false
+	 */
 	public static boolean checkPeriodExpiry(int cust_id, CustomerList cust_list , TableList tablelist) {
 	int[] date = cust_list.getCustDate(cust_id);
 	if(date==null)
@@ -463,7 +499,12 @@ public class UI{
 	}
 	return false;
 	}
-	
+
+	/**
+	 * create interface for reservations
+	 * @param tablelist list of tables
+	 * @param custlist list of customers
+	 */
 	private static void ReservationandTables(TableList tablelist,CustomerList custlist)
 	{
 		Scanner sc = new Scanner(System.in);
@@ -526,6 +567,11 @@ public class UI{
 			}
 		}while(choice != 0);			    
 	}
+
+	/**
+	 * double check customer info
+	 * @param customer Customer
+	 */
 	private static void printRInfo(Customer customer)
 	{
 	System.out.println(
@@ -541,6 +587,9 @@ public class UI{
 		System.out.println("Reservation Time:"+ customer.getDate()[2] +":"+customer.getDate()[3]+"\n");
 		}
 
+	/**
+	 * Main UI of the project
+	 */
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
 		TableList tablelist= new TableList();
