@@ -9,7 +9,6 @@ public class Customer {
 	   private int tableId; 
 	   private boolean membership;
 	   private double contact;
-	   private Calendar rDate;
 	   private String[] ala;
 	   private Integer[] bundle;
 	   private String staff_name;
