@@ -9,6 +9,9 @@ public class Promotional_Package implements Item{
 	static HashMap<Integer,Integer> bundle_prices=new HashMap<Integer,Integer>(){{put(1,300);put(2,400);}};
 	static HashMap<Integer,String> bundle_desc=new HashMap<Integer,String>(){{put(1,"Very cheap");put(2,"Best choice award");}};
 
+	/**
+	 * display the menu of the promotional package
+	 */
 	 public void displayItem() {
 		 System.out.println("+----------------------------------------+");
 		 System.out.println("|         Promotional Package            |");
@@ -18,6 +21,9 @@ public class Promotional_Package implements Item{
 		}
 	}
 
+	/**
+	 * add an bundle into the menu (with the the assigned bundle id)
+	 */
 	 static void addItem() {
 		int s = bundle.size();
 		int id_bundle = 99999;
@@ -51,6 +57,9 @@ public class Promotional_Package implements Item{
 		}
 	}
 
+	/**
+	 * remove an bundle by removing the bundle id
+	 */
 	 public static void removeitem() {
 		System.out.println("Select id bundle to delete");
 		Scanner sc = new Scanner(System.in);
@@ -78,9 +87,5 @@ public class Promotional_Package implements Item{
 		}
 	}
 
-	public static void main(String[] args) {
-
-
-	}
 
 }
