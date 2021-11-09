@@ -679,6 +679,7 @@ public class UI{
 						checkPeriodExpiry(table.getCustomerID() ,custlist , tablelist);
 					}
 				}
+				System.out.println("Note: Each Reservation has 30 min grace period after their reserved timing before they are removed");
 			}
 			else if(option ==6) {
 				System.out.println(
