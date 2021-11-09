@@ -6,8 +6,8 @@ public class Promotional_Package implements Item{
 		put(1,new ArrayList<String>(Arrays.asList("Coca Cola", "Pizza", "Ice cream")));
 		put(2, new ArrayList<String>(Arrays.asList("Coca Cola", "Pizza")));
 	}};
-	static HashMap<Integer,Integer> bundle_prices=new HashMap<Integer,Integer>(){{put(1,300);put(2,400);}};
-	static HashMap<Integer,String> bundle_desc=new HashMap<Integer,String>(){{put(1,"Very cheap");put(2,"Best choice award");}};
+	static HashMap<Integer,Integer> bundle_prices=new HashMap<Integer,Integer>(){{put(1,18);put(2,22);}};
+	static HashMap<Integer,String> bundle_desc=new HashMap<Integer,String>(){{put(1,"Set on sale");put(2,"Fizzy chilled drink and warm pizza");}};
 
 	/**
 	 * display the menu of the promotional package
