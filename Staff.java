@@ -13,7 +13,11 @@ public class Staff {
 	  public static ArrayList<String> ala;
 	  public static ArrayList<Integer> bundle;
 	  
-
+	  
+	 /**
+	  * interface for staffs to make orders 
+	  * @param Customer cust
+	  */
 	  public static void main(Customer cust) {
 			Scanner sc = new Scanner(System.in);
 			Order o = new Order();
@@ -73,6 +77,10 @@ public class Staff {
 				cust.setBundleOrder(bundleorder);
 	  }
 	 
+	  /**
+	   * returns id of staff 
+	   * @return int staff_id
+	   */
 	  public static int staffInfo() {
 	    Random rand = new Random();
 	    int rdint = rand.nextInt(3);
