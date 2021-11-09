@@ -6,6 +6,11 @@ public class OrderInvoice {
 	private static double discountRate=0.1;
 	private static double svcCharge=0.1;
 	
+	/**
+	 * prints Order Invoice (receipt)
+	 * @param custID customer ID
+	 * @param custlist list of customers 
+	 */
 	public void printInvoice(int custID,CustomerList custlist)
 	{
 		//timestamp
@@ -52,14 +57,30 @@ public class OrderInvoice {
       	
 	}
 	
+	/**
+	 * calculates subtotal (without GST,disount,service charge)
+	 * @param customer 
+	 * @return SubTotal
+	 */
 	public double calcSubtotal(Customer customer) {
 		return (double) customer.getTotalPrice();
 	}
 	
+	/**
+	 * returns total amount including GST, discount and service charge 
+	 * @param customer
+	 * @return Total 
+	 */
 	public double calcTotal(Customer customer)
 	{
 		return(customer.getTotalPrice() - calcDiscount(customer)+ calcGST(customer) + calcSvcCharge(customer));
 	}
+	
+	/**
+	 * calculates discount customer is entitled to(if customer has membership)
+	 * @param customer
+	 * @return discount 
+	 */
 	public double calcDiscount(Customer customer)
 	{
 		if(customer.getMembership())
@@ -67,16 +88,32 @@ public class OrderInvoice {
 		return(0.00);
 		
 	}
+	
+	/**
+	 * calculates GST customer should pay
+	 * @param customer
+	 * @return GST
+	 */
 	public double calcGST(Customer customer)
 	{
 		return( customer.getTotalPrice()*taxRate);
 		
 	}
+	
+	/**
+	 * calculates service charge customer should pay 
+	 * @param customer
+	 * @return service charge
+	 */
 	public double calcSvcCharge(Customer customer)
 	{
 		return(customer.getTotalPrice()*svcCharge);
 	}
 	
+	/**
+	 * prints items and quantity of items that customer has purchased 
+	 * @param cust
+	 */
 	public void findAlaQuantity(Customer cust) {
 		DecimalFormat df = new DecimalFormat("0.00");
 		List<String> ala_list = Arrays.asList(cust.getAlaOrder());
