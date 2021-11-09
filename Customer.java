@@ -56,7 +56,6 @@ public class Customer {
 	     return this.rDate;
 	   }
 	   /**
-	    * Get the customer name
 	    * @return String cust_name;
 	    */
 
