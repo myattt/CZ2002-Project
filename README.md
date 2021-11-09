@@ -3,7 +3,7 @@
 CZ2002 Project
 
 ## Javadoc
-
+[here](https://myattt.github.io/CZ2002-Project/javadoc/package-summary.html)
 
 ## UML Class Diagram
 ![RRPSS UML Class Diagram](https://github.com/myattt/CZ2002-Project/blob/main/images/Class%20Diagram%20(1).png)
