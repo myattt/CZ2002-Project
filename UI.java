@@ -466,63 +466,49 @@ public class UI{
 	 * @param tablelist list of tables
 	 * @return true/false
 	 */
-	public static boolean checkPeriodExpiry(int cust_id, CustomerList cust_list , TableList tablelist) {
-	int[] date = cust_list.getCustDate(cust_id);
-	if(date==null)
-		return false;
-	Calendar Period = Calendar.getInstance();
-	int periodMon = date[0];
-	int periodDay = date[1];
-	int periodMin = date[3] + 30;
-	int periodHour = date[2];
-	if(periodMin > 59) {
-		periodHour++;
-		periodMin = periodMin - 60;
-	}
-	String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
-	System.out.printf("Reserved on %02d %s %02d : %02d \n", date[1], monthName[date[0]-1], date[2], date[3]);
-	int mon = Period.get(Calendar.MONTH);
-	int day =  Period.get(Calendar.DAY_OF_MONTH);
-	int hour = Period.get(Calendar.HOUR_OF_DAY);
-	int min = Period.get(Calendar.MINUTE);
-	
-
-	if(mon > periodMon || day > periodDay) {
-		System.out.printf("Currently %02d %s %02d : %02d \n",day,monthName[mon], hour, min );
-		Customer cust = cust_list.getCust(cust_id);
-		tablelist.unAssignSeat(cust.getTableId());
-		System.out.println("\nCustomer ID:"+cust.getCustomerID() + "\nCustomer Name:" + cust.getCustomerName());
-		System.out.print("Reservation was ");
-		cust_list.removeCust(cust_id);
-		System.out.println("Due to Period Expired");
-		return true;
-	}
-
-	if(hour >= periodHour) {
-			System.out.printf("Currently %02d %s %02d : %02d \n",day,monthName[mon], hour, min );
+	public static boolean checkPeriodExpiry(int cust_id, CustomerList cust_list , TableList tablelist){
+		int[] date = cust_list.getCustDate(cust_id);
+		if(date==null)
+			return false;
+		Calendar Period = Calendar.getInstance();
+		int periodMon = date[0];
+		int periodDay = date[1];
+		int periodMin = date[3] + 30;
+		int periodHour = date[2];
+		if(periodMin > 59) {
+			periodHour++;
+			periodMin = periodMin - 60;
+		}
+		String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+		System.out.println("\nCustomer ID:"+ cust_list.getCust(cust_id).getCustomerID());
+		System.out.printf("Reserved on %02d %s 2021: %02d %02d \n", date[1], monthName[date[0]-1], date[2], date[3]);
+		int mon = Period.get(Calendar.MONTH);
+		int day =  Period.get(Calendar.DAY_OF_MONTH);
+		int hour = Period.get(Calendar.HOUR_OF_DAY);
+		int min = Period.get(Calendar.MINUTE);
+		
+		Calendar reserve = Calendar.getInstance();
+		reserve.set(Calendar.HOUR_OF_DAY, periodHour);
+		reserve.set(Calendar.DAY_OF_MONTH, periodDay);
+		reserve.set(Calendar.MONTH , periodMon-1);
+		reserve.set(Calendar.MINUTE , periodMin);
+		//System.out.println(Period.getTime());
+		//System.out.println(reserve.getTime());
+		
+		//System.out.println(reserve.getTime());
+		if(reserve.before(Period)) {
+			System.out.printf("Currently %02d %s 2021: %02d %02d \n",day,monthName[mon], hour, min );
 			Customer cust = cust_list.getCust(cust_id);
 			tablelist.unAssignSeat(cust.getTableId());
-			System.out.println("\nCustomer ID:"+cust.getCustomerID() + "\nCustomer Name:" + cust.getCustomerName());
+			System.out.println("\nCustomer Name:" + cust.getCustomerName());
 			System.out.print("Reservation was ");
 			cust_list.removeCust(cust_id);
 			System.out.println("Due to Period Expired");
 			return true;
-	}
-	if(min >= periodMin) {
-		System.out.printf("Currently %02d %s %02d : %02d \n",day,monthName[mon], hour, min );
-		Customer cust = cust_list.getCust(cust_id);
-		tablelist.unAssignSeat(cust.getTableId());
-		System.out.println("\nCustomer ID:"+cust.getCustomerID() + "\nCustomer Name:" + cust.getCustomerName());
-		System.out.print("Reservation was ");
-		cust_list.removeCust(cust_id);
-		System.out.println("Due to Period Expired");
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
+	    }
+		
+	    return false;
+		}
 	/**
 	 * create interface for reservations
 	 * @param tablelist list of tables
