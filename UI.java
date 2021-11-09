@@ -498,7 +498,7 @@ public class UI{
 		return true;
 	}
 
-	if(hour >= periodHour && min >= periodMin) {
+	if(hour >= periodHour) {
 			System.out.printf("Currently %02d %s %02d : %02d \n",day,monthName[mon], hour, min );
 			Customer cust = cust_list.getCust(cust_id);
 			tablelist.unAssignSeat(cust.getTableId());
@@ -507,9 +507,19 @@ public class UI{
 			cust_list.removeCust(cust_id);
 			System.out.println("Due to Period Expired");
 			return true;
-		}
+	}
+	if(min >= periodMin) {
+		System.out.printf("Currently %02d %s %02d : %02d \n",day,monthName[mon], hour, min );
+		Customer cust = cust_list.getCust(cust_id);
+		tablelist.unAssignSeat(cust.getTableId());
+		System.out.println("\nCustomer ID:"+cust.getCustomerID() + "\nCustomer Name:" + cust.getCustomerName());
+		System.out.print("Reservation was ");
+		cust_list.removeCust(cust_id);
+		System.out.println("Due to Period Expired");
+		return true;
+	}
 	else {
-			return false;
+		return false;
 	}
 }
 
