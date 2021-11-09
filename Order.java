@@ -12,10 +12,17 @@ public class Order {
 	private static ArrayList<String> order_ala = new ArrayList<>();
 	private static ArrayList<Integer> order_bundle = new ArrayList<>();
 
+	/**
+	 * start a new order by clearing the menu of the last customer
+	 */
 	public static void startOrder(){
 		order_bundle.clear();
 		order_ala.clear();
 	}
+
+	/**
+	 * display both Ala Carte and Promotional Package menu
+	 */
 	public static void viewMenu(){
 		Ala_Carte a = new Ala_Carte();
 		Promotional_Package p = new Promotional_Package();
@@ -23,6 +30,9 @@ public class Order {
 		p.displayItem();
 	}
 
+	/**
+	 * Adding Ala Carte item
+	 */
 	public static void addalaItem() {
 		String item;
 		Scanner sc = new Scanner(System.in);
@@ -35,6 +45,10 @@ public class Order {
 		}while(!item.equals("q"));
 	}
 
+
+	/**
+	 * Adding Promotional Package item
+	 */
 	public static void addbundleItem() {
 		int b;
 		Scanner sc = new Scanner(System.in);
@@ -55,6 +69,9 @@ public class Order {
 		}while(b != 0);
 	}
 
+	/**
+	 * Removing Ala Carte item
+	 */
 	public static void removealaItem() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Which one?");
@@ -63,6 +80,9 @@ public class Order {
 		else System.out.println("Haven't chosen yet");
 	}
 
+	/**
+	 * Removing Promotional Package item
+	 */
 	public static void removebundleItem() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Which one?");
@@ -71,17 +91,27 @@ public class Order {
 		else System.out.println("Haven't chosen yet");
 	}
 
+	/**
+	 * to view the order of the customer
+	 */
 	public static void viewOrder() {
 		System.out.println(order_ala);
 		System.out.println(order_bundle);
 	}
-	
-	
+
+
+	/**
+	 *
+	 * @return list of Ala Carte items in the menu
+	 */
 	public ArrayList<String> getAlaOrder()
 	{
 		return order_ala;
 	}
-	
+	/**
+	 *
+	 * @return list of Promotional Package items in the menu
+	 */
 	public ArrayList<Integer> getBundleOrder()
 	{
 		return order_bundle;
