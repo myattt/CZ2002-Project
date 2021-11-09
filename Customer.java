@@ -49,13 +49,6 @@ public class Customer {
 	   } 
 	
 	   /**
-	    *  
-	    * @return Calender r.Date
-	    */
-	   public Calendar getRDate(){
-	     return this.rDate;
-	   }
-	   /**
 	    * @return String cust_name;
 	    */
 
@@ -132,14 +125,6 @@ public class Customer {
 	   public void setContact(double contact)
 	   {
 		   this.contact=contact;
-	   }
-	   /**
-	    * 
-	    * @param rDate
-	    */
-	   public void setRDate(Calendar rDate)
-	   {
-		   this.rDate=rDate;
 	   }
 	   /**
 	    * set alacarte order for customer 
