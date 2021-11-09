@@ -24,7 +24,7 @@ public class Customer {
 
 	   
 	  /**
-	    * 
+	    * constructor to initialise customer 
 	    * @param pax
 	    * @param cust_id
 	    * @param cust_name
@@ -47,11 +47,11 @@ public class Customer {
 	   public int getCustomerID() { 
 	    return this.cust_id; 
 	   } 
+	
 	   /**
-	    * 
+	    *  
 	    * @return Calender r.Date
 	    */
-
 	   public Calendar getRDate(){
 	     return this.rDate;
 	   }
@@ -70,17 +70,16 @@ public class Customer {
 	   public int getTableId() { 
 	    return this.tableId; 
 	   } 
+	
 	   /**
-	    * 
+	    * sets id of customer
 	    * @param cust_id
 	    */
-
-	   
 	   public void setCustomerID(int cust_id) { 
 	    this.cust_id = cust_id; 
 	   } 
 	   /**
-	    * 
+	    * sets customer name
 	    * @param cust_name
 	    */
 	   
@@ -88,7 +87,7 @@ public class Customer {
 	    this.cust_name = cust_name; 
 	   } 
 	   /**
-	    * 
+	    * set tableid for customer 
 	    * @param tableId
 	    */
 	   
@@ -96,14 +95,14 @@ public class Customer {
 	    this.tableId = tableId; 
 	   } 
 	   /**
-	    * 
+	    * set membership for customer ( if they have membership)
 	    * @param membership
 	    */
 	   public void member(boolean membership) {
 	    this.membership = membership;
 	  }
 	   /**
-	    * 
+	    * checks if customer has membership
 	    * @return boolean membership
 	    */
 	   
@@ -111,7 +110,7 @@ public class Customer {
 		   return this.membership;
 	   }
 	   /**
-	    * 
+	    * set paxsize of customer
 	    * @param paxsize
 	    */
 	   public void setPaxSize(int paxsize)
@@ -119,7 +118,7 @@ public class Customer {
 		   this.pax=paxsize;
 	   }
 	   /**
-	    * 
+	    * return paxsize of customer 
 	    * @return int pax
 	    */
 	   public int getPaxSize()
@@ -127,7 +126,7 @@ public class Customer {
 		   return this.pax;
 	   }
 	   /**
-	    * 
+	    * set contact of customer
 	    * @param contact
 	    */
 	   public void setContact(double contact)
@@ -143,7 +142,7 @@ public class Customer {
 		   this.rDate=rDate;
 	   }
 	   /**
-	    * 
+	    * set alacarte order for customer 
 	    * @param ala
 	    */
 	   public void setAlaOrder(String[] ala)
@@ -151,7 +150,7 @@ public class Customer {
 		   this.ala=ala;
 	   }
 	   /**
-	    * 
+	    * set promotional order for customer 
 	    * @param bundle
 	    */
 	   public void setBundleOrder(Integer[] bundle)
@@ -159,7 +158,7 @@ public class Customer {
 		   this.bundle=bundle;
 	   }
 	   /**
-	    * 
+	    * get alacarte order details for customer 
 	    * @return String[] ala
 	    */
 	   
@@ -168,7 +167,7 @@ public class Customer {
 		   return this.ala;
 	   }
 	   /**
-	    * 
+	    * get bundleorder details for customer 
 	    * @return Integer[] bundle
 	    */
 	   public Integer[] getBundleOrder()
