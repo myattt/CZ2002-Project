@@ -10,7 +10,10 @@ public class SalesRevenueReport {
 	private int total_revenue;
 
 
-
+	/**
+	 * print daily sales report
+	 * @param cust_list list of customers
+	 */
 	public static void generateByDay(CustomerList cust_list) {
 		ArrayList<String>dates = new ArrayList<>();
 		HashMap<String, Integer> revenue_day= new HashMap<String,Integer>();
@@ -53,6 +56,12 @@ public class SalesRevenueReport {
 			System.out.println(revenue_day.get(x));
 		}
 	}
+
+
+	/**
+	 * print monthly sales report
+	 * @param cust_list list of customers
+	 */
 
 	public static void generateByMonth(CustomerList cust_list) {
 		ArrayList<String>dates = new ArrayList<>();
@@ -99,6 +108,9 @@ public class SalesRevenueReport {
 	}
 
 
+	/**
+	 * print individual sales report
+	 */
 	public static void individualitemsales(){
 		System.out.println("---------INDIVIDUAL ITEM SALES-----------");
 		System.out.println("----Ala Carte----------------------------");
