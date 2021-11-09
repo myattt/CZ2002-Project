@@ -133,7 +133,7 @@ public class UI{
 			         try {
 			        	hour=sc.nextInt();
 			        	if(hour<10 || hour>22) {
-							System.out.println("Store Operating Hours : 10AM - 10PM");
+							System.out.println("Restaurant Operating Hours : 10AM - 10PM");
 							System.out.println("Please enter a time between 10 and 22");
 							continue;
 						}
@@ -162,9 +162,6 @@ public class UI{
 			        	  sc.next();
 			          }
 				}
-				
-				Calendar rDate;
-				rDate = Calendar.getInstance();
 				int suitableTable = table_size(paxsize);
 				int tableId = tablelist.findSuitableTable(suitableTable);
 				if(tableId == -1)
