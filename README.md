@@ -1,5 +1,5 @@
 # CZ2002-project
-# SCRAME
+# RRPSS
 CZ2002 Project
 
 ## Javadoc
