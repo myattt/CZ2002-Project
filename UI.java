@@ -473,11 +473,11 @@ public class UI{
 	Calendar Period = Calendar.getInstance();
 	int periodMon = date[0];
 	int periodDay = date[1];
-	int periodMin = date[3];
+	int periodMin = date[3] + 30;
 	int periodHour = date[2];
-	if(date[3] + 30 > 59) {
+	if(periodMin > 59) {
 		periodHour++;
-		periodMin -= 30;
+		periodMin = periodMin - 60;
 	}
 	String[] monthName = {"Jan","Feb", "Mar","Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 	System.out.printf("Reserved on %02d %s %02d : %02d \n", date[1], monthName[date[0]-1], date[2], date[3]);
@@ -487,7 +487,9 @@ public class UI{
 	int min = Period.get(Calendar.MINUTE);
 	
 
-	if(mon >= periodMon-1 && min >= periodMin && hour >= periodHour && day >= periodDay) {
+	if(mon >= periodMon-1 && day >= periodDay) {
+		if (hour >= periodHour){
+			if(min >= periodMin) {
 		System.out.printf("Currently %02d %s %02d : %02d \n",day,monthName[mon], hour, min );
 		Customer cust = cust_list.getCust(cust_id);
 		tablelist.unAssignSeat(cust.getTableId());
@@ -496,8 +498,16 @@ public class UI{
 		cust_list.removeCust(cust_id);
 		System.out.println("Due to Period Expired");
 		return true;
+			}
+			else
+				return false;
+		}
+		else {
+			return false;
+		}
 	}
-	return false;
+	else
+		return false;
 	}
 
 	/**
