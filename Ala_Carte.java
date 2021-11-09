@@ -10,12 +10,23 @@ public class Ala_Carte implements Item{
 	public static HashMap<String, String> categories = new HashMap <String,  String>(){{put("Coca Cola","Drinks");put("Ice cream","Dessert");put("Pizza","Main Course");put("Spaghetti","Main Course"); }};
 	//Name of item, categories
 
+	/**
+	 * adding item into AlaCarte Menu
+	 * @param item String: name of the item added
+	 * @param description String: the description of the item
+	 * @param price int: the price of the item
+	 * @param category String: the category of the item (Main Course, Drinks or Dessert)
+	 */
 	public void addItem( String item , String description, int price, String category) {
 		Ala_Carte.Menu_of_restaurants.put(item, price);
 		Ala_Carte.descriptions.put(item, description);
 		Ala_Carte.categories.put(item, category);
 	}
 
+	/**
+	 * remove the item out of the AlaCarte menu
+	 * @param item String: name of the item want to be removed
+	 */
 	public void removeItem(String item) {
 		if(Ala_Carte.Menu_of_restaurants.containsKey(item)){
 			Ala_Carte.Menu_of_restaurants.remove(item);
@@ -25,8 +36,10 @@ public class Ala_Carte implements Item{
 
 	}
 
-	
 
+	/**
+	 * to display the menu of ala carte
+	 */
 	public void displayItem(){
 
 		String[] catecate= {"Main Course", "Drinks", "Dessert"};
