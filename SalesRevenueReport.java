@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -54,10 +55,15 @@ public class SalesRevenueReport {
 			}catch(Exception e){}
 		}
 
-		System.out.println("-------------REVENUE BY DAY-------------");
+		System.out.println(
+				          "+----------------------------------------+");
+		System.out.println(
+						   "|             Revenue By Day             |");
+		System.out.println(
+				          "+----------------------------------------+");
 		for(String x : revenue_day.keySet()){
 			try{
-			System.out.print(x + ": $");
+			System.out.print(x + "\t: $");
 			System.out.println(revenue_day.get(x));
 		}catch(Exception e){}
 		}
@@ -109,11 +115,16 @@ public class SalesRevenueReport {
 		}catch(Exception e){}
 		}
 
-		System.out.println("------------REVENUE BY MONTH------------");
+		System.out.println(
+				"+----------------------------------------+");
+		System.out.println(
+				"|             Revenue By Month           |");
+		System.out.println(
+				"+----------------------------------------+");
 
 		for(String x : revenue_month.keySet()){
 			try{
-			System.out.print(x + ": $");
+			System.out.print(x + "\t: $");
 			System.out.println(revenue_month.get(x));
 		}catch(Exception e){}
 		}
@@ -124,8 +135,6 @@ public class SalesRevenueReport {
 	 * print individual sales report
 	 */
 	public static void individualitemsales(){
-		System.out.println("---------INDIVIDUAL ITEM SALES-----------");
-		System.out.println("----Ala Carte----------------------------");
 
 		HashMap<String, Integer> item_sales= new HashMap<String,Integer>();
 		for(String item: Ala_Carte.Menu_of_restaurants.keySet()){
@@ -139,11 +148,23 @@ public class SalesRevenueReport {
 		}catch(Exception e){}
 		}
 
+		System.out.println(
+				"+----------------------------------------+");
+		System.out.println(
+				"|          Individual Item Sales         |");
+		System.out.println(
+				"+----------------------------------------+");
+		System.out.println("----Ala Carte----------------------------");
+		DecimalFormat df = new DecimalFormat("0.00");
+		String it = "Item";
+		String qu = "Quantity";
+		String pr = "Price";
+		String nnn = new String(new char[18 - qu.length()]).replace('\0', ' ');
+		System.out.println(it + nnn + qu + "     " + pr);
 		for(String x : item_sales.keySet()){
 			try{
-			System.out.print(x + ": has ");
-			System.out.print(item_sales.get(x));
-			System.out.println(" dishes sold");
+				String ItemNameSpacing = new String(new char[18 - x.length()]).replace('\0', ' ');
+				System.out.println(x + ItemNameSpacing + item_sales.get(x) + "        $" + df.format(Ala_Carte.Menu_of_restaurants.get(x)*item_sales.get(x)));
 		}catch(Exception e){}
 		}
 		System.out.println("----Promotional Package------------------");
@@ -161,12 +182,16 @@ public class SalesRevenueReport {
 			}
 		}catch(Exception e){}
 		}
-		for(Integer x : bundle_sales.keySet()){
+
+
+
+		String bid = "Bundle ID";
+		System.out.println(it + nnn + qu + "     " + pr);
+		for(Integer xx : Promotional_Package.bundle.keySet()){
 			try{
-			System.out.print("Bundle " + x + ": has ");
-			System.out.print(bundle_sales.get(x));
-			System.out.println(" times sold");
-		}catch(Exception e){}
+				String ItemNameSpacing = new String(new char[18 - xx.toString().length()]).replace('\0', ' ');
+				System.out.println(xx + ItemNameSpacing + bundle_sales.get(xx) + "        $" + df.format(Promotional_Package.bundle_prices.get(xx)*bundle_sales.get(xx)));
+			}catch(Exception e){}
 		}
 
 	}
