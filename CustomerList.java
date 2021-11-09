@@ -51,7 +51,7 @@ public class CustomerList {
 	 * Traverse the CustomerList to find if customer exits, by matching the cust_id from the parameter 
 	 * and stored Customer Id
 	 * @param cust_id
-	 * @return
+	 * @return true/false
 	 */
 	
   	public boolean checkCustInfo(int cust_id)
@@ -72,7 +72,7 @@ public class CustomerList {
   	 * @param membership
   	 * @param paxsize
   	 * @param contact
-  	 * @return
+  	 * @return Customer object 
   	 */
   
   	public Customer createCust(String name , int cust_id , boolean membership,int paxsize, double contact)
@@ -89,7 +89,7 @@ public class CustomerList {
   	 * Finds the Customer by matching cust_id from parameter and the Stored customer Id. 
   	 * If found, the customer object will be returned.
   	 * @param cust_id
-  	 * @return
+  	 * @return Customer object 
   	 */
   	
   	public Customer getCust(int cust_id) 
@@ -105,7 +105,7 @@ public class CustomerList {
   	
   	/**
   	 * Generates a unique customer Id that is assigned to new customers
-  	 * @return
+  	 * @return customer id
   	 */
   	public int getCustID() 
   	{
@@ -116,7 +116,7 @@ public class CustomerList {
   	 * Traverse the CustomerList to find the relevant customer based on cust_id parameter. 
   	 * If customer is found, returns the date array that contains date and time of Customer Reservation
   	 * @param cust_id
-  	 * @return
+  	 * @return date array of customer reservation
   	 */
   	public int[] getCustDate(int cust_id) {
   		int[] date=null;
@@ -132,7 +132,7 @@ public class CustomerList {
 	
   	/**
   	 * returns the size of CustomerList or the number of Customers in the CustomerList
-  	 * @return
+  	 * @return integer size of customer list 
   	 */
   	public int getCListSize()
   	{
