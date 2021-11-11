@@ -3,10 +3,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Staff {
-	  public static String[] name = {"Harry", "Ron", "Hermione"};
-	  public static String[] gender = {"M", "M", "F"};
-	  public static int[] employeeID = {0,1,2};
-	  public static String[] jobTitle = {"waiter", "waiter", "waitress"};
+	  public static String[] name = {"Harry", "Ron", "Hermione","Jerry"};
+	  public static String[] gender = {"M", "M", "F","M"};
+	  public static int[] employeeID = {0,1,2,3};
+	  public static String[] jobTitle = {"waiter", "waiter", "waitress","manager"};
 	  public static String[] alaorder;
 	  public static Integer[] bundleorder;
 	  
@@ -83,7 +83,7 @@ public class Staff {
 	   */
 	  public static int staffInfo() {
 	    Random rand = new Random();
-	    int rdint = rand.nextInt(3);
+	    int rdint = rand.nextInt(4);
 	    return rdint;
 	  }
 }
