@@ -578,9 +578,9 @@ public class UI{
 		System.out.println("Reservation Date:"+ customer.getDate()[1] + "/" + customer.getDate()[0]+ "/"+ Calendar.getInstance().get(Calendar.YEAR));
 		System.out.println("Reservation Time:"+ customer.getDate()[2] +":"+customer.getDate()[3]+"\n");
 		}
-	private static void loaddata(){
+		private static void loaddata(){
 		// READ ALA CARTE DATA
-		File file = new File("alacarte.txt");
+		File file = new File("data/alacarte.txt");
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(file));
@@ -623,7 +623,7 @@ public class UI{
 
 			if(cout % 4 == 0){
 				bundle_id+=1;
-				
+
 			}else if(cout % 4 == 1){
 				ArrayList<String> item = new ArrayList<String>(Arrays.asList(a.split(",")));
 				Promotional_Package.bundle.put(bundle_id,item);
@@ -639,7 +639,30 @@ public class UI{
 			cout += 1;
 
 		}
+
 		// READ STAFF DATA
+		File testFile = new File("");
+		String currentPath = testFile.getAbsolutePath();
+		System.out.println("current path is: " + currentPath);
+		try {
+			File staffFile = new File("data/StaffList.txt");
+			Scanner ffile = new Scanner(staffFile);
+			int i = 0;
+			while (ffile.hasNextLine()) {
+				String data = ffile.nextLine();
+				String[] tokens = data.split(",");
+				Staff.employeeID[i] = Integer.parseInt(tokens[0]);
+				Staff.name[i] = tokens[1];
+				Staff.gender[i] = tokens[2];
+				Staff.jobTitle[i] = tokens[3];
+				
+				i++;
+			}
+			ffile.close();
+		}
+		catch(FileNotFoundException e) {
+			System.out.println("An error occurred.");
+		}
 	}
 	/**
 	 * Main UI of the project
