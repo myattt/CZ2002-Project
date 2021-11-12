@@ -646,7 +646,7 @@ public class UI{
 		// READ STAFF DATA
 		File testFile = new File("");
 		String currentPath = testFile.getAbsolutePath();
-		System.out.println("current path is: " + currentPath);
+		
 		try {
 			File staffFile = new File("data/StaffList.txt");
 			Scanner ffile = new Scanner(staffFile);
