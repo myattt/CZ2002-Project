@@ -6,7 +6,7 @@ import java.util.GregorianCalendar;
 public class UI{
 
 	/**
-	 * create an interface for booking/new reservation
+	 * create an interface for new reservations
 	 * @param tablelist list of tables
 	 * @param custlist list of customers
 	 */
@@ -228,7 +228,7 @@ public class UI{
 	/**
 	 * return the table id (>= paxsize and available)
 	 * @param paxsize the size of customers in an order
-	 * @return integer tableid
+	 * @return tableSize
 	 */
 	public static int table_size(int paxsize) {
 		int tableSize;
@@ -416,7 +416,7 @@ public class UI{
 	}
 
 	/**
-	 * print daily sales report, monthly sales report and individual item sales
+	 * Print daily sales report, monthly sales report
 	 * @param custlist list of customers
 	 */
 	private static void PrintReport(CustomerList custlist) {
@@ -431,10 +431,10 @@ public class UI{
 	}
 
 	/**
-	 * check whether a customer id is assigned or not
+	 * checks whether a Customer has made a reservation using unique cust_id
 	 * @param cust_id id of customer
 	 * @param cust_list list of customers
-	 * @return true/false
+	 * @return exist boolean true/false
 	 */
 	public static boolean checkCustomerDetails(int cust_id , CustomerList cust_list){
 		boolean exist =cust_list.checkCustInfo(cust_id);
@@ -443,7 +443,7 @@ public class UI{
 	}
 
 	/**
-	 * check whether the reservation is expired or not
+	 * check whether the reservation has expired
 	 * @param cust_id id of customer
 	 * @param cust_list list of customers
 	 * @param tablelist list of tables
@@ -493,7 +493,7 @@ public class UI{
 	    return false;
 		}
 	/**
-	 * create interface for reservations
+	 * Create interface for Reservations and Table Availability related 
 	 * @param tablelist list of tables
 	 * @param custlist list of customers
 	 */
@@ -561,7 +561,7 @@ public class UI{
 	}
 
 	/**
-	 * double check customer info
+	 * Prints Customer's reservation and order information 
 	 * @param customer Customer
 	 */
 	private static void printRInfo(Customer customer)
@@ -577,8 +577,12 @@ public class UI{
 		System.out.println("Table ID	:" + customer.getTableId());
 		System.out.println("Reservation Date:"+ customer.getDate()[1] + "/" + customer.getDate()[0]+ "/"+ Calendar.getInstance().get(Calendar.YEAR));
 		System.out.println("Reservation Time:"+ customer.getDate()[2] +":"+customer.getDate()[3]+"\n");
-		}
-		private static void loaddata(){
+	}
+	
+	/**
+	 * reads data from database
+	 */
+	private static void loaddata(){
 		// READ ALA CARTE DATA
 		File file = new File("data/alacarte.txt");
 		BufferedReader br = null;
@@ -664,6 +668,7 @@ public class UI{
 			System.out.println("An error occurred.");
 		}
 	}
+	
 	/**
 	 * Main UI of the project
 	 */
