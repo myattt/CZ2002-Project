@@ -50,18 +50,28 @@ public class Order {
 	 * Adding Promotional Package item
 	 */
 	public static void addbundleItem() {
-		int b;
+		int b=0;
 		Scanner sc = new Scanner(System.in);
 		do{
 			System.out.println("+----------------------------------------+");
 			System.out.println("|         Promotional Package            |");
 			System.out.println("+----------------------------------------+");
 			for(int i=1; i<Promotional_Package.bundle.size()+1; i++){
-				System.out.println(Promotional_Package.bundle.get(i) +": " + Promotional_Package.bundle_desc.get(i) + " ($" + Promotional_Package.bundle_prices.get(i)+")");
+				System.out.println("ID: "+ i + " "+Promotional_Package.bundle.get(i) +": " + Promotional_Package.bundle_desc.get(i) + " ($" + Promotional_Package.bundle_prices.get(i)+")");
 			}
 			System.out.println("Type the Bundle Id to add to the order (0 to quit)");
-
-			b = sc.nextInt();
+			boolean error=true;
+			while (error)
+			{
+				try {
+					b = sc.nextInt();
+	            	error=false;
+	                }
+	            catch (Exception e){
+	                System.out.println("You did not enter an integer, please enter an integer value");
+	                sc.next();
+	                }
+			}
 
 			if(b == 0)break;
 			if(Promotional_Package.bundle.containsKey(b))order_bundle.add(b);
@@ -74,9 +84,14 @@ public class Order {
 	 */
 	public static void removealaItem() {
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Ala carte orders: " + order_ala);
 		System.out.println("Which one?");
 		String item = sc.nextLine();
-		if(order_ala.contains(item)) order_ala.remove(item);
+		if(order_ala.contains(item)) { 
+			order_ala.remove(item);
+			System.out.println(item + " removed");
+		}
+		
 		else System.out.println("Haven't chosen yet");
 	}
 
@@ -85,9 +100,25 @@ public class Order {
 	 */
 	public static void removebundleItem() {
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Bundle orders: " + order_bundle);
 		System.out.println("Which one?");
-		int b = sc.nextInt();
-		if(order_bundle.contains(b)) order_bundle.remove(b);
+		int b = 0;
+		boolean error=true;
+		while (error)
+		{
+			try {
+				b = sc.nextInt();
+            	error=false;
+                }
+            catch (Exception e){
+                System.out.println("You did not enter an integer, please enter an integer value");
+                sc.next();
+                }
+		}
+		if(order_bundle.contains(b)) {
+			order_bundle.remove(b);
+			System.out.println("Bundle: " + b + " removed");
+		}
 		else System.out.println("Haven't chosen yet");
 	}
 
