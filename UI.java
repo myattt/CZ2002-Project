@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.Scanner;
 import java.util.*;
 import java.util.Calendar;
@@ -577,7 +578,31 @@ public class UI{
 		System.out.println("Reservation Date:"+ customer.getDate()[1] + "/" + customer.getDate()[0]+ "/"+ Calendar.getInstance().get(Calendar.YEAR));
 		System.out.println("Reservation Time:"+ customer.getDate()[2] +":"+customer.getDate()[3]+"\n");
 		}
-
+	private static void loaddata(){
+		// READ ALA CARTE DATA
+		File file = new File("alacarte.txt");
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(file));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		String st = "";
+		while (true)
+		{
+			try {
+				if (!((st = br.readLine()) != null)) break;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			String a = st;
+			List<String> item = Arrays.asList(a.split(","));
+			Ala_Carte.addItem(item.get(0), item.get(2),Integer.parseInt(item.get(1)),item.get(3));
+			//Ala_Carte.addItem(item,description,price,category)
+		}
+		// READ PROMOTIONAL_PACKAGE
+		// READ STAFF DATA
+	}
 	/**
 	 * Main UI of the project
 	 */
@@ -586,7 +611,7 @@ public class UI{
 		TableList tablelist= new TableList();
 		CustomerList custlist = new CustomerList();
 		int option;
-
+		loaddata();
 		do {
 			System.out.println(
 					"+------------------------------------------------------------------------------------------+");
