@@ -21,14 +21,14 @@ public class Customer {
 	   private int minute;
 	   private int hours;
 
-	   
-	  /**
-	    * constructor to initialise customer 
-	    * @param pax
-	    * @param cust_id
-	    * @param cust_name
-	    * @param membership
-	    * @param contact
+
+	   /**
+	    * Constructor that initialises Customer's pax, cust_id, membership and contact
+	    * @param pax stores Customer's pax
+	    * @param cust_id stores Customer's ID
+	    * @param cust_name stores Customer's name
+	    * @param membership stores information of Customer's membership
+	    * @param contact stores Customer's contact
 	    */
 	   public Customer(int pax, int cust_id, String cust_name, boolean membership, double contact) { 
 	    this.pax=pax;
@@ -39,120 +39,127 @@ public class Customer {
 	    // TODO - implement Customer.operation 
 	   } 
 	    
-	    /**
-	     * Retrieve the ID of the customer
-	     * @return int cust_id
-	     */
+
+	   /**
+	    * accessor of Customer's ID
+	    * @return cust_id if it exists, null if Customer does not exist
+	    */
 	   public int getCustomerID() { 
 	    return this.cust_id; 
 	   } 
 	
 	   /**
-	    * @return String cust_name;
+	    * accessor of Customer's name
+	    * @return cust_name if it exists, null if Customer does not exist 
 	    */
 
 	   public String getCustomerName() { 
 	    return this.cust_name; 
 	   } 
 	    
-	   /**
-	    * 
-	    * @return int tableId
-	    */
+	  /**
+	   * accessor of Customer's tableId
+	   * @return tableId if it exists, null if Customer does not exist
+	   */
 	   public int getTableId() { 
 	    return this.tableId; 
 	   } 
 	
 	   /**
-	    * sets id of customer
-	    * @param cust_id
+	    * mutator of Customer's ID
+	    * @param cust_id 
 	    */
 	   public void setCustomerID(int cust_id) { 
 	    this.cust_id = cust_id; 
 	   } 
+	   
 	   /**
-	    * sets customer name
+	    * mutator of Customer's name
 	    * @param cust_name
 	    */
-	   
 	   public void setCustomerName(String cust_name) { 
 	    this.cust_name = cust_name; 
 	   } 
+	   
 	   /**
-	    * set tableid for customer 
+	    * mutator of Table's ID
 	    * @param tableId
 	    */
-	   
 	   public void setTableId(int tableId) { 
 	    this.tableId = tableId; 
 	   } 
+	   
 	   /**
-	    * set membership for customer ( if they have membership)
+	    * mutator of Customer's membership
 	    * @param membership
 	    */
 	   public void member(boolean membership) {
 	    this.membership = membership;
 	  }
 	   /**
-	    * checks if customer has membership
-	    * @return boolean membership
+	    * accessor of Customer's membership
+	    * @return membership
 	    */
-	   
 	   public boolean getMembership() {
 		   return this.membership;
 	   }
 	   /**
-	    * set paxsize of customer
+	    * mutator of Customer's paxsize
 	    * @param paxsize
 	    */
 	   public void setPaxSize(int paxsize)
 	   {
 		   this.pax=paxsize;
 	   }
+	   
 	   /**
-	    * return paxsize of customer 
-	    * @return int pax
+	    * accessor of Customer's paxsize 
+	    * @return pax paxsize of Customer
 	    */
 	   public int getPaxSize()
 	   {
 		   return this.pax;
 	   }
+
 	   /**
-	    * set contact of customer
+	    * mutator of Customer's contact 
 	    * @param contact
 	    */
 	   public void setContact(double contact)
 	   {
 		   this.contact=contact;
 	   }
+	   
 	   /**
-	    * set alacarte order for customer 
+	    * mutator of Customer's AlaCarte Order
 	    * @param ala
 	    */
 	   public void setAlaOrder(String[] ala)
 	   {
 		   this.ala=ala;
 	   }
+
 	   /**
-	    * set promotional order for customer 
+	    * mutator of Customer's Promotional Package Order
 	    * @param bundle
 	    */
 	   public void setBundleOrder(Integer[] bundle)
 	   {
 		   this.bundle=bundle;
 	   }
-	   /**
-	    * get alacarte order details for customer 
-	    * @return String[] ala
-	    */
 	   
+	   /**
+	   * accessor of Customer's AlaCarte Order 
+	   * @return Customer's AlaCarte Order
+	   */
 	   public String[] getAlaOrder()
 	   {
 		   return this.ala;
 	   }
+	   
 	   /**
-	    * get bundleorder details for customer 
-	    * @return Integer[] bundle
+	   * mutator of Customer's Promotional Package Order 
+	   * @return Customer's Promotional Package Order
 	    */
 	   public Integer[] getBundleOrder()
 	   {
@@ -160,13 +167,12 @@ public class Customer {
 	   }
 	   
 	   /**
-	    * 
+	    * mutator of Staff's name, gender, position and employeeID
 	    * @param staff_name
 	    * @param staff_gender
 	    * @param staff_position
 	    * @param employeeID
 	    */
-	   
 	   public void setStaffinfo(String staff_name , String staff_gender , String staff_position ,int employeeID) {
 		   this.staff_name = staff_name;
 		   this.staff_gender = staff_gender;
@@ -174,41 +180,44 @@ public class Customer {
 		   this.employeeID = employeeID;
 	   }
 	   
-	   /**
-	    * 
-	    * @return String staff_name;
-	    */
+	  /**
+	   * accessor of Staff's name
+	   * @return staff_name 
+	   */
 	   public String getStaffName()
 	   {
 		   return this.staff_name;
 	   }
-	   /**
-	    * 
-	    * @return String staff_gender
-	    */
 	   
+	  /**
+	   * accessor of Staff's gender
+	   * @return staff_gender 
+	   */
 	   public String getStaffGender()
 	   {
 		   return this.staff_gender;
 	   }
+	   
 	   /**
-	    * 
-	    * @return String staff_position
+	    * accessor of Staff's position
+	    * @return staff_position
 	    */
 	   public String getStaffPos()
 	   {
 		   return this.staff_position;
 	   }
+	   
 	   /**
-	    * 
+	    * accessor of Staff's EmployeeID
 	    * @return employeeID
 	    */
 	   public int getEmployeeId()
 	   {
 		   return this.employeeID;
 	   }
+	   
 	   /**
-	    * 
+	    * calculates total price of Customer's order
 	    * @return totalPrice
 	    */
 	   public int getTotalPrice() {
@@ -228,16 +237,18 @@ public class Customer {
 			this.totalPrice = total_price;
 			return this.totalPrice;
 	   }
+	   
 	   /**
-	    * 
-	    * @return int[] date
+	    * returns date of Customer's reservation 
+	    * @return date
 	    */
        public int[] getDate() {
 		   int[] date = {month,day,hours,minute};
 		   return date;
 	   }
+       
        /**
-        * 
+        * mutator of Customer's reservation month, day, hours, minutes
         * @param month
         * @param day
         * @param hours
