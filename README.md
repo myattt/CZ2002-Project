@@ -11,7 +11,7 @@ The Javadoc of the project can be found [here](https://myattt.github.io/CZ2002-P
 
 
 ## UML Sequence Diagram
-![PeriodExpiry](https://github.com/myattt/CZ2002-Project/blob/main/images/PeriodExpiry%20Sequence.png)
+![PeriodExpiry](https://github.com/myattt/CZ2002-Project/blob/main/images/PeriodExpiryUpdatedSequence.png)
 
 ![Remove Reservation](https://github.com/myattt/CZ2002-Project/blob/main/images/Remove%20Reservation.png)
 
