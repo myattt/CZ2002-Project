@@ -1,4 +1,4 @@
-Coca Cola,100,Cool,Drinks
-Ice cream,66,Cold,Dessert
-Pizza,123,Hot,Main Course
-Spaghetti,444,Delicious,Main Course
+Coca Cola,3,Chilled Drink,Drinks
+Ice cream,2,Vanilla-flavoured,Dessert
+Pizza,8,Pepporoni, Tomato Sauce and Cheese,Main Course
+Spaghetti,12,Pork Meatballs in tomato sauce,Main Course
