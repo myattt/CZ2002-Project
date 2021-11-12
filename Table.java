@@ -10,9 +10,10 @@ public class Table {
 	
 	/**
 	 * constructor for initialising table 
-	 * @param tableId 
-	 * @param table_size size of table 
-	 * @param customerId
+	 *
+	 * @param tableId	unique table Id value that is used to assign to customers
+	 * @param table_size 	size of table 
+	 * @param customerId	unique customer Id value that is assigned to customers
 	 */
 	public Table(int tableId, int table_size, int customerId) 
 	{
@@ -22,8 +23,9 @@ public class Table {
 	}
 	
 	/**
-	 * returns size of table 
-	 * @return int table size
+	 * obtain the size of table 
+	 *
+	 * @return corresponding table size
 	 */
 	public int getTableSize()
 	{
@@ -32,6 +34,7 @@ public class Table {
 	
 	/**
 	 * returns id of table 
+	 *
 	 * @return int table id 
 	 */
 	public int gettableID() {
@@ -40,7 +43,8 @@ public class Table {
 	
 	/**
 	 * returns id of customer 
-	 * @return int cust_id
+	 *
+	 * @return cust_id , which each customer was assigned to a unique ID
 	 */
 	public int getCustomerID() {
 		return this.customerId;
@@ -48,7 +52,8 @@ public class Table {
 	
 	/**
 	 * checks if table is reserved
-	 * @return true/false 
+	 * @return true	if the table has been reserved or is occupied by customers
+	 	  false if table is free
 	 */
 	public boolean isOccupied() {
 		return this.assigned;
@@ -56,7 +61,7 @@ public class Table {
 	
 	/**
 	 * assigns table to customer using customer id
-	 * @param customerId
+	 * @param customerId	Unique customer Id that is assigned to each customer
 	 */
 	public void assign(int customerId) {
 		this.customerId = customerId;
