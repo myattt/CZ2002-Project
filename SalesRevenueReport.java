@@ -74,6 +74,7 @@ public class SalesRevenueReport {
 
 	/**
 	 * prints individual sales report for each month
+	 * @param cust_list 	list of customer Objects
 	 */
 	public static void individualitemsales(CustomerList cust_list){
 
