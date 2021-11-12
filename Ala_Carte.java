@@ -3,11 +3,11 @@ import java.util.HashMap;
 
 public class Ala_Carte implements Item{
 
-	public static HashMap<String, Integer> Menu_of_restaurants = new HashMap <String,  Integer>() {{put("Coca Cola",5);put("Ice cream",2);put("Pizza",8);put("Spaghetti",8); }};
+	public static HashMap<String, Integer> Menu_of_restaurants = new HashMap <String,  Integer>() {};
 	//Name of item, price
-	public static HashMap<String, String> descriptions = new HashMap <String,  String>(){{put("Coca Cola","Chilled drink");put("Ice cream","Vanilla-flavoured");put("Pizza","Chicken ham and pepperoni cheese toppings");put("Spaghetti","Pork meatballs with tomato sauce"); }};
+	public static HashMap<String, String> descriptions = new HashMap <String,  String>(){};
 	//Name of item, description
-	public static HashMap<String, String> categories = new HashMap <String,  String>(){{put("Coca Cola","Drinks");put("Ice cream","Dessert");put("Pizza","Main Course");put("Spaghetti","Main Course"); }};
+	public static HashMap<String, String> categories = new HashMap <String,  String>(){};
 	//Name of item, categories
 
 	/**
