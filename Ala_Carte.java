@@ -17,7 +17,7 @@ public class Ala_Carte implements Item{
 	 * @param price int: the price of the item
 	 * @param category String: the category of the item (Main Course, Drinks or Dessert)
 	 */
-	public void addItem( String item , String description, int price, String category) {
+	public static void addItem( String item , String description, int price, String category) {
 		Ala_Carte.Menu_of_restaurants.put(item, price);
 		Ala_Carte.descriptions.put(item, description);
 		Ala_Carte.categories.put(item, category);
