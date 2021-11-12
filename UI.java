@@ -416,15 +416,14 @@ public class UI{
 	}
 
 	/**
-	 * Print daily sales report, monthly sales report
+	 * print monthly sales report with individual item sales for the given month
 	 * @param custlist list of customers
 	 */
 	private static void PrintReport(CustomerList custlist) {
 		System.out.println("-----------------REPORT-----------------");
-
-			SalesRevenueReport.generateByDay(custlist);
 			SalesRevenueReport.generateByMonth(custlist);
-			SalesRevenueReport.individualitemsales();
+			System.out.println("\n");
+			SalesRevenueReport.individualitemsales(custlist);
 
 		System.out.println("-----------------REPORT-----------------");
 
