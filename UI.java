@@ -230,7 +230,7 @@ public class UI{
 	 * @param paxsize the size of customers in an order
 	 * @return integer tableid
 	 */
-	private static int table_size(int paxsize) {
+	public static int table_size(int paxsize) {
 		int tableSize;
 		switch(paxsize){
 			case 1,2:
