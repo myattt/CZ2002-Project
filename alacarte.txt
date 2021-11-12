@@ -1,4 +1,0 @@
-Coca Cola,100,Cool,Drinks
-Ice cream,66,Cold,Dessert
-Pizza,123,Hot,Main Course
-Spaghetti,444,Delicious,Main Course
