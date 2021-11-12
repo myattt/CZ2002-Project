@@ -1,0 +1,4 @@
+0,Harry,M,waiter
+1,Ron,M,waiter
+2,Hermione,F,waitress,
+3,Jerry,M,manager
