@@ -12,8 +12,8 @@ public class SalesRevenueReport {
 
 
 	/**
-	 * print daily sales report
-	 * @param cust_list list of customers
+	 * print daily sales report, which includes the total sales revenue of each order day.
+	 * @param cust_list	list of customer Objects
 	 */
 	public static void generateByDay(CustomerList cust_list) {
 		ArrayList<String>dates = new ArrayList<>();
@@ -71,8 +71,8 @@ public class SalesRevenueReport {
 
 
 	/**
-	 * print monthly sales report
-	 * @param cust_list list of customers
+	 * print monthly sales report , which includes the total sales revenue for each month
+	 * @param cust_list 	list of customer Objects
 	 */
 
 	public static void generateByMonth(CustomerList cust_list) {
@@ -132,7 +132,7 @@ public class SalesRevenueReport {
 
 
 	/**
-	 * print individual sales report
+	 * print individual sales report 
 	 */
 	public static void individualitemsales(){
 
