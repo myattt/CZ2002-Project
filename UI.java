@@ -601,6 +601,44 @@ public class UI{
 			//Ala_Carte.addItem(item,description,price,category)
 		}
 		// READ PROMOTIONAL_PACKAGE
+		file = new File("data/bundle.txt");
+		br = null;
+		try {
+			br = new BufferedReader(new FileReader(file));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		st = "";
+		int cout = 0;
+		int bundle_id=0;
+		while (true)
+		{
+
+			try {
+				if (!((st = br.readLine()) != null)) break;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			String a = st;
+
+			if(cout % 4 == 0){
+				bundle_id+=1;
+				
+			}else if(cout % 4 == 1){
+				ArrayList<String> item = new ArrayList<String>(Arrays.asList(a.split(",")));
+				Promotional_Package.bundle.put(bundle_id,item);
+			}
+			else if(cout % 4 == 2){
+				Promotional_Package.bundle_prices.put(bundle_id,Integer.parseInt(a));
+			}
+			else if(cout % 4 == 3){
+				Promotional_Package.bundle_desc.put(bundle_id,a);
+			}
+
+
+			cout += 1;
+
+		}
 		// READ STAFF DATA
 	}
 	/**
