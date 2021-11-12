@@ -1,0 +1,8 @@
+1
+Coca Cola,Pizza,Ice cream
+18
+Set on sale
+2
+Coca Cola,Pizza
+22
+Fizzy chilled drink and warm pizza
