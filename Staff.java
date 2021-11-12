@@ -4,10 +4,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Staff {
-	  public static String[] name = {"Harry", "Ron", "Hermione"};
-	  public static String[] gender = {"M", "M", "F"};
-	  public static int[] employeeID = {0,1,2};
-	  public static String[] jobTitle = {"waiter", "waiter", "waitress"};
+	  public static String[] name = new String[4];
+	  public static String[] gender = new String[4];
+	  public static int[] employeeID = new int[4];
+	  public static String[] jobTitle = new String[4];
 	  public static String[] alaorder;
 	  public static Integer[] bundleorder;
 	  
