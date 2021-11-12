@@ -92,10 +92,12 @@ public class Staff {
 	  }
 	  
 	  /**
-	   * Order Interface that returns Customer
-	   * @param custlist :
-	   * @param tablelist
-	   * @return Customer
+	   * Order Interface that creates order 
+	   * for walk-in customers
+	   * and customers with reservations
+	   * @param custlist list of Customers
+	   * @param tablelist list of Tables 
+	   * @return Customer object
 	   */
 	  private static Customer MakeOrder(CustomerList custlist , TableList tablelist) {
 			boolean val=false;
@@ -173,9 +175,9 @@ public class Staff {
 	  
 	  /**
 		 * Creates and returns a new customer with only the necessary customer details, proceeds with ordering and payment 
-		 * @param custlist
-		 * @param tablelist
-		 * @return Customer
+		 * @param custlist list of Customers
+		 * @param tablelist list of Tables
+		 * @return Customer object 
 		 */
 		private static Customer walkIns(CustomerList custlist , TableList tablelist) {
 			if(tablelist.getNumEmptyTables()<=0 ) {
