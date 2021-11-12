@@ -9,10 +9,11 @@ public class CustomerList {
 	int cust_id;
 	
 	/**
-	 * To print out details of all customers in the CustomerList , prints customer's Name , Id , TableId, 
-	 * Ala carte and Bundle order , Staff information and Total Price
+	 * To print out details of all customers in the CustomerList ,
+	 * prints Customer's Name , Id , TableId,
+	 * AlaCarte Order and PromotionalPackage order,
+	 * Staff Information and Total Price
 	 */
-	
 	public void printList() {
 		for(int i=0 ; i<list.size() ; i++) {
 			System.out.println("Customer Name:	" + list.get(i).getCustomerName());
@@ -35,9 +36,8 @@ public class CustomerList {
 	
 	/**
 	 * finds the relevant Customer object and remove it from CustomerList
-	 * @param cust_id
+	 * @param cust_id obtain unique CustomerID and remove customer with that ID
 	 */
-	
 	public void removeCust(int cust_id) {
 		for(int i=0; i<list.size();i++) {
   			if(list.get(i).getCustomerID()==cust_id) {
@@ -47,13 +47,13 @@ public class CustomerList {
   			}
   		}
 	}
-	/**
-	 * Traverse the CustomerList to find if customer exits, by matching the cust_id from the parameter 
-	 * and stored Customer Id
-	 * @param cust_id
-	 * @return true/false
-	 */
 	
+	/**
+	 * Traverse the CustomerList to find if customer exists, by matching the cust_id from the parameter 
+	 * and store Customer Id
+	 * @param cust_id
+	 * @return boolean true/false
+	 */
   	public boolean checkCustInfo(int cust_id)
   	{
   		for(int i=0; i<list.size(); i++) {
@@ -67,14 +67,13 @@ public class CustomerList {
   	/**
   	 * Creates a new Customer object with relevant customer details in parameter, adds Customer into the CustomerList 
   	 * and returns the Customer
-  	 * @param name
-  	 * @param cust_id
-  	 * @param membership
-  	 * @param paxsize
-  	 * @param contact
-  	 * @return Customer object 
+  	 * @param name the Customer's name
+  	 * @param cust_id the Customer's ID
+  	 * @param membership the Customer's membership
+  	 * @param paxsize the Customer's paxsize
+  	 * @param contact the Customer's contact
+  	 * @return newCust Customer object 
   	 */
-  
   	public Customer createCust(String name , int cust_id , boolean membership,int paxsize, double contact)
   	{
   		
@@ -87,8 +86,9 @@ public class CustomerList {
   	
   	/**
   	 * Finds the Customer by matching cust_id from parameter and the Stored customer Id. 
-  	 * If found, the customer object will be returned.
-  	 * @param cust_id
+  	 * If found, the customer object will be returned,
+  	 * else null is returned
+  	 * @param cust_id Customer's ID 
   	 * @return Customer object 
   	 */
   	
@@ -104,8 +104,8 @@ public class CustomerList {
   	}
   	
   	/**
-  	 * Generates a unique customer Id that is assigned to new customers
-  	 * @return customer id
+  	 * Generates a unique customer ID that is assigned to new customers
+  	 * @return custID
   	 */
   	public int getCustID() 
   	{
@@ -115,7 +115,7 @@ public class CustomerList {
   	/**
   	 * Traverse the CustomerList to find the relevant customer based on cust_id parameter. 
   	 * If customer is found, returns the date array that contains date and time of Customer Reservation
-  	 * @param cust_id
+  	 * @param cust_id 
   	 * @return date array of customer reservation
   	 */
   	public int[] getCustDate(int cust_id) {
@@ -132,7 +132,7 @@ public class CustomerList {
 	
   	/**
   	 * returns the size of CustomerList or the number of Customers in the CustomerList
-  	 * @return integer size of customer list 
+  	 * @return list.size Size of customer list 
   	 */
   	public int getCListSize()
   	{
