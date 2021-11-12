@@ -19,10 +19,6 @@ public class SalesRevenueReport {
 		ArrayList<String>dates = new ArrayList<>();
 		HashMap<String, Integer> revenue_day= new HashMap<String,Integer>();
 
-
-
-
-
 		for(int i=0 ; i<CustomerList.list.size() +100; i++) {
 			try{
 			int[] date = cust_list.getCustDate(i+1001);
@@ -34,6 +30,7 @@ public class SalesRevenueReport {
 
 		for(int i=0 ; i<CustomerList.list.size() +100 ; i++) {
 			try {
+
 				String[] ala = CustomerList.list.get(i).getAlaOrder();
 				Integer[] bunbun = CustomerList.list.get(i).getBundleOrder();
 				int total_price = 0;
@@ -134,65 +131,110 @@ public class SalesRevenueReport {
 	/**
 	 * print individual sales report 
 	 */
-	public static void individualitemsales(){
+	public static void individualitemsales(CustomerList cust_list){
 
-		HashMap<String, Integer> item_sales= new HashMap<String,Integer>();
-		for(String item: Ala_Carte.Menu_of_restaurants.keySet()){
-			item_sales.put(item, 0);
-		}
-		for(int i=0 ; i<CustomerList.list.size() +100; i++){
+
+		HashMap<String, Integer> revenue_month= new HashMap<String,Integer>();
+
+		for(int i=0 ; i<CustomerList.list.size() +100; i++) {
 			try{
-			for(String item: CustomerList.list.get(i).getAlaOrder()){
-				item_sales.put(item, item_sales.get(item) + 1);
-			}
-		}catch(Exception e){}
-		}
-
-		System.out.println(
-				"+----------------------------------------+");
-		System.out.println(
-				"|          Individual Item Sales         |");
-		System.out.println(
-				"+----------------------------------------+");
-		System.out.println("----Ala Carte----------------------------");
-		DecimalFormat df = new DecimalFormat("0.00");
-		String it = "Item";
-		String qu = "Quantity";
-		String pr = "Price";
-		String nnn = new String(new char[18 - qu.length()]).replace('\0', ' ');
-		System.out.println(it + nnn + qu + "     " + pr);
-		for(String x : item_sales.keySet()){
-			try{
-				String ItemNameSpacing = new String(new char[18 - x.length()]).replace('\0', ' ');
-				System.out.println(x + ItemNameSpacing + item_sales.get(x) + "        $" + df.format(Ala_Carte.Menu_of_restaurants.get(x)*item_sales.get(x)));
-		}catch(Exception e){}
-		}
-		System.out.println("----Promotional Package------------------");
-
-		HashMap<Integer, Integer> bundle_sales= new HashMap<Integer,Integer>();
-		for(Integer bun: Promotional_Package.bundle.keySet()){
-			bundle_sales.put(bun, 0);
-		}
-
-
-		for(int i=0 ; i<CustomerList.list.size() +100; i++){
-			try{
-			for(Integer item: CustomerList.list.get(i).getBundleOrder()){
-				bundle_sales.put(item, bundle_sales.get(item) + 1);
-			}
-		}catch(Exception e){}
-		}
-
-
-
-		String bid = "Bundle ID";
-		System.out.println(it + nnn + qu + "     " + pr);
-		for(Integer xx : Promotional_Package.bundle.keySet()){
-			try{
-				String ItemNameSpacing = new String(new char[18 - xx.toString().length()]).replace('\0', ' ');
-				System.out.println(xx + ItemNameSpacing + bundle_sales.get(xx) + "        $" + df.format(Promotional_Package.bundle_prices.get(xx)*bundle_sales.get(xx)));
+				int[] date = cust_list.getCustDate(i+1001);
+				String day = "Month "+ String.valueOf(date[0]);
+				revenue_month.put(day, 0);
 			}catch(Exception e){}
 		}
+
+		for(String x : revenue_month.keySet()){
+			try{
+				HashMap<String, Integer> item_sales= new HashMap<String,Integer>();
+				HashMap<Integer, Integer> item_bundle_sales= new HashMap<Integer,Integer>();
+				for(String item: Ala_Carte.Menu_of_restaurants.keySet()){
+					item_sales.put(item, 0);
+				}
+				for(Integer item: Promotional_Package.bundle.keySet()){
+					item_bundle_sales.put(item, 0);
+				}
+
+				for(int i=0 ; i<CustomerList.list.size() +100; i++) {
+					try {
+						int[] date = cust_list.getCustDate(i + 1001);
+						if (date[0] == Integer.parseInt(x.substring(6))) {
+							for(String item: CustomerList.list.get(i).getAlaOrder()){
+								item_sales.put(item, item_sales.get(item) + 1);
+							}
+
+							for(Integer item: CustomerList.list.get(i).getBundleOrder()){
+								item_bundle_sales.put(item, item_bundle_sales.get(item) + 1);
+							}
+						}
+					}catch(Exception e){}
+				}
+				// NEED SU MYAT TO MAKE IT BETTER
+				System.out.println(x);
+				System.out.println(item_sales);
+				System.out.println(item_bundle_sales);
+				// NEED SU MYAT TO MAKE IT BETTER
+
+			}catch(Exception e){}
+		}
+//
+//		HashMap<String, Integer> item_sales= new HashMap<String,Integer>();
+//		for(String item: Ala_Carte.Menu_of_restaurants.keySet()){
+//			item_sales.put(item, 0);
+//		}
+//		for(int i=0 ; i<CustomerList.list.size() +100; i++){
+//			try{
+//			for(String item: CustomerList.list.get(i).getAlaOrder()){
+//				item_sales.put(item, item_sales.get(item) + 1);
+//			}
+//		}catch(Exception e){}
+//		}
+//
+//		System.out.println(
+//				"+----------------------------------------+");
+//		System.out.println(
+//				"|          Individual Item Sales         |");
+//		System.out.println(
+//				"+----------------------------------------+");
+//		System.out.println("----Ala Carte----------------------------");
+//		DecimalFormat df = new DecimalFormat("0.00");
+//		String it = "Item";
+//		String qu = "Quantity";
+//		String pr = "Price";
+//		String nnn = new String(new char[18 - qu.length()]).replace('\0', ' ');
+//		System.out.println(it + nnn + qu + "     " + pr);
+//		for(String x : item_sales.keySet()){
+//			try{
+//				String ItemNameSpacing = new String(new char[18 - x.length()]).replace('\0', ' ');
+//				System.out.println(x + ItemNameSpacing + item_sales.get(x) + "        $" + df.format(Ala_Carte.Menu_of_restaurants.get(x)*item_sales.get(x)));
+//		}catch(Exception e){}
+//		}
+//		System.out.println("----Promotional Package------------------");
+//
+//		HashMap<Integer, Integer> bundle_sales= new HashMap<Integer,Integer>();
+//		for(Integer bun: Promotional_Package.bundle.keySet()){
+//			bundle_sales.put(bun, 0);
+//		}
+//
+//
+//		for(int i=0 ; i<CustomerList.list.size() +100; i++){
+//			try{
+//			for(Integer item: CustomerList.list.get(i).getBundleOrder()){
+//				bundle_sales.put(item, bundle_sales.get(item) + 1);
+//			}
+//		}catch(Exception e){}
+//		}
+//
+//
+//
+//		String bid = "Bundle ID";
+//		System.out.println(it + nnn + qu + "     " + pr);
+//		for(Integer xx : Promotional_Package.bundle.keySet()){
+//			try{
+//				String ItemNameSpacing = new String(new char[18 - xx.toString().length()]).replace('\0', ' ');
+//				System.out.println(xx + ItemNameSpacing + bundle_sales.get(xx) + "        $" + df.format(Promotional_Package.bundle_prices.get(xx)*bundle_sales.get(xx)));
+//			}catch(Exception e){}
+//		}
 
 	}
 
