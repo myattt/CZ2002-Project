@@ -1,24 +1,27 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Staff {
-	  public static String[] name = {"Harry", "Ron", "Hermione","Jerry"};
-	  public static String[] gender = {"M", "M", "F","M"};
-	  public static int[] employeeID = {0,1,2,3};
-	  public static String[] jobTitle = {"waiter", "waiter", "waitress","manager"};
+	  public static String[] name = {"Harry", "Ron", "Hermione"};
+	  public static String[] gender = {"M", "M", "F"};
+	  public static int[] employeeID = {0,1,2};
+	  public static String[] jobTitle = {"waiter", "waiter", "waitress"};
 	  public static String[] alaorder;
 	  public static Integer[] bundleorder;
 	  
 	  public static ArrayList<String> ala;
 	  public static ArrayList<Integer> bundle;
 	  
-	  
-	 /**
-	  * interface for staffs to make orders 
-	  * @param Customer cust
-	  */
-	  public static void main(Customer cust) {
+
+	  public static void main(CustomerList custlist , TableList tablelist ) {
+		  
+		  	Customer cust = MakeOrder(custlist , tablelist);
+		  	if(cust==null) {
+		  		System.out.println("Error");
+		  		return;
+		  	}
 			Scanner sc = new Scanner(System.in);
 			Order o = new Order();
 			o.startOrder();
@@ -75,15 +78,194 @@ public class Staff {
 				
 				cust.setAlaOrder(alaorder);
 				cust.setBundleOrder(bundleorder);
+				
+				OrderInvoice invoice=new OrderInvoice();
+				invoice.printInvoice(cust.getCustomerID() , custlist);
+				tablelist.unAssignSeat(cust.getTableId());
 	  }
+	  
 	 
-	  /**
-	   * returns id of staff 
-	   * @return int staff_id
-	   */
 	  public static int staffInfo() {
 	    Random rand = new Random();
-	    int rdint = rand.nextInt(4);
+	    int rdint = rand.nextInt(3);
 	    return rdint;
 	  }
+	  
+	  /**
+	   * Order Interface that returns Customer
+	   * @param custlist :
+	   * @param tablelist
+	   * @return Customer
+	   */
+	  private static Customer MakeOrder(CustomerList custlist , TableList tablelist) {
+			boolean val=false;
+			do {
+			System.out.println(
+					"+--------------------------------------+");
+			System.out.println(
+					"|           Order Interface            |");
+			System.out.println(
+					"+---+----------------------------------+");
+			System.out.println(
+					"| 1 | Walk In Order                    |");
+			System.out.println(
+					"| 2 | Customer with Reservation        |");
+			System.out.println(
+					"| 0 | Quit                             |");
+			System.out.println(
+					"+--------------------------------------+");
+			
+
+			Scanner sc = new Scanner(System.in);
+			int choice=0;
+			boolean error = true;
+
+			while(error) {
+				System.out.println("Please select an option");
+		         try {
+		        	choice=sc.nextInt();
+		        	if(choice==0)
+		        		return null;
+		        	else if(choice<0 || choice>2) {
+						System.out.println("Invalid number try again!");
+						continue;
+					}
+		            error=false;
+		          }
+		          catch (Exception e){
+		        	  System.out.println("Input was not a number.");
+		        	  sc.next();
+		          }
+			}
+				switch(choice) {
+				case 1:
+					Customer customer =walkIns(custlist, tablelist);
+					return customer;
+				case 2:
+					System.out.println("Enter Customer ID");
+					int input1 = sc.nextInt();
+					boolean exist = UI.checkCustomerDetails(input1 , custlist);
+					if (exist) {
+						Customer cust= custlist.getCust(input1);
+						boolean expire = UI.checkPeriodExpiry(input1,custlist , tablelist);
+						if(expire == false && cust.getAlaOrder()==null && cust.getBundleOrder()==null){
+							return cust;
+						//System.out.println("***Current Customers and Order***");
+						//custlist.printList();
+						}
+						else {
+							System.out.println("Your reservation period has expired, please book again or try Walking In");
+							val=true;
+						}
+					}
+					else {
+						System.out.println("Please make a booking first or try Walking In");
+						val=true;
+					}
+					break;
+				default:
+					System.out.println("Error please try again");
+					break;
+				}
+			}while(val==true);
+			return null;
+	}
+	  
+	  /**
+		 * Creates and returns a new customer with only the necessary customer details, proceeds with ordering and payment 
+		 * @param custlist
+		 * @param tablelist
+		 * @return Customer
+		 */
+		private static Customer walkIns(CustomerList custlist , TableList tablelist) {
+			if(tablelist.getNumEmptyTables()<=0 ) {
+				System.out.println("All tables are filled.. Please try again later");
+				return null;}
+			
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter Customer Name:");
+			String custName = sc.nextLine();
+			char membership = 0;
+			boolean member = false;
+					
+			boolean error = true;
+			while(error) {
+				System.out.println("Are you a member? t/f");
+				membership = sc.next().charAt(0);
+				if(membership=='t'||membership=='T') {
+				member = true;
+				error=false;
+				}
+				else if(membership=='f'||membership=='F') {
+				      member = false;
+				      error=false;
+				}
+				else {
+					System.out.println("User input invalid.");
+				}
+			}
+					
+					int paxsize=0;
+					error=true;
+					while(error) {
+						System.out.println("Customer pax?");
+				         try {
+				        	paxsize=sc.nextInt();
+				        	if(paxsize<1 || paxsize>10) {
+								System.out.println("Customer pax invalid!");
+								continue;
+							}
+				            error=false;
+				          }
+				          catch (Exception e){
+				        	  System.out.println("User input was not a number.");
+				        	  sc.next();
+				          }
+					}
+					int suitableTable = UI.table_size(paxsize);
+					int tableId = tablelist.findSuitableTable(suitableTable);
+					if(tableId == -1)
+					{
+						System.out.println("Please try again");
+						return null;
+					}
+					
+					error=true;
+					double contact=0;
+					while(error) {
+						System.out.println("Customer contact?");
+				         try {
+				        	contact=sc.nextDouble();
+				            error=false;
+				          }
+				          catch (Exception e){
+				        	  System.out.println("Please input a double");
+				        	  sc.next();
+				          }
+					}
+					
+					Calendar rDate;
+					rDate = Calendar.getInstance();
+					int month = rDate.get(Calendar.MONTH);
+					int day =  rDate.get(Calendar.DAY_OF_MONTH);
+					if(day>28)
+					{
+						System.out.println("Store is closed");
+						return null;
+					}
+					int hour = rDate.get(Calendar.HOUR_OF_DAY);
+					int min = rDate.get(Calendar.MINUTE);
+
+					Customer customer= custlist.createCust(custName , custlist.getCustID() , member, paxsize, contact);
+					int customerId = customer.getCustomerID();
+					boolean assigned = tablelist.assignTable(tableId+1 , customerId);
+					if(assigned){
+						System.out.println("Customer ID: " + customerId);
+						customer.setTableId(tableId+1);
+						customer.setDate(month+1, day, hour, min);
+					}
+					
+					return customer;
+
+		}
 }
