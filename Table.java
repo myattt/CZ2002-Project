@@ -26,6 +26,7 @@ public class Table {
 	 * obtain the size of table 
 	 *
 	 * @return corresponding table size
+	 *	   null if the table does not have a table size
 	 */
 	public int getTableSize()
 	{
@@ -35,7 +36,8 @@ public class Table {
 	/**
 	 * returns id of table 
 	 *
-	 * @return int table id 
+	 * @return table id of the table
+	 *	   null if the table does not have a tableID assigned
 	 */
 	public int gettableID() {
 		return this.tableId;
@@ -45,6 +47,7 @@ public class Table {
 	 * returns id of customer 
 	 *
 	 * @return cust_id , which each customer was assigned to a unique ID
+	 * 	   null if no customers have been assigned to the table
 	 */
 	public int getCustomerID() {
 		return this.customerId;
