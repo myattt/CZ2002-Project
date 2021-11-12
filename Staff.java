@@ -14,7 +14,12 @@ public class Staff {
 	  public static ArrayList<String> ala;
 	  public static ArrayList<Integer> bundle;
 	  
-
+	  
+	  /**
+	   * Interface for staffs to create order for customer 
+	   * @param custlist list of customers
+	   * @param tablelist list of tables 
+	   */
 	  public static void main(CustomerList custlist , TableList tablelist ) {
 		  
 		  	Customer cust = MakeOrder(custlist , tablelist);
@@ -85,9 +90,13 @@ public class Staff {
 	  }
 	  
 	 
+	  /**
+	   * Generates random integer to randomly select staff information 
+	   * @return rdint
+	   */
 	  public static int staffInfo() {
 	    Random rand = new Random();
-	    int rdint = rand.nextInt(3);
+	    int rdint = rand.nextInt(4);
 	    return rdint;
 	  }
 	  
