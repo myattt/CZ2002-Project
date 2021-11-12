@@ -8,7 +8,7 @@ public class OrderInvoice {
 	
 	/**
 	 * prints Order Invoice (receipt)
-	 * @param custID customer ID
+	 * @param custID uses unique customer ID to find Customer's Order 
 	 * @param custlist list of customers 
 	 */
 	public void printInvoice(int custID,CustomerList custlist)
@@ -59,8 +59,8 @@ public class OrderInvoice {
 	
 	/**
 	 * calculates subtotal (without GST,disount,service charge)
-	 * @param customer 
-	 * @return SubTotal
+	 * @param customer unique Customer object to calculate subtotal of their order
+	 * @return subTotal
 	 */
 	public double calcSubtotal(Customer customer) {
 		return (double) customer.getTotalPrice();
@@ -68,7 +68,7 @@ public class OrderInvoice {
 	
 	/**
 	 * returns total amount including GST, discount and service charge 
-	 * @param customer
+	 * @param customer unique Customer object to calculate total of their order
 	 * @return Total 
 	 */
 	public double calcTotal(Customer customer)
@@ -78,8 +78,9 @@ public class OrderInvoice {
 	
 	/**
 	 * calculates discount customer is entitled to(if customer has membership)
-	 * @param customer
-	 * @return discount 
+	 * @param customer unique Customer object to calculate membership discount
+	 * @return discount if customer has membership,
+	 * return 0.00 if customer has no membership
 	 */
 	public double calcDiscount(Customer customer)
 	{
@@ -90,9 +91,9 @@ public class OrderInvoice {
 	}
 	
 	/**
-	 * calculates GST customer should pay
-	 * @param customer
-	 * @return GST
+	 * calculates GST customer has to pay
+	 * @param customer unique Customer object to calculate GST incurred
+	 * @return GST customer has to pay
 	 */
 	public double calcGST(Customer customer)
 	{
@@ -101,9 +102,9 @@ public class OrderInvoice {
 	}
 	
 	/**
-	 * calculates service charge customer should pay 
-	 * @param customer
-	 * @return service charge
+	 * calculates service charge customer has to pay
+	 * @param customer unique Customer object to calculate service charge incurred
+	 * @return service charge customer has to pay
 	 */
 	public double calcSvcCharge(Customer customer)
 	{
@@ -112,7 +113,9 @@ public class OrderInvoice {
 	
 	/**
 	 * prints items and quantity of items that customer has purchased 
-	 * @param cust
+	 * @param cust unique Customer object to find 
+	 * Customer's AlaCarte and PromotionalPackage order 
+	 * and quantity of each items ordered
 	 */
 	public void findAlaQuantity(Customer cust) {
 		DecimalFormat df = new DecimalFormat("0.00");
