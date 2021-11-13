@@ -260,6 +260,10 @@ public class Staff {
 					int month = rDate.get(Calendar.MONTH);
 					int day =  rDate.get(Calendar.DAY_OF_MONTH);
 					int hour = rDate.get(Calendar.HOUR_OF_DAY);
+					if(hour>22 || hour<10) {
+						System.out.println("Store is closed. Please try again tomorrow 10:00 - 22:00");
+						return null;
+					}
 					int min = rDate.get(Calendar.MINUTE);
 
 					Customer customer= custlist.createCust(custName , custlist.getCustID() , member, paxsize, contact);
