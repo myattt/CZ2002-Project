@@ -105,7 +105,7 @@ public class TableList {
 				return i;
 		}
 		
-		System.out.println("Unable to a table of suitable size");
+		System.out.println("Unable to assign a table of suitable size");
 		return -1;
 	}
 }
