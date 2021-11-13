@@ -38,14 +38,14 @@ public class OrderInvoice {
       String amt  =
                   "-----------------------------------\n"
     		  	// add in subtotal amount
-                  + "SubTotal Amount:      	   "+ df.format(calcSubtotal(customer)) +"\n"
+                  + "SubTotal Amount:        	 "+ df.format(calcSubtotal(customer)) +"\n"
     		    // calculate gst 
-                  + "7% GST:			   "+ df.format(calcGST(customer))+"\n"
+                  + "7% GST:			             "+ df.format(calcGST(customer))+"\n"
     		  	// calculate svc charge  
-    		  	  + "10% GST:		   "+ df.format(calcSvcCharge(customer))+"\n"
-    		  	  + "Member Discount:	   -"+ df.format(calcDiscount(customer))+"\n"
+    		  	  + "10% GST:		             "+ df.format(calcSvcCharge(customer))+"\n"
+    		  	  + "Member Discount:	       -"+ df.format(calcDiscount(customer))+"\n"
     		    // add in total amt with gst, svccharge and discount
-                  + "Total Amount:		SGD"+df.format(calcTotal(customer))+"\n"
+                  + "Total Amount:		    SGD"+df.format(calcTotal(customer))+"\n"
                   + "-----------------------------------\n"
                   + "***********************************\n"
                   + "             Thank You              \n"
@@ -121,15 +121,21 @@ public class OrderInvoice {
 		DecimalFormat df = new DecimalFormat("0.00");
 		List<String> ala_list = Arrays.asList(cust.getAlaOrder());
 		Set<String> distinct = new HashSet<>(ala_list);
+		int fixed_num = 18;
         for (String s: distinct) {
         	int quantity = Collections.frequency(ala_list, s);
-            System.out.println(s + "	  " + quantity + "	   " + df.format(Ala_Carte.Menu_of_restaurants.get(s)*quantity));
+			String ItemNameSpacing = new String(new char[18 - s.toString().length()]).replace('\0', ' ');
+			String ItemNameSpacing2 = new String(new char[18 - s.toString().length()]).replace('\0', ' ');
+            System.out.println(s + ItemNameSpacing2 + quantity + "           " + df.format(Ala_Carte.Menu_of_restaurants.get(s)*quantity));
 	}
         List<Integer> bunbun_list = Arrays.asList(cust.getBundleOrder());
 		Set<Integer> distinctbundle = new HashSet<>(bunbun_list);
         for (Integer s: distinctbundle) {
         	int quantity = Collections.frequency(bunbun_list, s);
-            System.out.println("Bundle " + s + "	  " + quantity + "	   " + df.format(Promotional_Package.bundle_prices.get(s)*quantity));
+
+        	String ItemNameSpacing = new String(new char[12 - s.toString().length()]).replace('\0', ' ');
+			String ItemNameSpacing2 = new String(new char[12 - s.toString().length()]).replace('\0', ' ');
+			System.out.println("Bundle" + s + ItemNameSpacing2 + quantity + ItemNameSpacing + df.format(Promotional_Package.bundle_prices.get(s)*quantity));
 	}
 	}
 }
