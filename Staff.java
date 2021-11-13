@@ -259,11 +259,6 @@ public class Staff {
 					rDate = Calendar.getInstance();
 					int month = rDate.get(Calendar.MONTH);
 					int day =  rDate.get(Calendar.DAY_OF_MONTH);
-					if(day>28)
-					{
-						System.out.println("Store is closed");
-						return null;
-					}
 					int hour = rDate.get(Calendar.HOUR_OF_DAY);
 					int min = rDate.get(Calendar.MINUTE);
 
