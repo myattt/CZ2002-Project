@@ -196,6 +196,9 @@ public class UI{
 		if(customer==null) {
 			System.out.println("No customer found");
 		}
+		else if(customer.getAlaOrder()!=null || customer.getBundleOrder()!=null) {
+			System.out.println("Customer has already ordered.");
+		}
 		else {
 		System.out.println(
 					"+--------------------------------------+");
