@@ -50,6 +50,7 @@ public class Promotional_Package implements Item{
 				System.out.println("Not in menu");
 			}
 		}while(!bundle_item.equals("q"));
+		 bundle_price*=0.9;
 		if(bundle_items.size() != 0) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Enter description:");
